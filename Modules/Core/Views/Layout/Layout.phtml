@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--Encoding and content type===========================================-->
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        <!--Title, description, SEO meta tags===================================-->
+        <title><?php echo $this->Title; ?></title>
+        <meta name="robots" content="index, follow"/>
+        <meta name="description" content="<?php // TODO ?>"/>
+        <meta name="keywords" content="<?php // TODO ?>"/>
+        <link rel="canonical" href="<?php echo isset($this->CanonicalURL) ? $this->CanonicalURL : $this->serverUrl(true); ?>"/>
+        <!--Icon and other dependencies==========================================-->
+        <?php //TODO ?>
+        <!-- CSS libs===========================================================-->
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <!--Own CSS=============================================================-->
+        <link rel="stylesheet" type="text/css" href="/css/Layout.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/Creator.css"/>
+        <!--JS libs=========================================================-->
+        <script type="text/javascript" src="/js/lib/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="/js/Creator.js"></script>
+        <!--3rd party JS=========================================================-->
+        <?php //TODO ?>
+        <!--Own JS===========================================================-->
+        <?php
+            /* If an array with per page scripts was provided, attach them. */
+            if(is_array($this->Scripts))
+            {                
+                foreach($Scripts as $Script)
+                {
+                    echo "<script type='text/javascript' src='$Script'></script>";
+                }
+            }
+        ?>
+    </head>
+    <body>
+        <header id="siteHeader" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <img class="navbar-brand" src="" alt="TU BEDZIE LOGO"/>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="<?php echo $this->url('mosaic', ['action' => 'home']); ?>">Home</a></li>
+                    <li><a href="<?php echo $this->url('mosaic', ['action' => 'catalogue']); ?>">Catalogue</a></li>
+                    <li><a href="<?php echo $this->url('mosaic', ['action' => 'information']); ?>">Information</a></li>
+                    <li><a href="<?php echo $this->url('mosaic', ['action' => 'contact']); ?>">Contact</a></li>
+                    <li><a href="<?php echo $this->url('mosaic', ['action' => 'creator']); ?>">Creator</a></li>
+                </ul>
+            </div>
+        </header>
+        <div id="content">
+            <?php echo $this->content; ?>
+        </div>
+        <footer id="siteFooter"></footer>
+    </body>
+</html>
