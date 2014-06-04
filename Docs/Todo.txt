@@ -1,0 +1,16 @@
+1. Zrobić przeróbkę katalogu - napisać skrypty do wycinania i obramowywania kafelków.
+http://www.londonmosaic.com/catalogue-victorian-and-modern-tile-design.htm
+
+2. Zapierdolić stąd paletę kolorów:
+http://www.londonmosaic.com/catalogue-victorian-and-modern-tile-design.htm
+
+3. Narzędzie do dzielenia obrazków na kwadraciki:
+http://moz-bud.pl/dekoracje.php
+
+4. Prototyp:
+a) menu (home, catalogue, information, contact) - język angielski
+b) prototyp sklepu
+c) prototyp kreatora mozajek - przemalowywanie trójkąt, kwadratów itp.
+
+5. Dalsze rzeczy:
+a) ogarnąć Twitter Bootstrap
