@@ -1,0 +1,6 @@
+div.container > div.row span
+{
+	display: inline-block;
+	float: none;
+	margin: 0 auto;
+}

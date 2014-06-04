@@ -15,10 +15,8 @@
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <!--Own CSS=============================================================-->
         <link rel="stylesheet" type="text/css" href="/css/Layout.css"/>
-        <link rel="stylesheet" type="text/css" href="/css/Creator.css"/>
         <!--JS libs=========================================================-->
         <script type="text/javascript" src="/js/lib/jquery-1.11.1.min.js"></script>
-        <script type="text/javascript" src="/js/Creator.js"></script>
         <!--3rd party JS=========================================================-->
         <?php //TODO ?>
         <!--Own JS===========================================================-->
@@ -29,6 +27,14 @@
                 foreach($Scripts as $Script)
                 {
                     echo "<script type='text/javascript' src='$Script'></script>";
+                }
+            }
+            /* If an array with per page styles was provided, attach them. */
+            if(is_array($this->Styles))
+            {                
+                foreach($Styles as $Style)
+                {
+                    echo "<link rel='stylesheet' type='text/css' href='$Style'/>";
                 }
             }
         ?>
