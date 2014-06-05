@@ -20,6 +20,10 @@
 	            //'Core' => 'Modules/Core/Views/',
 	            //'Mosaic' => 'Modules/Mosaic/Views/',
 	        ],
+	        'strategies' =>
+	        [
+            	'ViewJsonStrategy'
+            ]
 	    ],
 	];
 ?>

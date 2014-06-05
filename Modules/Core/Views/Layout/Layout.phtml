@@ -15,10 +15,8 @@
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <!--Own CSS=============================================================-->
         <link rel="stylesheet" type="text/css" href="/css/Layout.css"/>
-        <link rel="stylesheet" type="text/css" href="/css/Creator.css"/>
         <!--JS libs=========================================================-->
         <script type="text/javascript" src="/js/lib/jquery-1.11.1.min.js"></script>
-        <script type="text/javascript" src="/js/Creator.js"></script>
         <!--3rd party JS=========================================================-->
         <?php //TODO ?>
         <!--Own JS===========================================================-->
@@ -31,12 +29,24 @@
                     echo "<script type='text/javascript' src='$Script'></script>";
                 }
             }
+            /* If an array with per page styles was provided, attach them. */
+            if(is_array($this->Styles))
+            {                
+                foreach($Styles as $Style)
+                {
+                    echo "<link rel='stylesheet' type='text/css' href='$Style'/>";
+                }
+            }
         ?>
     </head>
     <body>
         <header id="siteHeader" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
+<<<<<<< HEAD
                 <img class="navbar-brand" id="logo" src="/img/logos.jpg"/>
+=======
+                <img id="logo" class="navbar-brand" src="img/logos/logos.jpg" alt="TU BEDZIE LOGO"/>
+>>>>>>> 8d815b50e7270c7f7e729bb27755b787e18655db
                 <ul class="nav navbar-nav">
                     <li id="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'home']); ?>">Home</a></li>
                     <li id="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'catalogue']); ?>">Catalogue</a></li>
