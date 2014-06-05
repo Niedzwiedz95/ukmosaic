@@ -13,3 +13,19 @@ div#content
 	display: block;
 	margin: 50px auto auto auto;
 }
+img#logo
+{
+	width: 200px;
+	height: 80px;
+	margin-top: -7px;
+	margin-bottom: -10px;
+}
+li#menu
+{
+	width: 100px;
+	height: 65px;
+	text-align: center;
+	margin-top: 7px;
+	margin-bottom: -10px;
+
+}

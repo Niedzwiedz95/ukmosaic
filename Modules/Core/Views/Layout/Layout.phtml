@@ -36,13 +36,13 @@
     <body>
         <header id="siteHeader" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
-                <img class="navbar-brand" src="" alt="TU BEDZIE LOGO"/>
+                <img class="navbar-brand" id="logo" src="/img/logos.jpg"/>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="<?php echo $this->url('mosaic', ['action' => 'home']); ?>">Home</a></li>
-                    <li><a href="<?php echo $this->url('mosaic', ['action' => 'catalogue']); ?>">Catalogue</a></li>
-                    <li><a href="<?php echo $this->url('mosaic', ['action' => 'information']); ?>">Information</a></li>
-                    <li><a href="<?php echo $this->url('mosaic', ['action' => 'contact']); ?>">Contact</a></li>
-                    <li><a href="<?php echo $this->url('mosaic', ['action' => 'creator']); ?>">Creator</a></li>
+                    <li id="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'home']); ?>">Home</a></li>
+                    <li id="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'catalogue']); ?>">Catalogue</a></li>
+                    <li id="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'information']); ?>">Information</a></li>
+                    <li id="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'contact']); ?>">Contact</a></li>
+                    <li id="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'creator']); ?>">Creator</a></li>
                 </ul>
             </div>
         </header>
