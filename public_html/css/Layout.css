@@ -20,7 +20,7 @@ img#logo
 	margin-top: -7px;
 	margin-bottom: -10px;
 }
-li#menu
+li.menu
 {
 	width: 100px;
 	height: 65px;
