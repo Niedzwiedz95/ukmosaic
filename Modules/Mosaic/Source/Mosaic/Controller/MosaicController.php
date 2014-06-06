@@ -53,16 +53,19 @@
         }
 		
 		/** Return the list of thumbnail paths in JSON format. */
-		public function thumbnailsAction()
+		public function tilesAction()
 		{
 			// Assert that this route is accessed via a POST-AJAX request.
 			$this->assertPostAjax();
 			
-			// Read the list of thumbnail paths.
-			$Thumbnails = file("public_html/img/Thumbnails.txt");
+			// Retrieve the type parameter from the $_POST array.
+			$Category = $_POST['category'];
+			
+			// Read the list of tiles to display.
+			$Tiles = file("public_html/img/$Category.txt");
 			
 			// Return the list encoded as JSON.
-			return new JsonModel(["thumbnails" => $Thumbnails]);
+			return new JsonModel(["tiles" => $Tiles]);
 		}
     }
 ?>

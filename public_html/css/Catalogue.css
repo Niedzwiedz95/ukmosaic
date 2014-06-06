@@ -1,6 +1,17 @@
-div.container > div.row span
+div.container span
 {
 	display: inline-block;
 	float: none;
 	margin: 0 auto;
 }
+
+div#catalogue
+{
+	float: left;
+}
+
+nav#catalogueMenu
+{
+	float: right;
+}
+

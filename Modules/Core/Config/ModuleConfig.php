@@ -6,7 +6,7 @@
 	    [
 	        'display_not_found_reason' => true,
 	        'display_exceptions'       => true,
-	        'not_found_template'       => 'Errors/404',
+	        'not_found_template'       => 'Error/404',
 	        'exception_template'       => Debug == true ? 'Error/Index' : 'Error/Error', //TODO
 	        'template_map' =>
 	        [
