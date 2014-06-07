@@ -1,5 +1,3 @@
-1. Zrobić przeróbkę katalogu - napisać skrypty do wycinania i obramowywania kafelków.
-http://www.londonmosaic.com/catalogue-victorian-and-modern-tile-design.htm
 
 2. Zapierdolić stąd paletę kolorów:
 http://www.londonmosaic.com/catalogue-victorian-and-modern-tile-design.htm

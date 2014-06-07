@@ -1,8 +1,5 @@
 $(document).ready(function()
-{
-	// At the start, victorian tiles are shown.
-	displayTiles("victorian");
-	
+{	
 	// When a menu link is clicked, appropriate tiles are shown. 
 	$("nav#catalogueMenu button, nav#catalogueMenu a").click(function(event)
 	{
