@@ -1,7 +1,7 @@
 div#catalogueWrapper h1
 {
 	display: block;
-	float: left;
+	float: right;
 	width: 500px;
 	margin: 0;
 }

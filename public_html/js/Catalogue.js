@@ -10,7 +10,7 @@ $(document).ready(function()
 		event.preventDefault();
 		
 		// Display the tiles. Category is the text of the menu item, all lower case.
-		var category = $(this).html().toLowerCase();
+		var category = $(this).html().split(" ")[0].toLowerCase();
 		displayTiles(category);
 	});
 	
@@ -60,7 +60,6 @@ function displayTiles(category)
 		// Iterate over all the thumbnails
 		for(var i = 0; i < data.tiles.length; ++i)
 		{
-			console.log("POSTINK")
 			// Retrieve the name of the tile and get it's path
 			name = data.tiles[i].split("\.")[0];
 			path = "img/" + category + "/" + data.tiles[i];
