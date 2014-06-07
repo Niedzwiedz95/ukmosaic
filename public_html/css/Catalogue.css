@@ -1,17 +1,9 @@
-div.container span
-{
-	display: inline-block;
-	float: none;
-	margin: 0 auto;
-}
-
-div#catalogue
+nav#catalogueMenu
 {
 	float: left;
 }
 
-nav#catalogueMenu
+li.toggleSubmenu > nav
 {
-	float: right;
+	display: none;
 }
-

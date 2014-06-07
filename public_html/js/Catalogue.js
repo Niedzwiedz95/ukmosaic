@@ -36,7 +36,6 @@ function displayTiles(category)
 			// Append the thumbnail to the page
 			$("div.container > div#catalogue").append(
 			"<div class='col-lg-3 thumb'>\
-				<span class=''>" + name + "</span>\
 				<a class='thumbnail' href='#'>\
 					<img class='img-responsive' src='" + path + "' alt='" + data.tiles[i] + "'>\
 				</a>\
@@ -44,3 +43,5 @@ function displayTiles(category)
 		}
 	});
 }
+
+				//<span class=''>" + name + "</span>
