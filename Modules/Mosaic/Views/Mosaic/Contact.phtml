@@ -1,4 +1,6 @@
-<form name="contactform" method="post" action="send_form_email.php">
+<script type="text/javascript" src="js/validate.js"></script>
+<link rel="stylesheet" type="text/css" href="css/validate.css"
+<form method="post" action="send_form_email.php">
 	<table>
  		<tr>
  			<td valign="top">
@@ -9,10 +11,12 @@
 			</td>
 		<tr>
  			<td valign="top">
-				<label for="email">Email Address*</label>
+				<label for="email">Email*</label>
 			</td>
 			<td>
-				<input  name="email">
+				<input id="email" name="email" type="email" class="required">
+					<span class="msg error">Not a valid email!</span>
+					<span class="msg success">A valid email!</span>
 			</td>
 		</tr>
 		<tr>
