@@ -37,6 +37,13 @@
         }
         public function contactAction()
         {
+            /* Add metadata to the layout. */
+            $this->layout()->setVariables(
+            [
+                "Title" => "Contact - Martin's mosaics",
+                'Styles' => ["/css/Contact.css"]
+            ]);
+        	
             return (new ViewModel([]))->setTemplate('Mosaic/Contact.phtml');
         }
         public function creatorAction()
