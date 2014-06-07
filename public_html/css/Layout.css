@@ -33,11 +33,6 @@ p#fonty {
 	color: gold; 
 	padding-top:0px; 
 	padding-left:178px; 
-	font-style: italic; 
-	font-size: 12px;
-	font-family: scripalt;
-}
-@font-face {
-	font-family: "scripalt";
-	src: url(/fonts/scriptina/SCRIPALT.ttf);
+	font-size: 14px;
+	font-style: italic;
 }
