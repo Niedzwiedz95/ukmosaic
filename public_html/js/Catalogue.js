@@ -4,10 +4,41 @@ $(document).ready(function()
 	displayTiles("victorian");
 	
 	// When a menu link is clicked, appropriate tiles are shown. 
-	$("nav#catalogueMenu a").click(function()
+	$("nav#catalogueMenu li > a").click(function(event)
 	{
+		// Prevent scrolling to the top of the page caused by clicking a link.
+		event.preventDefault();
+		
+		// Display the tiles. Category is the text of the menu item, all lower case.
 		var category = $(this).html().toLowerCase();
 		displayTiles(category);
+	});
+	
+	// Event handler for toggling submenus.
+	$("li.toggleSubmenu, li.toggleSubmenu > a").click(function(event)
+	{
+		// Prevent subitems from scrolling to the top or hiding the submenu.
+		$(this).find("nav").click(function(event)
+		{
+			event.preventDefault();
+			event.stopPropagation();
+		});
+		
+		// Prevent scrolling to the top of the page caused by clicking a link.
+		event.preventDefault();
+		
+		// If this submenu is toggled, hide it.
+		if($(this).hasClass("toggled"))
+		{
+			$(this).removeClass("toggled");
+			$(this).find("nav").fadeOut();
+		}
+		else // If this menu is hidden, toggle it and hide all other submenus.
+		{
+			$("li.toggled > nav").fadeOut();
+			$(this).addClass("toggled");
+			$(this).find("nav").fadeIn();
+		}
 	});
 });
 
