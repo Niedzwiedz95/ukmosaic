@@ -1,11 +1,7 @@
-nav#catalogueMenu
+div#catalogueWrapper h1
 {
+	display: block;
 	float: left;
-}
-
-
-li.toggleSubmenu > nav
-{
-	display: none;
-	
+	width: 500px;
+	margin: 0;
 }

@@ -4,7 +4,7 @@ $(document).ready(function()
 	displayTiles("victorian");
 	
 	// When a menu link is clicked, appropriate tiles are shown. 
-	$("nav#catalogueMenu li > a").click(function(event)
+	$("nav#catalogueMenu button, nav#catalogueMenu a").click(function(event)
 	{
 		// Prevent scrolling to the top of the page caused by clicking a link.
 		event.preventDefault();
@@ -60,12 +60,13 @@ function displayTiles(category)
 		// Iterate over all the thumbnails
 		for(var i = 0; i < data.tiles.length; ++i)
 		{
+			console.log("POSTINK")
 			// Retrieve the name of the tile and get it's path
 			name = data.tiles[i].split("\.")[0];
 			path = "img/" + category + "/" + data.tiles[i];
 			
 			// Append the thumbnail to the page
-			$("div.container > div#catalogue").append(
+			$("div#catalogue").append(
 			"<div class='col-lg-3 thumb'>\
 				<a class='thumbnail' href='#'>\
 					<img class='img-responsive' src='" + path + "' alt='" + data.tiles[i] + "'>\
