@@ -6,9 +6,5 @@ http://www.londonmosaic.com/catalogue-victorian-and-modern-tile-design.htm
 http://moz-bud.pl/dekoracje.php
 
 4. Prototyp:
-a) menu (home, catalogue, information, contact) - język angielski
-b) prototyp sklepu
+b) prototyp sklepu?
 c) prototyp kreatora mozajek - przemalowywanie trójkąt, kwadratów itp.
-
-5. Dalsze rzeczy:
-a) ogarnąć Twitter Bootstrap
