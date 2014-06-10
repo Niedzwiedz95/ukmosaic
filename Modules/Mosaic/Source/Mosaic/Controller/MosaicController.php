@@ -33,6 +33,13 @@
         }
         public function technicalAction()
         {
+        	/* Add metadata to the layout. */
+            $this->layout()->setVariables(
+            [
+                "Title" => "Technical - Martin's mosaics",
+                'Styles' => ["/css/Technical.css"]
+            ]);
+			
             return (new ViewModel([]))->setTemplate('Mosaic/Technical.phtml');	
         }
         public function contactAction()

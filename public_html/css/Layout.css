@@ -58,3 +58,6 @@ img#logo
 	font-size: 14px;
 	font-style: italic;
 }
+li.menu > a:hover {
+		border: 2px groove gold;
+}
