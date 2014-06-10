@@ -11,8 +11,7 @@ Zeimer:
 
 Niedźwiedź:
 1. home - do zrobienia
-2. technical - do zrobienia
-3. special offers - do zrobienia
-4. accessories - do zrobienia
-5. katalog - przeróbka menu
-6. logo - new?
+2. special offers - do zrobienia
+3. accessories - do zrobienia
+4. katalog - przeróbka menu
+5. logo - new?
