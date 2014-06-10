@@ -31,9 +31,9 @@
 			
             return (new ViewModel([]))->setTemplate('Mosaic/Catalogue.phtml');
         }
-        public function informationAction()
+        public function technicalAction()
         {
-            return (new ViewModel([]))->setTemplate('Mosaic/Information.phtml');
+            return (new ViewModel([]))->setTemplate('Mosaic/Technical.phtml');	
         }
         public function contactAction()
         {
