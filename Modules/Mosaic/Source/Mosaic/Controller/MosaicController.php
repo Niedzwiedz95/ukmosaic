@@ -42,6 +42,26 @@
 			
             return (new ViewModel([]))->setTemplate('Mosaic/Technical.phtml');	
         }
+		public function specialoffersAction()
+        {
+        	/* Add metadata to the layout. */
+            $this->layout()->setVariables(
+            [
+                "Title" => "Special offers - Martin's mosaics",
+            ]);
+			
+            return (new ViewModel([]))->setTemplate('Mosaic/Specialoffers.phtml');	
+        }
+		public function AccessoriesAction()
+        {
+        	/* Add metadata to the layout. */
+            $this->layout()->setVariables(
+            [
+                "Title" => "Accessories - Martin's mosaics",
+            ]);
+			
+            return (new ViewModel([]))->setTemplate('Mosaic/Accessories.phtml');	
+        }
         public function contactAction()
         {
             /* Add metadata to the layout. */
