@@ -31,17 +31,20 @@ function displayTiles(category)
 		// Iterate over all the thumbnails
 		for(var i = 0; i < data.tiles.length; ++i)
 		{
-			// Retrieve the name of the tile and get it's path
-			name = data.tiles[i].split("\.")[0];
-			path = "img/" + category + "/" + data.tiles[i];
+			// Name is the part of the filename before the .extension part. The newline is discarded.
+			name = data.tiles[i].split("\.")[0].split("\n")[0];
+			
+			// Path is /img/category/"filename" with the newline discarded.
+			path = "img/" + category + "/" + data.tiles[i].split("\n")[0];
 			
 			// Append the thumbnail to the page
 			$("div#catalogue").append(
 			"<div class='col-lg-3 thumb'>\
 				<a class='thumbnail' href='#'>\
-					<img class='img-responsive' src='" + path + "' alt='" + data.tiles[i] + "'>\
+					<img class='' src='" + path + "' alt='" + data.tiles[i].split("\n")[0] + "'>\
 				</a>\
 			</div>");
+			alert("x");
 		}
 	});
 }
