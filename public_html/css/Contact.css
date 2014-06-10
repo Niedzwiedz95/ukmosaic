@@ -1,4 +1,21 @@
-table {
+form
+{
+	width: 450px;
+	margin: 0 auto;
+}
+h1
+{
+	text-align: center;
+}
+
+div.form-group > div.col-lg-1
+{
+	width: 60px;
+	height: 35px;
+	padding: 0;
+	margin: 0 195px;
+}
+/*table {
 	margin: 100px auto auto;	
 }
 
@@ -46,4 +63,4 @@ input#button {
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	margin-left: 145px;
-}
+}*/

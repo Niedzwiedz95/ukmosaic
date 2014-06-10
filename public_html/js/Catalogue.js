@@ -1,13 +1,13 @@
 $(document).ready(function()
 {	
 	// When a menu link is clicked, appropriate tiles are shown. 
-	$("nav#catalogueMenu button, nav#catalogueMenu a").click(function(event)
+	$("nav#catalogueMenu a").click(function(event)
 	{
 		// Prevent scrolling to the top of the page caused by clicking a link.
 		event.preventDefault();
 		
-		// Display the tiles. Category is the text of the menu item, all lower case.
-		var category = $(this).html().split(" ")[0].toLowerCase();
+		// Display the tiles. Category is the data-category attribute of the menu item.
+		var category = $(this).attr("data-category");
 		displayTiles(category);
 	});
 	
