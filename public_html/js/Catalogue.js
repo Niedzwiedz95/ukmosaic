@@ -44,7 +44,6 @@ function displayTiles(category)
 					<img class='' src='" + path + "' alt='" + data.tiles[i].split("\n")[0] + "'>\
 				</a>\
 			</div>");
-			alert("x");
 		}
 	});
 }

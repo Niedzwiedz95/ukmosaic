@@ -56,6 +56,7 @@
         }
         public function creatorAction()
         {
+        	exit;
             /* Add metadata to the layout. */
             $this->layout()->setVariables(
             [
