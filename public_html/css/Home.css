@@ -1,0 +1,7 @@
+div#board {
+	border: 5px ridge black;
+	width: 410px;
+	height: 310px;
+	float: right;
+	margin-right: 50px;
+}
