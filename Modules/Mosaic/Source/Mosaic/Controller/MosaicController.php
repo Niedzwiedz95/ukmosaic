@@ -15,6 +15,8 @@
             $this->layout()->setVariables(
             [
                 "Title" => "Home - Martin's mosaics",
+                'Scripts' => ["/js/Home.js"],
+                'Styles' => ["/css/Home.css"]
             ]);
 			
             return (new ViewModel([]))->setTemplate('Mosaic/Home.phtml');
