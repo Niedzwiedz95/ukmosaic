@@ -16,6 +16,7 @@ $(document).ready(function()
 // Displays the all tiles that belong to "category" category
 function displayTiles(category)
 {
+console.log(category);
 	// If category was not given, stop the procedure.
 	if(category == null || category == "undefined" || category == 0 || category == "")
 	{

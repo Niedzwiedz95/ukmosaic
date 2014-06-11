@@ -28,7 +28,7 @@
     		<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Anti-slip</button>
   		</div>
 		<div class="btn-group">
-    		<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-category="satin&matt">Satin&matt</button>
+    		<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Satin&matt</button>
   		</div>
 		<div class="btn-group">
     		<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Round</button>

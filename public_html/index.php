@@ -1,5 +1,4 @@
 <?php
-    //phpinfo();
     // All paths are relative to the project root now.
     chdir(dirname(__DIR__));
     

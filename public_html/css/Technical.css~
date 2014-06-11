@@ -3,7 +3,7 @@ div.winckelmans, div.briare {
 	padding-top: 20px;
 	word-spacing: 20px;
 }
-p.winckelmans, p.briare {
+p#text {
 	font-size:large;
 	padding-left: 200px;
 	padding-top: 20px;

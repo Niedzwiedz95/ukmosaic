@@ -22,8 +22,7 @@
 	            		'route'    => '/[:action[/:technical]]',
 	                    'constraints' =>
 	                    [
-	                        'action' => '[a-zA-Z][a-zA-Z]{1,}',
-							'technical' => '(winckelmans)|(briare)'
+	                        'action' => '[a-zA-Z][a-zA-Z]{1,}'
 	                    ],
 	                    'defaults' =>
 	                    [

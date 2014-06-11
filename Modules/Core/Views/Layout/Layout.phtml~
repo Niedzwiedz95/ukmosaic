@@ -62,8 +62,8 @@
 						<!--<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Technical</button>-->
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#<?php //echo $this->url('mosaic', ['action' => 'technical']); ?>">Technical</a>
 						<ul class="dropdown-menu">
-				  			<li><a href="/technical/winckelmans">Winckelmans</a></li>
-				  			<li><a href="/technical/briare">Briare</a></li>
+				  			<li><a href="#" data-section="winckelmans">Winckelmans</a></li>
+				  			<li><a href="#" data-section="briare">Briare</a></li>
 						</ul>
 					</li>
                     <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'specialoffers']); ?>">Special offers</a></li>
