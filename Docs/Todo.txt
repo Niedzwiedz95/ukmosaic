@@ -1,13 +1,14 @@
 Zeimer:
-1. Wyrównać menu - done.
 2. Przerobić formularz kontaktowy do wersji zendowej i dodać walidację w js. Znaleźć jakiś fajny szablon do bootstrapa.
-3. Ułożyć glazed w katalogu. - done.
-4. Przerobić katalog do jedynej słusznej wersji. - done.
 5. Zapierdolić stąd paletę kolorów: http://www.londonmosaic.com/catalogue-victorian-and-modern-tile-design.htm
 6. Narzędzie do dzielenia obrazków na kwadraciki: http://moz-bud.pl/dekoracje.php
 7. Prototyp:
-	a) sklepu?
+	a) sklepu? - do roboty
 	b) kreatora mozajek - kwadraciki, trójkąciki, kolorki etc. - na razie niewiadomo
+8. Menu wysuwające się z Accessories:
+	a) Decorative Tiles 5x5cm
+	b) Decorative Tiles 10x10cm
+9. Między Special offers a Accessories trzeba dodać Information. - done
 
 Niedźwiedź:
 1. home - do zrobienia

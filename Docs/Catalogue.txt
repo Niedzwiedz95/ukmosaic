@@ -1,7 +1,7 @@
 1.Satin&Matt - Tiles size 2.5x2.5cm - tu maj� by� p�ytki kt�re aktualnie s� bezpo�rednio w Satin&Matt
 2.od do�u do 8 zostaje w victorian
 3.od do�u od 9 do 11 i z 12 ostatnia - Octagon 15x15cm 9mm
-4.od do�u z 12 3 p�ytki kt�re zosta�y do ostatniej z 15 - Octagon 10x10cm 9mm
+4.od do�u z 12 3 płytki kt�re zosta�y do ostatniej z 15 - Octagon 10x10cm 9mm
 5.od g�ry z 6 - 2 pierwsze - Tiles size 15x15cm 9mm
 6.od g�ry z 5 do 2 ostatnie z 2 - Tiles size 10x10cm 9mm
 7.od g�ry 21 - 16 + 3 ostatnie z 15 Tiles size 70x70cm 9mm
@@ -67,10 +67,5 @@ Schiste
 Zinnia
 4 NOWYCH WED�UG NAZWY ZAPISANEJ (NAZWA.JPG)
 
-menu wysuwające się z Accessories:
 
-Decorative Tiles 5x5cm
-Decorative Tiles 10x10cm
-
-między Special offers a Accessories trzeba dodać Information.
 
