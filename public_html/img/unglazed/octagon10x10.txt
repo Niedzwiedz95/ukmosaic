@@ -1,0 +1,12 @@
+classic_50_dia_2L_v3.gif
+classic_50_zz_4L.gif
+classic_70_dia_5L.gif
+classic_70_dog_3L_v2.gif
+colliford_50_snake_4L.gif
+livingston_50_rev_3L.gif
+norland_70_35sq_2L.gif
+norland_70_5L_v2.gif
+octagon_150_sqset_100dia_4L.gif
+octagon_150_sqsetin_2L.gif
+octagon_150_sqsetin_50dia_5L.gif
+stevenson_70_chapel_4L.gif
