@@ -35,8 +35,9 @@ function displayTiles(category)
 		    if(i % 4 == 0)
 		    {
 		        row++;
-		        console.log(row);
 		    }
+		    var col = i % 4 + 1;
+		    
 			// Name is the part of the filename before the .extension part. The newline is discarded.
 			name = data.tiles[i].split("\.")[0].split("\n")[0];
 			
@@ -46,6 +47,7 @@ function displayTiles(category)
 			// Append the thumbnail to the page
 			$("div#catalogue").append(
 			"<div class='col-lg-3 thumb'>\
+                <span>(row "+row+", col "+col+"), "+(i+1)+", rev-row"+(49-row)+"</span>\
 				<a class='thumbnail' href='#'>\
 					<img class='' src='" + path + "' alt='" + data.tiles[i].split("\n")[0] + "'>\
 				</a>\
