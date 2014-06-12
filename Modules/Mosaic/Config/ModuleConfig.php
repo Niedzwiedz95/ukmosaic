@@ -19,11 +19,11 @@
 	            	'type' => 'segment',
 	            	'options' =>
 	            	[
-	            		'route'    => '/[:action[/:technical]]',
+	            		'route'    => '/[:action[/:param]]',
 	                    'constraints' =>
 	                    [
 	                        'action' => '[a-zA-Z][a-zA-Z]{1,}',
-							'technical' => '(winckelmans)|(briare)'
+							'param' => '(winckelmans)|(briare)|(decorative1)|(decorative2)'
 	                    ],
 	                    'defaults' =>
 	                    [

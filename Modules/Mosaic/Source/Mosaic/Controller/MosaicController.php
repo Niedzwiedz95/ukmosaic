@@ -39,6 +39,7 @@
             $this->layout()->setVariables(
             [
                 "Title" => "Technical - Martin's mosaics",
+                'Scripts' => ["/js/Technical.js"],
                 'Styles' => ["/css/Technical.css"]
             ]);
 			
@@ -60,6 +61,7 @@
             $this->layout()->setVariables(
             [
                 "Title" => "Accessories - Martin's mosaics",
+                'Scripts' => ["/js/Accessories.js"],
                 'Styles' => ["/css/Accessories.css"]
             ]);
 			

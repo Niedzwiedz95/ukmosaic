@@ -28,9 +28,15 @@ function displayTiles(category)
 	// Retrieve the thumbnails of the tiles
 	$.post('/tiles', {"category": category}, function(data)
 	{
+	    var row = 0;
 		// Iterate over all the thumbnails
 		for(var i = 0; i < data.tiles.length; ++i)
 		{
+		    if(i % 4 == 0)
+		    {
+		        row++;
+		        console.log(row);
+		    }
 			// Name is the part of the filename before the .extension part. The newline is discarded.
 			name = data.tiles[i].split("\.")[0].split("\n")[0];
 			

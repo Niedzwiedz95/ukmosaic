@@ -1,12 +1,12 @@
 1.Satin&Matt - Tiles size 2.5x2.5cm - tu maj� by� p�ytki kt�re aktualnie s� bezpo�rednio w Satin&Matt
-2.od do�u do 8 zostaje w victorian
-3.od do�u od 9 do 11 i z 12 ostatnia - Octagon 15x15cm 9mm
-4.od do�u z 12 3 płytki kt�re zosta�y do ostatniej z 15 - Octagon 10x10cm 9mm
-5.od g�ry z 6 - 2 pierwsze - Tiles size 15x15cm 9mm
-6.od g�ry z 5 do 2 ostatnie z 2 - Tiles size 10x10cm 9mm
-7.od g�ry 21 - 16 + 3 ostatnie z 15 Tiles size 70x70cm 9mm
-8.od g�ry z 6 - 2 ostatnie Tiles size 35x35cm 9mm
-9.od g�ry 7 - 14 + 1 z 15 Tiles size 50x50cm 9mm
+2.od dołu do 8 zostaje w victorian
+3.od dołu od 9 do 11 i z 12 ostatnia - Octagon 15x15cm 9mm
+4.od dołu z 12 3 płytki kt�re zosta�y do ostatniej z 15 - Octagon 10x10cm 9mm
+5.od góry z 6 - 2 pierwsze - Tiles size 15x15cm 9mm
+6.od góry z 5 do 2 ostatnie z 2 - Tiles size 10x10cm 9mm
+7.od góry 21 - 16 + 3 ostatnie z 15 Tiles size 70x70cm 9mm
+8.od góry z 6 - 2 ostatnie Tiles size 35x35cm 9mm
+9.od góry 7 - 14 + 1 z 15 Tiles size 50x50cm 9mm
 10. usu�� 1 i 4 p�ytk� z victorian bo wkurwiaj� w�a�ciciela
 
 
