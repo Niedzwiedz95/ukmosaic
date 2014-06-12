@@ -54,12 +54,13 @@
 			
             return (new ViewModel([]))->setTemplate('Mosaic/Specialoffers.phtml');	
         }
-		public function AccessoriesAction()
+		public function accessoriesAction()
         {
         	/* Add metadata to the layout. */
             $this->layout()->setVariables(
             [
                 "Title" => "Accessories - Martin's mosaics",
+                'Styles' => ["/css/Accessories.css"]
             ]);
 			
             return (new ViewModel([]))->setTemplate('Mosaic/Accessories.phtml');	

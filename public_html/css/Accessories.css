@@ -1,0 +1,10 @@
+div.decorative1, div.decorative2 {
+	text-align: center;
+	padding-top: 20px;
+	word-spacing: 20px;
+}
+p.decorative1, p.decorative2 {
+	font-size:large;
+	padding-left: 200px;
+	padding-top: 20px;
+}
