@@ -60,5 +60,5 @@ img#logo
 	font-family: "Arial Black";
 }
 li.menu > a:hover {
-		border: 2px groove gold;
+		border-bottom: 2px solid gold;
 }
