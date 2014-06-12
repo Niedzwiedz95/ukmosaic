@@ -67,6 +67,16 @@
 			
             return (new ViewModel([]))->setTemplate('Mosaic/Accessories.phtml');	
         }
+		public function informationAction()
+        {
+        	/* Add metadata to the layout. */
+            $this->layout()->setVariables(
+            [
+                "Title" => "Information - Martin's mosaics"
+            ]);
+			
+            return (new ViewModel([]))->setTemplate('Mosaic/Information.phtml');	
+        }
         public function contactAction()
         {
             /* Add metadata to the layout. */
