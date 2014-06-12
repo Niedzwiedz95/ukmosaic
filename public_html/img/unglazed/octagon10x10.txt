@@ -1,0 +1,12 @@
+octagon_100_1L.gif
+octagon_100_3L.gif
+octagon_100_3L_v2.gif
+octagon_100_3L_v3.gif
+octagon_100_3L_v4.gif
+octagon_100_50dia_2L.gif
+octagon_100_50dia_6L.gif
+octagon_100_50dog_3L.gif
+octagon_100_50zz_2L.gif
+octagon_100_50zz_4L.gif
+octagon_100_diain_3L.gif
+octagon_100_diain_50dog_4L.gif

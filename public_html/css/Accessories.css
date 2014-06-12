@@ -8,7 +8,7 @@ p.decorative1, p.decorative2 {
 	text-align: center;
 	padding-top: 20px;
 }
-p#contact {
+p.contact {
 	width: 250px;
 	margin: 10px auto auto;
 	font-size: 20px;
@@ -16,16 +16,16 @@ p#contact {
 	color: white;
 }
 
-a:visited#contact {
+p.contact > a:visited {
     text-decoration: none;
     color: gold;
 }
 
-a:hover#contact {
+p.contact > a:hover {
     text-decoration: none;
     border-bottom: 2px solid white;
 }
 
-a:active#contact {
+p.contact > a:active {
     text-decoration: none;
 }

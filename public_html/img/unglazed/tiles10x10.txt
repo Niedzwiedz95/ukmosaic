@@ -1,0 +1,14 @@
+classic_100_1L.gif
+classic_100_2L.gif
+classic_100_3L.gif
+classic_100_3L_v2.gif
+classic_100_70dia_2L.gif
+classic_100_70dia_2L_v2.gif
+classic_100_70dog_2L.gif
+classic_100_70dog_3L_v1.gif
+classic_100_70dog_3L_v2.gif
+classic_100_70dog_3L_v3.gif
+classic_100_70dog_3L_v4.gif
+classic_100_70dog_4L.gif
+classic_100_dog_7L.gif
+classic_100_vis_2L.gif

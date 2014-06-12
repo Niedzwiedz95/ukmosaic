@@ -1,0 +1,13 @@
+octagon_150_1L.gif
+octagon_150_1L_v2.gif
+octagon_150_2L.gif
+octagon_150_50dia_50str_1L.gif
+octagon_150_50str_2L.gif
+octagon_150_50vis_2L.gif
+octagon_150_70dia_3L.gif
+octagon_150_diasetin_50dia_2L.gif
+octagon_150_sqset_100dia_4L.gif
+octagon_150_sqset_1L.gif
+octagon_150_sqsetin_2L.gif
+octagon_150_sqsetin_50dia_5L.gif
+octagon_150_sqsetin_50dia_6L.gif

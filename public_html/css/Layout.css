@@ -26,6 +26,23 @@ li.menu
 		margin: 30px 0;
 		padding: 0;
 	}
+	
+li.open > a:focus
+{
+	#background: none !important;
+	border-bottom: 2px solid gold !important;
+}
+
+li.btn-group
+{
+	width: 100px;
+	height: 20px;
+		margin: 30px 0;
+}
+	li.btn-group > a
+	{
+		margin: 0;
+	}
 
 div#logoWrapper
 {
@@ -35,6 +52,10 @@ div#logoWrapper
 	box-sizing: border-box;
 }
 
+ul.dropdown-menu
+{
+	#background: #080808;
+}
 
 img#logo
 {
@@ -55,10 +76,11 @@ img#logo
 	color: gold; 
 	text-align: center;
 	margin: 0; 
-	font-size: 18px;
+	font-size: 16px;
 	font-style: italic;
 	font-family: "Arial Black";
 }
-li.menu > a:hover {
+li.menu > a:hover
+{
 		border-bottom: 2px solid gold;
 }
