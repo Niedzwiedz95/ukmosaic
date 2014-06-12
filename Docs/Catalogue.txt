@@ -14,9 +14,7 @@
 MENU - UNGLAZED ma wygl�da� tak:
 
 Victorian tiles thickness 9mm
-Tiles size 70x70cm thickness 9mm
-Tiles size 50x50cm thickness 9mm
-Tiles size 35x35cm thickness 9mm
+Tiles size 3.5x3.5cm thickness 9mm
 Tiles size 5x5cm thickness 9mm
 Tiles size 7x7cm thickness 9mm
 Tiles size 10x10cm thickness 9mm
