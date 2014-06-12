@@ -27,6 +27,17 @@ li.menu
 		padding: 0;
 	}
 
+li.btn-group
+{
+	width: 100px;
+	height: 20px;
+		margin: 30px 0;
+}
+	li.btn-group > a
+	{
+		margin: 0;
+	}
+
 div#logoWrapper
 {
 	width: 350px;
@@ -35,6 +46,10 @@ div#logoWrapper
 	box-sizing: border-box;
 }
 
+ul.dropdown-menu
+{
+	#background: #080808;
+}
 
 img#logo
 {
