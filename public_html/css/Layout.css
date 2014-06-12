@@ -26,6 +26,12 @@ li.menu
 		margin: 30px 0;
 		padding: 0;
 	}
+	
+li.open > a:focus
+{
+	#background: none !important;
+	border-bottom: 2px solid gold !important;
+}
 
 li.btn-group
 {
@@ -74,6 +80,7 @@ img#logo
 	font-style: italic;
 	font-family: "Arial Black";
 }
-li.menu > a:hover {
+li.menu > a:hover
+{
 		border-bottom: 2px solid gold;
 }
