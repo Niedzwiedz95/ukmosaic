@@ -6,6 +6,8 @@
     use Zend\View\Model\JsonModel;
     
     use Core\Controller\BaseController;
+	
+	use Mosaic\Form\ContactForm;
 
     class MosaicController extends BaseController
     {
@@ -86,8 +88,10 @@
                 'Styles' => ["/css/Contact.css", "/css/validate.css"],
                 'Scripts' => ["/js/validate.js"]
             ]);
+			
+			$ContactForm = new ContactForm();
         	
-            return (new ViewModel([]))->setTemplate('Mosaic/Contact.phtml');
+            return (new ViewModel(['ContactForm' => $ContactForm]))->setTemplate('Mosaic/Contact.phtml');
         }
         public function creatorAction()
         {

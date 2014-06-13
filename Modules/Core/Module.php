@@ -37,5 +37,17 @@
                 ],
             ];
         }
+		
+		/** Returns the config of all the view helpers used in the Core module. */
+        public function getViewHelperConfig() 
+        {
+            return
+            [
+                'invokables' =>
+                [
+                    'BootstrapForm' => 'Core\Form\View\Helper\BootstrapForm',
+                ],
+            ];
+        }
     }
 ?>
