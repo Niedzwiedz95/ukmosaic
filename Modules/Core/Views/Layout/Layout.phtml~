@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--Encoding and content type===========================================-->
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        <!--Title, description, SEO meta tags===================================-->
+        <title><?php echo $this->Title; ?></title>
+        <meta name="robots" content="index, follow"/>
+        <meta name="description" content="<?php // TODO ?>"/>
+        <meta name="keywords" content="<?php // TODO ?>"/>
+        <link rel="canonical" href="<?php echo isset($this->CanonicalURL) ? $this->CanonicalURL : $this->serverUrl(true); ?>"/>
+        <!--Icon and other dependencies==========================================-->
+        <?php //TODO ?>
+        <!-- CSS libs===========================================================-->
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+        <!--Own CSS=============================================================-->
+        <link rel="stylesheet" type="text/css" href="/css/Layout.css"/>
+        <!--<link rel="stylesheet" href="/js/lib/fancyboxx/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />-->
+        <link rel="stylesheet" href="/js/lib/lightbox/css/lightbox.css"/>
+        <!--JS libs=========================================================-->
+        <script type="text/javascript" src="/js/lib/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+        <!--<script type="text/javascript" src="/js/lib/fancyboxx/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script type="text/javascript" src="/js/lib/fancyboxx/fancybox/jquery.easing-1.4.pack.js"></script>
+		<script type="text/javascript" src="/js/lib/fancyboxx/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>-->
+		<script type="text/javascript" src="/js/lib/lightbox/js/lightbox.min.js"></script>
+		<script type="text/javascript" src="/js/lib/jqFancyTransitions.1.8.min.js"></script>
+		<script type="text/javascript" src="/js/Technical.js"></script>
+        <!--3rd party JS=========================================================-->
+        <?php //TODO ?>
+        <!--Own JS===========================================================-->
+        <?php
+            /* If an array with per page scripts was provided, attach them. */
+            if(is_array($this->Scripts))
+            {                
+                foreach($Scripts as $Script)
+                {
+                    echo "<script type='text/javascript' src='$Script'></script>";
+                }
+            }
+            /* If an array with per page styles was provided, attach them. */
+            if(is_array($this->Styles))
+            {                
+                foreach($Styles as $Style)
+                {
+                    echo "<link rel='stylesheet' type='text/css' href='$Style'/>";
+                }
+            }
+        ?>
+    </head>
+    <body>
+        <header id="siteHeader" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+            	<div id="logoWrapper">
+	                <img id="logo" class="navbar-brand" src="/img/logos/test1.png"/>
+	            	<p id="fonty">YOUR IMAGINATION YOUR DESIGN</p>
+	            </div>
+                <ul class="nav navbar-nav">
+                    <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'home']); ?>">Home</a></li>
+                    <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'catalogue']); ?>">Catalogue</a></li>
+                    <li class="menu btn-group technical">
+						<!--<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Technical</button>-->
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#<?php //echo $this->url('mosaic', ['action' => 'technical']); ?>">Technical</a>
+						<ul class="dropdown-menu">
+				  			<li><a href="#" data-section="winckelmans">Winckelmans</a></li>
+				  			<li><a href="#" data-section="briare">Briare</a></li>
+						</ul>
+					</li>
+                    <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'specialoffers']); ?>">Special offers</a></li>
+                    <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'accessories']); ?>">Accessories</a></li>
+                    <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'contact']); ?>">Contact</a></li>
+                   <!-- <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'creator']); ?>">Creator</a></li> -->
+                </ul>
+            </div>
+        </header>
+        <div id="content">
+            <?php echo $this->content; ?>
+        </div>
+        <footer id="siteFooter"></footer>
+    </body>
+</html>
