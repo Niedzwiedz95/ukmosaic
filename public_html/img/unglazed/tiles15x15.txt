@@ -1,0 +1,4 @@
+classic_150_2L.gif
+classic_150_rev_3L.gif
+classic_50_dia_2L_v2.gif
+classic_70_70tri_2L.gif
