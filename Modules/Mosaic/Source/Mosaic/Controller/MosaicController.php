@@ -113,7 +113,7 @@
 			$Category = $_POST['category'];
 			
 			// Read the list of tiles to display.
-			$Tiles = file("public_html/img/$Category.txt");
+			$Tiles = file("public_html/img/catalogue/$Category.txt");
 			
 			// Return the list encoded as JSON.
 			return new JsonModel(["tiles" => $Tiles]);

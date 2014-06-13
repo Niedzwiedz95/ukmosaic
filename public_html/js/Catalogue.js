@@ -42,7 +42,7 @@ function displayTiles(category)
 			name = data.tiles[i].split("\.")[0].split("\n")[0];
 			
 			// Path is /img/category/"filename" with the newline discarded.
-			path = "img/" + category + "/" + data.tiles[i].split("\n")[0];
+			path = "img/catalogue/" + category + "/" + data.tiles[i].split("\n")[0];
 			
 			// Append the thumbnail to the page
 			$("div#catalogue").append(
