@@ -1,7 +1,7 @@
 div#board {
 	border: 5px ridge black;
-	width: 500px;
-	height: 400px;
+	width: 610px;
+	height: 460px;
 	float: right;
 	margin-right: 70px;
 	margin-top: 35px;
@@ -9,7 +9,7 @@ div#board {
 div#hometext {
 	font-size: 22px;
 	font-family:"Copperplate Gothic Bold";
-	padding-top: 30px;
+	padding-top: 65px;
 	padding-left: 70px;
 	padding-right: 100px;
 }
