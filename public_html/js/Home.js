@@ -1,3 +1,3 @@
 $(document).ready( function(){
-    $('#slideshowHolder').jqFancyTransitions({ width: 400, height: 300, position: 'top', direction: 'fountain',delay: 2500 });
+    $('#slideshowHolder').jqFancyTransitions({ width: 600, height: 450, position: 'top', direction: 'fountain',delay: 2500 });
 });
