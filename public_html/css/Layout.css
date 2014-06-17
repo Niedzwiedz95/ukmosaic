@@ -52,14 +52,8 @@ div#logoWrapper
 	box-sizing: border-box;
 }
 
-ul.dropdown-menu
-{
-	#background: #080808;
-}
-
 img#logo
 {
-	#box-sizing: border-box;
 	width: 240px;
 	height: 70px;
 	float: left;
@@ -83,4 +77,22 @@ img#logo
 li.menu > a:hover
 {
 		border-bottom: 2px solid gold;
+}
+
+
+ul.dropdown-menu
+{
+	background: #222222;
+}
+
+ul.dropdown-menu > li > a
+{
+	color: #999 !important;	
+}
+
+ul.dropdown-menu > li > a:focus, ul.dropdown-menu > li > a:hover
+{
+	background: inherit !important;
+	#border-bottom: 2px solid gold !important;
+	color: gold !important;
 }

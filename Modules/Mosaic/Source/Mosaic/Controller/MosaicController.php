@@ -86,7 +86,7 @@
             [
                 "Title" => "Contact - Martin's mosaics",
                 'Styles' => ["/css/Contact.css", "/css/validate.css"],
-                'Scripts' => ["/js/validate.js"]
+                'Scripts' => ["/js/Contact.js"]
             ]);
 			
 			$ContactForm = new ContactForm();
