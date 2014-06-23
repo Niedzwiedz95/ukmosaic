@@ -1,7 +1,7 @@
 <?php
     // All paths are relative to the project root now.
     chdir(dirname(__DIR__));
-    
+	
     // Set debug and error reporting modes based on whether the string 'localhost' is contained in the HTTP HOST.
     if(strpos($_SERVER['HTTP_HOST'], 'localhost') !== FALSE)
     {

@@ -11,9 +11,23 @@
 
     class MosaicController extends BaseController
     {
+    	private $ProductTable;
+		
+        /** Retrieves the PictureTable instance. */
+        public function getProductTable()
+        {
+            /* If the PictureTable is null, it gets loaded from the ServiceManager. */
+            if($this->ProductTable == null)
+            {
+                $ServiceLocator = $this->getServiceLocator();
+                $this->ProductTable = $ServiceLocator->get('Mosaic\Model\ProductTable');
+            }
+            return $this->ProductTable;
+        }
+					
         public function homeAction()
         {
-            /* Add metadata to the layout. */
+            // Add metadata to the layout.
             $this->layout()->setVariables(
             [
                 "Title" => "Home - Martin's mosaics",
@@ -25,19 +39,26 @@
         }
         public function catalogueAction()
         {
-            /* Add metadata to the layout. */
+        	// Get URL params.
+            $Category = $this->params()->fromRoute('category') ? $this->params()->fromRoute('category') : "";
+			
+			// Render the markup with the products to be displayed.
+			$Products = $this->renderProducts($Category);
+			
+            // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                "Title" => "Catalogue - Martin's mosaics",
-                'Scripts' => ["/js/Catalogue.js"],
-                'Styles' => ["/css/Catalogue.css"]
+                'Title' => "Catalogue - Martin's mosaics",
+                'Scripts' => ['/js/Catalogue.js'],
+                'Styles' => ['/css/Catalogue.css'],
             ]);
 			
-            return (new ViewModel([]))->setTemplate('Mosaic/Catalogue.phtml');
+			
+            return (new ViewModel(['Products' => $Products]))->setTemplate('Mosaic/Catalogue.phtml');
         }
         public function technicalAction()
         {
-        	/* Add metadata to the layout. */
+        	// Add metadata to the layout.
             $this->layout()->setVariables(
             [
                 "Title" => "Technical - Martin's mosaics",
@@ -49,7 +70,7 @@
         }
 		public function specialoffersAction()
         {
-        	/* Add metadata to the layout. */
+        	// Add metadata to the layout.
             $this->layout()->setVariables(
             [
                 "Title" => "Special offers - Martin's mosaics",
@@ -59,7 +80,7 @@
         }
 		public function accessoriesAction()
         {
-        	/* Add metadata to the layout. */
+        	// Add metadata to the layout.
             $this->layout()->setVariables(
             [
                 "Title" => "Accessories - Martin's mosaics",
@@ -71,7 +92,7 @@
         }
 		public function informationAction()
         {
-        	/* Add metadata to the layout. */
+        	// Add metadata to the layout.
             $this->layout()->setVariables(
             [
                 "Title" => "Information - Martin's mosaics"
@@ -81,7 +102,7 @@
         }
         public function contactAction()
         {
-            /* Add metadata to the layout. */
+            // Add metadata to the layout.
             $this->layout()->setVariables(
             [
                 "Title" => "Contact - Martin's mosaics",
@@ -95,8 +116,7 @@
         }
         public function creatorAction()
         {
-        	exit;
-            /* Add metadata to the layout. */
+            // Add metadata to the layout.
             $this->layout()->setVariables(
             [
                 "Title" => "Creator - Martin's mosaics",
@@ -108,19 +128,40 @@
         }
 		
 		/** Return the list of thumbnail paths in JSON format. */
-		public function tilesAction()
+		public function productsAction()
 		{
 			// Assert that this route is accessed via a POST-AJAX request.
 			$this->assertPostAjax();
 			
-			// Retrieve the type parameter from the $_POST array.
-			$Category = $_POST['category'];
-			
-			// Read the list of tiles to display.
-			$Tiles = file("public_html/img/catalogue/$Category.txt");
+			// Render the products' markup.
+			$Products = $this->renderProducts($_POST['category']);
 			
 			// Return the list encoded as JSON.
-			return new JsonModel(["tiles" => $Tiles]);
+			return new JsonModel(['html' => $Products]);
+		}
+		
+		/** Renders the html code of the products that are to be displayed. */
+		public function renderProducts($Category)
+		{
+			// Fetch products of the desored category from the database.
+			$Products = $this->getProductTable()->select(['Category' => $Category])->buffer();
+			
+			// Variable to hold the markup.
+			$HTML = "";
+			
+			// Iterate over all products and build up the markup.
+			foreach($Products as $Product)
+			{
+				$HTML .= "<div class='col-lg-3 thumb'>
+							<span class=''>" . $Product->getProductName() . "</span>
+							<a class='thumbnail' href='#'>
+								<img class='' src='" . $Product->getPath() . "' alt='" . $Product->getProductName() . "'>
+							</a>
+						  </div>";
+			}
+			
+			// Return the markup.
+			return $HTML;
 		}
     }
 ?>

@@ -19,11 +19,12 @@
 	            	'type' => 'segment',
 	            	'options' =>
 	            	[
-	            		'route'    => '/[:action[/:param]]',
+	            		'route'    => '/[:action[/:param]][/:category]',
 	                    'constraints' =>
 	                    [
 	                        'action' => '[a-zA-Z][a-zA-Z]{1,}',
-							'param' => '(winckelmans)|(briare)|(decorative1)|(decorative2)'
+							'param' => '(winckelmans)|(briare)|(decorative1)|(decorative2)',
+							'category' => '.*'
 	                    ],
 	                    'defaults' =>
 	                    [

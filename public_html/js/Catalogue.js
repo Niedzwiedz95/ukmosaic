@@ -21,39 +21,10 @@ function displayTiles(category)
 	{
 		return;
 	}
-	
-	// Clean the catalogue.
-	$("div#catalogue").html("");
-	
-	// Retrieve the thumbnails of the tiles
-	$.post('/tiles', {"category": category}, function(data)
+	// Fetch the products' html from the server and change the page's URL.
+	$.post('/products', {"category": category}, function(data)
 	{
-	    var row = 0;
-		// Iterate over all the thumbnails
-		for(var i = 0; i < data.tiles.length; ++i)
-		{
-		    if(i % 4 == 0)
-		    {
-		        row++;
-		    }
-		    var col = i % 4 + 1;
-		    
-			// Name is the part of the filename before the .extension part. The newline is discarded.
-			name = data.tiles[i].split("\.")[0].split("\n")[0];
-			
-			// Path is /img/category/"filename" with the newline discarded.
-			path = "img/catalogue/" + category + "/" + data.tiles[i].split("\n")[0];
-			
-			// Append the thumbnail to the page
-			$("div#catalogue").append(
-			"<div class='col-lg-3 thumb'>\
-                <span class=''>" + name + "</span>\
-				<a class='thumbnail' href='#'>\
-					<img class='' src='" + path + "' alt='" + data.tiles[i].split("\n")[0] + "'>\
-				</a>\
-			</div>");
-		}
+        $("div#catalogue").html(data.html);
+        window.history.replaceState(null, null, '/catalogue/' + category);
 	});
 }
-//<span class=''>" + name + "</span>\
-                //<span>(row "+row+", col "+col+"), "+(i+1)+", rev-row"+(49-row)+"</span>

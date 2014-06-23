@@ -22,13 +22,13 @@
 	            './vendor',
 	        ],
 	    ],
-        /*'service_manager' =>
+        'service_manager' =>
         [
             'factories' =>
             [
                 //'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
-                //'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
+                'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
             ],
-        ],*/
+        ],
 	];
 ?>
