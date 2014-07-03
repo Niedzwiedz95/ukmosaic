@@ -1,10 +1,15 @@
 Zeimer:
 2. Przerobić formularz kontaktowy do wersji zendowej i dodać walidację w js. Znaleźć jakiś fajny szablon do bootstrapa.
-5. Zapierdolić stąd paletę kolorów: http://www.londonmosaic.com/catalogue-victorian-and-modern-tile-design.htm
 6. Narzędzie do dzielenia obrazków na kwadraciki: http://moz-bud.pl/dekoracje.php
 7. Prototyp:
-	a) sklepu? - do roboty
+	a) sklep - do roboty
 	b) kreatora mozajek - kwadraciki, trójkąciki, kolorki etc. - na razie nie wiadomo
+Płytki - Tiles size 2x2-3.8mm:
+Winckelmans - paski pionowe - płytki - paski poziome
+Basket:
+dodać płytki
+rejestracja - na stałe / do kupna
+O chuj chodzi w http://mosaic.localhost/catalogue/glazed_tiles2.5x2.5
 
 Niedźwiedź:
 1. home - do zrobienia
@@ -12,3 +17,5 @@ Niedźwiedź:
 3. accessories - do zrobienia
 4. katalog - przeróbka menu
 5. logo - new?
+6. podnoszenie obrazków - katalog - opis 
+7. złote elementy - gold gold gold 3x g :D
