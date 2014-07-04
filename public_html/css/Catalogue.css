@@ -14,7 +14,12 @@ div#catalogue > div
 
 a.thumbnail
 {
-	#height: inherit;
-	width; inherit;
-	height: inherit;
+	padding: 0;
+	border: 0;
+}
+
+a.thumbnail > img
+{
+	max-width: 300px;	
+	max-height: 300px;
 }
