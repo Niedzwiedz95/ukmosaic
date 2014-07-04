@@ -152,7 +152,7 @@
 			// Iterate over all products and build up the markup.
 			foreach($Products as $Product)
 			{
-				$HTML .= "<div class='col-lg-3 thumb'>
+				$HTML .= "<div class='col-lg-3'>
 							<span class=''>" . $Product->getProductName() . "</span>
 							<a class='thumbnail' href='#'>
 								<img class='' src='" . $Product->getPath() . "' alt='" . $Product->getProductName() . "'>

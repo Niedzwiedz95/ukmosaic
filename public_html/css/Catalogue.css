@@ -6,8 +6,14 @@ div#catalogueWrapper h1
 	margin: 0;
 }
 
+div#catalogue > div
+{
+	height: 320px;
+}
+
+
 a.thumbnail
 {
-	width; inherit;
-	height: inherit;
+	#height: inherit;
 }
+
