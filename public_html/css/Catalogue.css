@@ -15,5 +15,6 @@ div#catalogue > div
 a.thumbnail
 {
 	#height: inherit;
+	width; inherit;
+	height: inherit;
 }
-
