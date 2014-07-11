@@ -7,7 +7,7 @@ $(document).ready(function()
 		event.preventDefault();
 		
 		// Display the tiles. Category is the data-category attribute of the menu item.
-		var category = $(this).attr("data-category");
+		var category = $(this).attr("data-category"); console.log(category);
 		displayTiles(category);
 	});
 	
@@ -24,6 +24,7 @@ function displayTiles(category)
 	// Fetch the products' html from the server and change the page's URL.
 	$.post('/products', {"category": category}, function(data)
 	{
+	   console.log(data);
         $("div#catalogue").html(data.html);
         window.history.replaceState(null, null, '/catalogue/' + category);
 	});

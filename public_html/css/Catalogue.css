@@ -23,3 +23,8 @@ a.thumbnail > img
 	max-width: 300px;	
 	max-height: 300px;
 }
+
+nav#catalogueMenu li:hover
+{
+	cursor: pointer;
+}

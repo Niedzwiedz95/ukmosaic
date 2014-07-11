@@ -49,8 +49,7 @@
             $this->layout()->setVariables(
             [
                 'Title' => "Catalogue - Martin's mosaics",
-                'Scripts' => ['/js/Catalogue.js'],
-                'Scripts' => ['/js/Click.js'],
+                'Scripts' => ['/js/Catalogue.js', '/js/Click.js'],
                 'Styles' => ['/css/Catalogue.css']
             ]);
 			
