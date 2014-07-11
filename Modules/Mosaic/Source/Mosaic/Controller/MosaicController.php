@@ -50,7 +50,8 @@
             [
                 'Title' => "Catalogue - Martin's mosaics",
                 'Scripts' => ['/js/Catalogue.js'],
-                'Styles' => ['/css/Catalogue.css'],
+                'Scripts' => ['/js/Click.js'],
+                'Styles' => ['/css/Catalogue.css']
             ]);
 			
 			
