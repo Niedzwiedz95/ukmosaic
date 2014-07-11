@@ -5,7 +5,7 @@
         'db' =>
         [
             'driver'         => 'Pdo_Mysql',
-            'dsn'            => 'mysql:dbname=ug207337_mosaic',
+            'dsn'            => 'mysql:dbname=ug207337_mosaic2',
             'username'       => 'ug207337_baza',
             'password'       => 'Business.123',
             'driver_options' =>
