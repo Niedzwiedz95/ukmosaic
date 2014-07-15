@@ -154,7 +154,8 @@
 			foreach($Products as $Product)
 			{
 				$HTML .= "<div class='col-lg-3'>
-							<span class=''>" . $Product->getProductName() . "</span>
+							<span class='productName'>" . $Product->getProductName() . "</span>
+							<span class='price'>" . $Product->getPrice() . "£</span>
 							<a class='thumbnail' href='#'>
 								<img class='' src='" . $Product->getPath() . "' alt='" . $Product->getProductName() . "'>
 							</a>
