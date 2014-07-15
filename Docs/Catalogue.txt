@@ -1,0 +1,17 @@
+Satin & matt:
+- +2 nowe płytki
+- zmiana nazw np. Albatre Tiles 348x348 na Albatre 348x348
+- ceny:
+	-craie,chaux,albatre,calcedonie,mastik,betonite,silex - 84.45£ za 1m²
+	-qurtz,jaspe,fabulite,malachite,ametyschte,porpyhe,lave,sodalite,emeardude,holite - 119.45£ za 1m²
+	-galene,saphir,topaze,onyx,lazuli, pepite,rubis,turgise,resine,azurite,miniumum,corail,coblat - 148.24£ za 1m²
+Glazed:
+- +2 nowe płytki
+- zmiana nazw np. Aster na Aster 348x348
+- do usunięcia: lavander tiles, cipagno
+- lavander zmiana nazwy na Lavande 348x348
+- fuschia zmiana nazwy na Fidij 348x348
+- ceny:
+	-prunelle,pivonie,questche - 98.40£ za 1m²
+	-genet,pollen,buis,galapagos,danube,fuchsia,zinnia,noisetre,bahia - 89.40£ za 1m²
+	-christaux,fusian,bahamas,fidij,camelia,coriande,aster,marquiese,clariere,petale,lavande,californie,tuile,carmel,caraibes,gravier,ivraie,schiste,muguet,pierre,lotus,mouette,egee - 79.40£ za 1m²

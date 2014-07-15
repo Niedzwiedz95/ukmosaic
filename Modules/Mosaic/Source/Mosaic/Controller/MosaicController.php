@@ -95,7 +95,8 @@
         	// Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                "Title" => "Information - Martin's mosaics"
+                "Title" => "Information - Martin's mosaics",
+                'Styles' => ["/css/Information.css"],
             ]);
 			
             return (new ViewModel([]))->setTemplate('Mosaic/Information.phtml');	
