@@ -153,10 +153,15 @@
 			// Iterate over all products and build up the markup.
 			foreach($Products as $Product)
 			{
+				// Save the product's attributes to make life easier.
+				$Name = $Product->getProductName();
+				$Path = $Product->getPath();
+				$Price = $Product->getPrice();
+				
 				$HTML .= "<div class='col-lg-3'>
-							<span class='productName'>" . $Product->getProductName() . "</span>
-							<span class='price'>" . $Product->getPrice() . "£</span>
-							<a class='thumbnail' href='#'>
+							<span class='productName'>" . $Name . "</span>
+							<span class='price'>" . $Price . "£</span>
+							<a class='thumbnail' href='" . $Path . "' title='" . $Name . " " . $Price . "£'>
 								<img class='' src='" . $Product->getPath() . "' alt='" . $Product->getProductName() . "'>
 							</a>
 						  </div>";
