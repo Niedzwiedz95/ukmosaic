@@ -21,7 +21,7 @@
         <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/js/lib/fancybox/source/jquery.fancybox.pack.js"></script>
         <script type="text/javascript" src="/js/lib/jqFancyTransitions.1.8.min.js"></script>
-		<!--<script type="text/javascript" src="/js/lib/jquery.validate.min.js"></script>-->
+		<script type="text/javascript" src="/js/lib/jquery.validate.min.js"></script>
         <!--3rd party JS=========================================================-->
         <?php //TODO ?>
         <!--Own JS===========================================================-->
@@ -55,7 +55,7 @@
                     <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'home']); ?>">Home</a></li>
                     <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'catalogue']); ?>">Catalogue</a></li>
                     <li class="menu btn-group technical">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#<?php //echo $this->url('mosaic', ['action' => 'technical']); ?>">Technical</a>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Technical</a>
 						<ul class="dropdown-menu">
 				  			<li><a href="/technical/winckelmans">Winckelmans</a></li>
 				  			<li><a href="/technical/briare">Briare</a></li>
@@ -64,14 +64,13 @@
                     <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'specialoffers']); ?>">Special offers</a></li>
                     <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'information']); ?>">Information</a></li>
                     <li class="menu btn-group accessories">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#<?php //echo $this->url('mosaic', ['action' => 'accessories']); ?>">Accessories</a>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Accessories</a>
 						<ul class="dropdown-menu">
 				  			<li><a href="/accessories/decorative1">Decorative Tiles 5x5cm</a></li>
 				  			<li><a href="/accessories/decorative2">Decorative Tiles 10x10cm</a></li>
 						</ul>
 					</li>
                     <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'contact']); ?>">Contact</a></li>
-                   <!-- <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'creator']); ?>">Creator</a></li> -->
                 </ul>
             </div>
         </header>

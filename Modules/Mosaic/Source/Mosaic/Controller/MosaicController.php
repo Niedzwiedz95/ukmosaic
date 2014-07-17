@@ -49,10 +49,9 @@
             $this->layout()->setVariables(
             [
                 'Title' => "Catalogue - Martin's mosaics",
-                'Scripts' => ['/js/Catalogue.js', '/js/Click.js'],
+                'Scripts' => ['/js/Catalogue.js'],
                 'Styles' => ['/css/Catalogue.css']
             ]);
-			
 			
             return (new ViewModel(['Products' => $Products]))->setTemplate('Mosaic/Catalogue.phtml');
         }
@@ -66,7 +65,10 @@
                 'Styles' => ["/css/Technical.css"]
             ]);
 			
-            return (new ViewModel([]))->setTemplate('Mosaic/Technical.phtml');	
+			// Get the URL param that determines which type of technical to show.
+			$Param = strtolower($this->params()->fromRoute('technicalparam') ? $this->params()->fromRoute('technicalparam') : "winckelmans");
+			
+            return (new ViewModel([]))->setTemplate("Mosaic/Technical/$Param.phtml");	
         }
 		public function specialoffersAction()
         {
@@ -88,7 +90,10 @@
                 'Styles' => ["/css/Accessories.css"]
             ]);
 			
-            return (new ViewModel([]))->setTemplate('Mosaic/Accessories.phtml');	
+			// Get the URL param that determines which type of accessories to show.
+			$Param = strtolower($this->params()->fromRoute('accessoriesparam') ? $this->params()->fromRoute('accessoriesparam') : 'decorative1');
+			
+            return (new ViewModel([]))->setTemplate("Mosaic/Accessories/$Param.phtml");		
         }
 		public function informationAction()
         {
@@ -128,6 +133,18 @@
             return (new ViewModel([]))->setTemplate('Mosaic/Creator.phtml');
         }
 		
+		/** A page with a description of a particular product. */
+		public function productAction()
+		{
+        	// Get URL params.
+            $ProductID = $this->params()->fromRoute('productid') ? $this->params()->fromRoute('productid') : "";
+			
+			// Fetch the requested product.
+			$Products = $this->getProductTable()->select(['ProductID' => $ProductID])->buffer();
+						
+            return (new ViewModel(['Product' => $Products->current()]))->setTemplate('Mosaic/Product.phtml');
+		}
+		
 		/** Return the list of thumbnail paths in JSON format. */
 		public function productsAction()
 		{
@@ -161,7 +178,7 @@
 				$HTML .= "<div class='col-lg-3'>
 							<span class='productName'>" . $Name . "</span>
 							<span class='price'>" . $Price . "£</span>
-							<a class='thumbnail' href='" . $Path . "' title='" . $Name . " " . $Price . "£'>
+							<a class='thumbnail' href='" . '/product/' . $Product->getProductID() . "' title='" . $Name . " " . $Price . "£'>
 								<img class='' src='" . $Product->getPath() . "' alt='" . $Product->getProductName() . "'>
 							</a>
 						  </div>";

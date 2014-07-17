@@ -19,17 +19,85 @@
 	            	'type' => 'segment',
 	            	'options' =>
 	            	[
-	            		'route'    => '/[:action[/:param]][/:category]',
+	            		'route'    => '/[:action]',
 	                    'constraints' =>
 	                    [
-	                        'action' => '[a-zA-Z][a-zA-Z]{1,}',
-							'param' => '(winckelmans)|(briare)|(decorative1)|(decorative2)',
-							'category' => '.*'
+	                        'action' => '(home)|(specialoffers)|(information)|(contact)|(product)|(products)',
 	                    ],
 	                    'defaults' =>
 	                    [
 	                        'controller' => 'MosaicController',
-	                        'action'     => 'home'
+	                        'action'     => 'home',
+	                    ],
+					],
+				],
+	            'catalogue' =>	
+	            [
+	            	'type' => 'segment',
+	            	'options' =>
+	            	[
+	            		'route'    => '/catalogue[/:category]',
+	                    'constraints' =>
+	                    [
+							'category' => '.*',
+	                    ],
+	                    'defaults' =>
+	                    [
+	                        'controller' => 'MosaicController',
+	                        'action'     => 'catalogue',
+	                    ],
+					],
+				],
+	            'technical' =>	
+	            [
+	            	'type' => 'segment',
+	            	'options' =>
+	            	[
+	            		'route'    => '/technical/:technicalparam',
+	                    'constraints' =>
+	                    [
+							'technicalparam' => '(winckelmans)|(briare)',
+	                    ],
+	                    'defaults' =>
+	                    [
+	                        'controller' => 'MosaicController',
+	                        'action'     => 'technical',
+	                        'technicalparam' => 'winckelmans',
+	                    ],
+					],
+				],
+	            'accessories' =>	
+	            [
+	            	'type' => 'segment',
+	            	'options' =>
+	            	[
+	            		'route'    => '/accessories/:accessoriesparam',
+	                    'constraints' =>
+	                    [
+							'accessoriesparam' => '(decorative1)|(decorative2)',
+	                    ],
+	                    'defaults' =>
+	                    [
+	                        'controller' => 'MosaicController',
+	                        'action'     => 'accessories',
+	                        'accessoriesparam' => 'decorative1',
+	                    ],
+					],
+				],
+	            'product' =>	
+	            [
+	            	'type' => 'segment',
+	            	'options' =>
+	            	[
+	            		'route'    => '/product/:productid',
+	                    'constraints' =>
+	                    [
+							'productid' => '[1-9]{1}[0-9]*',
+	                    ],
+	                    'defaults' =>
+	                    [
+	                        'controller' => 'MosaicController',
+	                        'action'     => 'product'
 	                    ],
 					],
 				],

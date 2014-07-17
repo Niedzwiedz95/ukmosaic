@@ -8,24 +8,24 @@ header#siteHeader
 	position: static;
 	margin: 0;
 }
-div#content
-{
-	display: block;
-	margin: 50px auto auto auto;
-}
 
-li.menu
-{
-	width: 100px;
-	height: 80px;
-	text-align: center;
-}
-	li.menu > a
+	header#siteHeader  ul.nav
 	{
-		height: 20px;
-		margin: 30px 0;
-		padding: 0;
+		height: 105px;
 	}
+		header#siteHeader  ul.nav > li.menu
+		{
+			width: 100px;
+			height: 20px;
+			margin: 41.25px 0;
+	text-align: center;
+		}
+			header#siteHeader  ul.nav > li.menu > a
+			{
+				height: 20px;
+				margin: 0;
+				padding: 0;
+			}
 	
 li.open > a:focus
 {
@@ -95,4 +95,10 @@ ul.dropdown-menu > li > a:focus, ul.dropdown-menu > li > a:hover
 	background: inherit !important;
 	#border-bottom: 2px solid gold !important;
 	color: gold !important;
+}
+
+div#content
+{
+	display: block;
+	margin: 50px auto auto auto;
 }

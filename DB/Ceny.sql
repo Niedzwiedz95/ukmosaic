@@ -5,3 +5,6 @@ UPDATE Products SET Price = 148.24 WHERE ProductName REGEXP "galene|saphir|topaz
 UPDATE Products SET Price = 98.40 WHERE ProductName REGEXP "prunelle|pivoine|quetsche";
 UPDATE Products SET Price = 89.40 WHERE ProductName REGEXP "genet|pollen|buis|galapagos|danube|fuchsia|zinnia|noisetier|bahia";
 UPDATE Products SET Price = 79.40 WHERE ProductName REGEXP "christaux|fusian|bahamas|fidij|camelia|coriandre|aster|marquiese|clairiere|petale|lavande|californie|tuile|carmel|caraibes|gravier|ivraie|schiste|muguet|pierre|lotus|mouette|egee";
+UPDATE Products SET Price = 49.99 WHERE ProductName REGEXP "ontario|noir|jaune|havane|gris|gris pale|carmel|blanc|rouge|chocolat";
+UPDATE Products SET Price = 52.45 WHERE ProductName REGEXP "antracite|blue pale|cafe|cognac|gris perle|ivoire|lin|rose|super blanc|taupe|vert pale";
+UPDATE Products SET Price = 57.45 WHERE ProductName REGEXP "blue|parme|pistache|vanille|vert|vieax rose";
