@@ -5,6 +5,7 @@ Satin & matt:
 	-craie,chaux,albatre,calcedonie,mastik,betonite,silex - 84.45£ za 1m²
 	-qurtz,jaspe,fabulite,malachite,ametyschte,porpyhe,lave,sodalite,emeardude,holite - 119.45£ za 1m²
 	-galene,saphir,topaze,onyx,lazuli, pepite,rubis,turgise,resine,azurite,miniumum,corail,coblat - 148.24£ za 1m²
+	
 Glazed:
 - +2 nowe płytki
 - zmiana nazw np. Aster na Aster 348x348
@@ -15,3 +16,13 @@ Glazed:
 	-prunelle,pivonie,questche - 98.40£ za 1m²
 	-genet,pollen,buis,galapagos,danube,fuchsia,zinnia,noisetre,bahia - 89.40£ za 1m²
 	-christaux,fusian,bahamas,fidij,camelia,coriande,aster,marquiese,clariere,petale,lavande,californie,tuile,carmel,caraibes,gravier,ivraie,schiste,muguet,pierre,lotus,mouette,egee - 79.40£ za 1m²
+	
+Unglazed: 
+	Tiles size 2x2 - 3.8mm:
+		- +8 nowych płytek (stary + 1 nowy folder)
+		- ceny:
+			-ontario,noir,jaune,havane,gris,gris pale,carmel,blanc,rouge,chocolat - 49.99£ za 1m²
+			-antracite,blue pale,cafe,cognac,gris perle,ivoire,lin,rose,super blanc,taupe,vert pale - 52.45£ za 1m²
+			-blue,parme,pistache,vanille,vert,vieax rose - 57.45£ za 1m²
+
+
