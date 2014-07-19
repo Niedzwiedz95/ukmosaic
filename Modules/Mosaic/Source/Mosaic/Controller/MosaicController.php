@@ -60,8 +60,8 @@
         	// Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                "Title" => "Technical - Martin's mosaics",
-                'Scripts' => ["/js/Technical.js"],
+                'Title' => "Technical - Martin's mosaics",
+                'Scripts' => ["/js/Pullup.js"],
                 'Styles' => ["/css/Technical.css"]
             ]);
 			
@@ -86,7 +86,7 @@
             $this->layout()->setVariables(
             [
                 "Title" => "Accessories - Martin's mosaics",
-                'Scripts' => ["/js/Accessories.js"],
+                'Scripts' => ["/js/Pullup.js"],
                 'Styles' => ["/css/Accessories.css"]
             ]);
 			
@@ -136,6 +136,14 @@
 		/** A page with a description of a particular product. */
 		public function productAction()
 		{
+            // Add metadata to the layout.
+            $this->layout()->setVariables(
+            [
+                "Title" => "Creator - Martin's mosaics",
+                'Scripts' => [],
+                'Styles' => ["/css/Product.css"]
+            ]);
+			
         	// Get URL params.
             $ProductID = $this->params()->fromRoute('productid') ? $this->params()->fromRoute('productid') : "";
 			

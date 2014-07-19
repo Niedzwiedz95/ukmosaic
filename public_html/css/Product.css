@@ -1,0 +1,21 @@
+div#productWrapper
+{
+	#display: inline-block;
+	width: 60%;
+	height: 500px;%;
+	margin: 0 auto;
+	#background: silver;
+}
+	div#productWrapper > div#product
+	{
+		#float: left;
+	}
+		div#productWrapper > div#product > img
+		{
+			width: 450px;
+			height: 450px;
+		}
+	div#productWrapper > div#details > h1
+	{
+		font-size: 20px;
+	}
