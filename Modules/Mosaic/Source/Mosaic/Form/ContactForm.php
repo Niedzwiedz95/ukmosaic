@@ -10,7 +10,6 @@
 
     use Core\Form\BaseForm;
     
-    
     /** This class represents the form used to contact Martin. */
     class ContactForm extends BaseForm
     {
@@ -20,7 +19,7 @@
             /* Set all the necessary attributes. */
             parent::__construct('ContactForm');
             $this->setAttribute('id', 'contactForm');
-            $this->setAttribute('action', '/post');
+            $this->setAttribute('action', '/contact');
             
             /* Create the necessary elements. */
             $this->add(
@@ -73,7 +72,7 @@
             ]);
             $this->add(
             [
-                'name' => 'SubmitContactForm',
+                'name' => 'submitContactForm',
                 'attributes' =>
                 [
                     'type'  => 'submit',

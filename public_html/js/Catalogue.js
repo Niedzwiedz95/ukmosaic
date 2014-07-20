@@ -22,7 +22,7 @@ function displayTiles(category)
 		return;
 	}
 	// Fetch the products' html from the server and change the page's URL.
-	$.post('/products', {"category": category}, function(data)
+	$.post('/productsjson', {"category": category}, function(data)
 	{
         $("div#catalogue").html(data.html);
         window.history.replaceState(null, null, '/catalogue/' + category);

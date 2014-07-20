@@ -22,7 +22,7 @@
 	            		'route'    => '/[:action]',
 	                    'constraints' =>
 	                    [
-	                        'action' => '(home)|(specialoffers)|(information)|(contact)|(product)|(products)',
+	                        'action' => '(home)|(specialoffers)|(information)|(contact)|(product)|(productsjson)|(signup)',
 	                    ],
 	                    'defaults' =>
 	                    [

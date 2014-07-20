@@ -8,6 +8,7 @@
     use Core\Controller\BaseController;
 	
 	use Mosaic\Form\ContactForm;
+	use Mosaic\Form\SignupForm;
 
     class MosaicController extends BaseController
     {
@@ -116,9 +117,34 @@
                 'Scripts' => ["/js/Contact.js"]
             ]);
 			
-			$ContactForm = new ContactForm();
+			// Check if the request is POST (that is, if the form was submitted)
+			if($this->getRequest()->isPost())
+			{
+				// TODO
+				// Bind the POST data to variables so it's easier to interpolate it.
+				$Name = $_POST['name'];
+				$EmailFrom = $_POST['email'];
+				$PhoneNumber = $_POST['phoneNumber'];
+				$Comments = $_POST['comments'];
+				
+				// Message parts.
+				$Receiver = "zzaimer@gmail.com";//"info@martinmosaic.com";
+			    $Subject = "martinmosaic";
+			
+			    $Message = "Name: $Name\r\n";
+			    $Message .= "Email: $EmailFrom\r\n";
+			    $Message .= "Telephone: $PhoneNumber\r\n";
+			    $Message .= "Comments: $Comments\r\n";
+			 
+				$Headers = "From: $EmailFrom\r\n";
+				$Headers .= "Reply-To: $EmailFrom\r\n";
+				$Headers .= 'X-Mailer: PHP/' . phpversion();
+				
+				// Send the email.
+				mail($Receiver, $Subject, $Message, $Headers);
+			}
         	
-            return (new ViewModel(['ContactForm' => $ContactForm]))->setTemplate('Mosaic/Contact.phtml');
+            return (new ViewModel(['ContactForm' => new ContactForm()]))->setTemplate('Mosaic/Contact.phtml');
         }
         public function creatorAction()
         {
@@ -154,7 +180,7 @@
 		}
 		
 		/** Return the list of thumbnail paths in JSON format. */
-		public function productsAction()
+		public function productsjsonAction()
 		{
 			// Assert that this route is accessed via a POST-AJAX request.
 			$this->assertPostAjax();
@@ -164,6 +190,21 @@
 			
 			// Return the list encoded as JSON.
 			return new JsonModel(['html' => $Products]);
+		}
+		
+		public function signupAction()
+		{
+            // Add metadata to the layout.
+            $this->layout()->setVariables(
+            [
+                "Title" => "Sign up - Martin's mosaics",
+                'Scripts' => [],
+                'Styles' => []
+            ]);
+			
+			$SignupForm = new SignupForm();
+			
+            return (new ViewModel(['SignupForm' => $SignupForm]))->setTemplate('Mosaic/Signup.phtml');
 		}
 		
 		/** Renders the html code of the products that are to be displayed. */

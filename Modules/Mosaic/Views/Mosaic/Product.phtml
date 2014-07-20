@@ -3,7 +3,8 @@
 		<img src="<?php echo $Product->getPath(); ?>" class="col-lg-12"/>
 	</div>
 	<div id="details" class="col-lg-4">
-		<h1><?php echo $Product->getProductName()?> </h1>
+		<h1><?php echo $Product->getProductName()?></h1>
+		<h1><?php echo $Product->getDescription(); ?></h1>
 		<h1><?php echo $Product->getPrice(); ?> £ per 1m²</h1>
 		<button type="button" class="btn btn-default">Add to cart</button>
 		<a href="/catalogue/<?php echo $Product->getCategory(); ?>" type="button" class="btn btn-default">Back to catalogue</a>

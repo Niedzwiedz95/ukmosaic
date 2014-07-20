@@ -19,6 +19,7 @@
 		protected $Category;
 		protected $Path;
 		protected $Price;
+		protected $Description;
 		
 		public function getInputFilter()
 		{
