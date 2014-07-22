@@ -226,7 +226,6 @@
 				
 				$HTML .= "<div class='col-lg-3'>
 							<span class='productName'>" . $Name . "</span>
-							<span class='price'>" . $Price . "£</span>
 							<a class='thumbnail' href='" . '/product/' . $Product->getProductID() . "' title='" . $Name . " " . $Price . "£'>
 								<img class='' src='" . $Product->getPath() . "' alt='" . $Product->getProductName() . "'>
 							</a>

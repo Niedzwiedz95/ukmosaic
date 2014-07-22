@@ -47,30 +47,30 @@
     <body>
         <header id="siteHeader" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
-            	<div id="logoWrapper">
+            	<div id="logoWrapper" class="col-lg-3">
 	                <a href="http://www.martinmosaic.com/"><img id="logo" class="navbar-brand" src="/img/logos/logos.jpg" alt="Martin Mosaic"/></a>
 	            	<p id="fonty">YOUR IMAGINATION YOUR DESIGN</p>
 	            </div>
-                <ul class="nav navbar-nav">
-                    <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'home']); ?>">Home</a></li>
-                    <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'catalogue']); ?>">Catalogue</a></li>
-                    <li class="menu btn-group technical">
+                <ul class="nav navbar-nav col-lg-8">
+                    <li class="menu col-lg-1"><a class="col-lg-12" href="<?php echo $this->url('mosaic', ['action' => 'home']); ?>">Home</a></li>
+                    <li class="menu col-lg-2"><a href="<?php echo $this->url('mosaic', ['action' => 'catalogue']); ?>">Catalogue</a></li>
+                    <li class="menu btn-group technical col-lg-1">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Technical</a>
 						<ul class="dropdown-menu">
 				  			<li><a href="/technical/winckelmans">Winckelmans</a></li>
 				  			<li><a href="/technical/briare">Briare</a></li>
 						</ul>
 					</li>
-                    <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'specialoffers']); ?>">Special offers</a></li>
-                    <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'information']); ?>">Information</a></li>
-                    <li class="menu btn-group accessories">
+                    <li class="menu col-lg-2 specialoffers"><a href="<?php echo $this->url('mosaic', ['action' => 'specialoffers']); ?>">Special offers</a></li>
+                    <li class="menu col-lg-2"><a href="<?php echo $this->url('mosaic', ['action' => 'information']); ?>">Information</a></li>
+                    <li class="menu btn-group accessories col-lg-2">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Accessories</a>
 						<ul class="dropdown-menu">
 				  			<li><a href="/accessories/decorative1">Decorative Tiles 5x5cm</a></li>
 				  			<li><a href="/accessories/decorative2">Decorative Tiles 10x10cm</a></li>
 						</ul>
 					</li>
-                    <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'contact']); ?>">Contact</a></li>
+                    <li class="menu col-lg-1"><a href="<?php echo $this->url('mosaic', ['action' => 'contact']); ?>">Contact</a></li>
                 </ul>
             </div>
         </header>

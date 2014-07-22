@@ -8,20 +8,29 @@ header#siteHeader
 	position: static;
 	margin: 0;
 }
-
+	header#siteHeader div#logoWrapper
+	{
+		
+	}
 	header#siteHeader  ul.nav
 	{
 		height: 105px;
+		padding: 0;
 	}
 		header#siteHeader  ul.nav > li.menu
 		{
-			width: 100px;
 			height: 20px;
 			margin: 41.25px 0;
-	text-align: center;
+			text-align: center;
+		}
+		header#siteHeader ul.nav > li.specialoffers
+		{
+			#width: 16%;
 		}
 			header#siteHeader  ul.nav > li.menu > a
 			{
+				display: inline;
+				width: 100%;
 				height: 20px;
 				margin: 0;
 				padding: 0;
