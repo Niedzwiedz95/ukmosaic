@@ -6,6 +6,11 @@ Zeimer:
 	b) kreatora mozajek - kwadraciki, trójkąciki, kolorki etc. - wątpię
 4. Rejestracja.
 5. Formularz do kupna.
+6. Dokończyć przerabianie send_form_email.php. -> działa, zmienić email Receivera i generalnie ogarnąć.
+7. Dokończyć Signup -> patrz snippet.php w Docs
+8. Wygenerować sitemap.
+9. Dodać do Google Business albo coś.
+
 
 Niedźwiedź:
 1. Złote elementy - gold gold gold 3x g :D

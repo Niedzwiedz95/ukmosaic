@@ -18,9 +18,14 @@
 		protected $ProductName;
 		protected $Category;
 		protected $Path;
-		protected $Price;
 		protected $Description;
+		protected $Price;
+		protected $PriceLoose1;
+		protected $PriceAssembledTiles;
+		protected $PriceLoose2;
+		protected $PriceAssembledBorders;
 		
+		/** Returns the appropriate input filter. It's null, because there's no way to add products through the application itself. */
 		public function getInputFilter()
 		{
 			return false;
