@@ -18,17 +18,6 @@
             $this->setAttribute('id', 'signupForm');
 			
             // Add the necessary elements.
-            /*$this->add(
-            [
-                'name' => 'AcceptToS',
-                'attributes' =>
-                [
-                    'type' => 'checkbox',
-                    'id' => 'acceptToS',
-                    'required' => 'required'
-                ],
-                'options' => ['label' => 'I have read and agree to the <a href="/user/tos">Terms of Service</a>']
-            ]);*/
             // Account info.
             $this->add(
 	        [
@@ -67,50 +56,18 @@
 	            'options' => ['label' => 'Confirm password'],
 	        ]);
 			
-			// Personal data.
+			// Address data.
 			$this->add(
 			[
-	            'name' => 'firstName',
+	            'name' => 'fullName',
 	            'attributes' =>
 	            [
 	                'type'  => 'text',
-	                'id' => 'firstName',
+	                'id' => 'fullName',
+                   	'placeholder' => 'e.g. Mr A Smith',
                     'required' => 'required',
 	        	],
-	            'options' => ['label' => 'First name']
-	        ]);
-			$this->add(
-			[
-	            'name' => 'lastName',
-	            'attributes' =>
-	            [
-	                'type'  => 'text',
-	                'id' => 'lastName',
-                    'required' => 'required',
-	        	],
-	            'options' => ['label' => 'Last name']
-	        ]);
-			$this->add(
-			[
-	            'name' => 'postalCode',
-	            'attributes' =>
-	            [
-	                'type'  => 'text',
-	                'id' => 'postalCode',
-                    'required' => 'required',
-	        	],
-	            'options' => ['label' => 'Postal code']
-	        ]);
-			$this->add(
-			[
-	            'name' => 'city',
-	            'attributes' =>
-	            [
-	                'type'  => 'text',
-	                'id' => 'city',
-                    'required' => 'required',
-	        	],
-	            'options' => ['label' => 'City']
+	            'options' => ['label' => 'Full name']
 	        ]);
 			$this->add(
 			[
@@ -119,20 +76,46 @@
 	            [
 	                'type'  => 'text',
 	                'id' => 'street',
+                   	'placeholder' => 'e.g. 3 High Street',
                     'required' => 'required',
 	        	],
-	            'options' => ['label' => 'Street']
+	            'options' => ['label' => 'Number and street']
 	        ]);
 			$this->add(
 			[
-	            'name' => 'houseNumber',
+	            'name' => 'locality',
 	            'attributes' =>
 	            [
 	                'type'  => 'text',
-	                'id' => 'houseNumber',
+	                'id' => 'locality',
+                   	'placeholder' => 'e.g. Hedge End',
                     'required' => 'required',
 	        	],
-	            'options' => ['label' => 'House number']
+	            'options' => ['label' => 'Locality (optional)']
+	        ]);
+			$this->add(
+			[
+	            'name' => 'postTown',
+	            'attributes' =>
+	            [
+	                'type'  => 'text',
+	                'id' => 'postTown',
+                   	'placeholder' => 'e.g. Southampton',
+                    'required' => 'required',
+	        	],
+	            'options' => ['label' => 'Post town']
+	        ]);
+			$this->add(
+			[
+	            'name' => 'postcode',
+	            'attributes' =>
+	            [
+	                'type'  => 'text',
+	                'id' => 'postcode',
+                   	'placeholder' => 'e.g. SO31 4NG',
+                    'required' => 'required',
+	        	],
+	            'options' => ['label' => 'Postcode']
 	        ]);
 			/*$this->add(
 			[
@@ -145,6 +128,8 @@
                     'value' => '',
 	        	]
 	        ]);*/
+	        
+	        // Submit button.
 			$this->add(
 			[
 	            'name' => 'submitSignupForm',
@@ -157,14 +142,15 @@
 	        	]
 	        ]);
 	    }
+
         /** Return the input filter appropriate for the current form. */
         public function getInputFilter()
         {
-            /* Get parent's input filter and create new factory. */
+            // Get parent's input filter and create new factory.
             $InputFilter = parent::getInputFilter();
             $Factory = new InputFactory();
             
-            /* Create the necessary inputs' specifications. */
+            // Create the necessary inputs' specifications.
             /*$AcceptToS =
             [
                 'name' => 'AcceptToS',
@@ -189,7 +175,7 @@
                 'required' => true,
             ];
             
-            / Add the inputs to the input filter and return it. /
+            // Add the inputs to the input filter and return it.
             $InputFilter->add($Factory->createInput($AcceptToS));
             $InputFilter->add($Factory->createInput($SubmitSignup));
             return $InputFilter;*/return null;

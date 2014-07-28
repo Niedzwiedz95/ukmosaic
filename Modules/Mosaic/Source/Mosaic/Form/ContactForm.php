@@ -16,12 +16,12 @@
         /** Construct the form. */
         public function __construct()
         {
-            /* Set all the necessary attributes. */
+            // Set all the necessary attributes.
             parent::__construct('ContactForm');
             $this->setAttribute('id', 'contactForm');
             $this->setAttribute('action', '/contact');
             
-            /* Create the necessary elements. */
+            // Create the necessary elements.
             $this->add(
             [
                 'name' => 'name',
@@ -54,7 +54,7 @@
                    'type'  => 'text',
                    'id' => 'phoneNumber',
                    'placeholder' => 'Phone number',
-                   'required' => 'required',
+                   'required' => '',
                 ],
                 'options' => ['label' => 'Phone Number']
             ]);
@@ -82,10 +82,80 @@
                 ]
             ]);
         }
+
         /** Returns the input filter appropriate for the current form. */
         public function getInputFilter()
         {
-            return null;
+            // Create new InputFilter instance.
+            $InputFilter = new InputFilter();
+            
+            // Create a factory instance used to add more validators to the filter.
+            $Factory = new InputFactory();
+			
+			// Add the necessary validators. 
+            $Email =
+            [
+                'name' => 'email',
+                'validators' =>
+                [
+                    [
+                        'name' => 'NotEmpty',
+                        'options' =>
+                        [
+                            'messages' =>
+                            [
+                                'isEmpty' => 'This field is required.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'EmailAddress',
+                        'options' =>
+                        [
+                            'encoding' => 'UTF-8',
+                            'max' => 255,
+                            'break_chain_on_failure' => true,
+                            'messages' =>
+                            [
+                                'emailAddressInvalidFormat' => 'Invalid email address format.',
+                                'emailAddressInvalidHostname' => 'Invalid email address format.',
+                                'hostnameInvalidHostname' => 'Invalid email address format.',
+                                'hostnameLocalNameNotAllowed' => 'Invalid email address format.',
+                            ]
+                        ]
+                    ]
+                ],
+            ];
+            $PhoneNumber =
+            [
+                'name' => 'phoneNumber',
+                'required' => false,
+                'filters'  =>
+                [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim']
+                ],
+                'validators' =>
+                [
+                    [
+                        'name' => 'regex',
+                        'options' =>
+                        [
+                            'break_chain_on_failure' => true,
+                            'pattern' => '/^[0-9]*$/u',
+                            'messages' =>
+                            [
+                                'regexNotMatch' => 'Phone number can only contain digits!'
+                            ]
+                        ]
+                    ]
+                ]
+            ];
+			
+            // Add the validators to the input filter and return it.
+            $InputFilter->add($Factory->createInput($Email));
+            $InputFilter->add($Factory->createInput($PhoneNumber));
+            return $InputFilter;
         }
     }
 ?>

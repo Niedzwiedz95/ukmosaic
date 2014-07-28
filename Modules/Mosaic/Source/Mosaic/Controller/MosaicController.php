@@ -109,6 +109,46 @@
         }
         public function contactAction()
         {
+			// Create a ContactForm instance.
+			$ContactForm = new ContactForm();
+			
+			// Check if the request is POST (that is, if the form was submitted)
+			if($this->getRequest()->isPost())
+			{
+				// Add an input filter and the data to the form.
+				$ContactForm->setInputFilter($ContactForm->getInputFilter());
+				$ContactForm->setData($this->getRequest()->getPost()->toArray());
+				
+				if($ContactForm->isValid())
+				{
+					// Bind the POST data to variables so it's easier to interpolate it.
+					$Name = $_POST['name'];
+					$EmailFrom = $_POST['email'];
+					$PhoneNumber = $_POST['phoneNumber'];
+					$Comments = $_POST['comments'];
+					
+					// Message parts.
+					$Receiver = "zzaimer@gmail.com";//"info@martinmosaic.com";
+				    $Subject = "martinmosaic";
+				
+				    $Message = "Name: $Name\r\n";
+				    $Message .= "Email: $EmailFrom\r\n";
+				    $Message .= "Telephone: $PhoneNumber\r\n";
+				    $Message .= "Comments: $Comments\r\n";
+				 
+					$Headers = "From: $EmailFrom\r\n";
+					$Headers .= "Reply-To: $EmailFrom\r\n";
+					$Headers .= 'X-Mailer: PHP/' . phpversion();
+					
+					// Send the email.
+					//mail($Receiver, $Subject, $Message, $Headers);
+				}
+				else
+				{
+					echo "FAJLET";
+				}
+			}
+        	
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
@@ -116,35 +156,8 @@
                 'Styles' => ["/css/Contact.css", "/css/validate.css"],
                 'Scripts' => ["/js/Contact.js"]
             ]);
-			
-			// Check if the request is POST (that is, if the form was submitted)
-			if($this->getRequest()->isPost())
-			{
-				// TODO
-				// Bind the POST data to variables so it's easier to interpolate it.
-				$Name = $_POST['name'];
-				$EmailFrom = $_POST['email'];
-				$PhoneNumber = $_POST['phoneNumber'];
-				$Comments = $_POST['comments'];
-				
-				// Message parts.
-				$Receiver = "zzaimer@gmail.com";//"info@martinmosaic.com";
-			    $Subject = "martinmosaic";
-			
-			    $Message = "Name: $Name\r\n";
-			    $Message .= "Email: $EmailFrom\r\n";
-			    $Message .= "Telephone: $PhoneNumber\r\n";
-			    $Message .= "Comments: $Comments\r\n";
-			 
-				$Headers = "From: $EmailFrom\r\n";
-				$Headers .= "Reply-To: $EmailFrom\r\n";
-				$Headers .= 'X-Mailer: PHP/' . phpversion();
-				
-				// Send the email.
-				mail($Receiver, $Subject, $Message, $Headers);
-			}
-        	
-            return (new ViewModel(['ContactForm' => new ContactForm()]))->setTemplate('Mosaic/Contact.phtml');
+            
+            return (new ViewModel(['ContactForm' => $ContactForm]))->setTemplate('Mosaic/Contact.phtml');
         }
         public function creatorAction()
         {
