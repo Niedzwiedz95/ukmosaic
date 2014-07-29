@@ -21,7 +21,7 @@
             parent::__construct($FormName);
             $this->FormName = $FormName;
             $this->setAttribute('method', 'post');
-            //$this->setInputFilter($this->getInputFilter());
+            $this->setInputFilter($this->getInputFilter());
             $this->add(
             [
                 'name' => $FormName . 'CSRF',
@@ -44,7 +44,7 @@
         /** Returns the input filter appropriate for the current form */
         public function getInputFilter()
         {
-            
+            return null;
         }
         /** Returns the ViewModel template associated with this form. */
         public function getViewModel()
@@ -63,5 +63,35 @@
         {
             return $this->DB;
         }
+		
+		/** Resets the form's data. */
+		public function resetData()
+		{
+			foreach($this->getElements() as $Element)
+			{
+				// This check is needed in order not to erase labels from submit buttons.
+				if($Element->getAttribute('type') != 'submit')
+				{
+					$Element->setValue('');
+				}
+			}
+		}
+		
+		/** Checks whether the form is valid and sets all the error messages. */
+		public function isValid()
+		{
+			// If the form is valid according to the parent class, return true.
+			if(parent::isValid())
+			{
+				// Reset the state of the form.
+				$this->resetData();
+				return true;
+			}
+			else // If the form is not valid, set the error messages and return false.
+			{
+				$this->setMessages($this->getMessages());
+				return false;
+			}
+		}
     }
 ?>

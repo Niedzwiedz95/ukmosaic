@@ -16,6 +16,8 @@
 	use Mosaic\Model\OrdersTable;
 	use Mosaic\Model\ProductTable;
 	use Mosaic\Model\UsersTable;
+	
+	use Mosaic\Form\ContactForm;
 
     /** Class that manages the whole Mosaic module. */
     class Module
@@ -91,6 +93,13 @@
                         $TableGateway = new TableGateway('Users', $DB, null, $ResultSet);
                         return new UsersTable($TableGateway);
                     },
+                    /*'Mosaic\Form\ContactForm' => function($ServiceManager)
+                    {
+                        $DB = $ServiceManager->get('Zend\Db\Adapter\Adapter');
+                        $ContactForm = new ContactForm();
+                        $ContactForm->setDB($DB);
+                        return $ContactForm;
+                    }*/
                 ]
             ];
         }

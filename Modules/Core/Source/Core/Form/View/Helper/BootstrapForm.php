@@ -1,5 +1,4 @@
 <?php
-    /* This namespace contains all the view helpers used in the site. */
     namespace Core\Form\View\Helper;
     
     use Zend\Form\FieldsetInterface;
@@ -23,20 +22,20 @@
         /** Renders the form. */
         public function render(FormInterface $Form)
         {
-            /* If the form has a 'prepare' method, call it now. */
+            // If the form has a 'prepare' method, call it now.
             if(method_exists($Form, 'prepare'))
             {
                 $Form->prepare();
             }
             
-            /* Render each element and append its HTML to the variable. */
+            // Render each element and append its HTML to the variable.
             $FormContent = '';
             foreach($Form->getElements() as $Element)
             {
                 $FormContent .= $this->renderElement($Element);
             }
             
-            /* Open the form tag, append the form content and close the form tag. */
+            // Open the form tag, append the form content and close the form tag.
             return $this->openTag($Form) . $FormContent . $this->closeTag();
         }
         /** Generates the opening tag for the form. */
@@ -47,10 +46,10 @@
             $ID = $Attributes['id'];
             $Action = $Attributes['action'];
             $Method = $Attributes['method'];
-            $Class = isset($Attributes['class']) ? $Attributes['class'] : '';
+            $Class = 'form-horizontal' . (isset($Attributes['class']) ? $Attributes['class'] : '');
             
             // The opening tag with an optional enctype attribute.
-            $OpeningTag = "<form id='$ID' class='form-horizontal $Class' method='$Method' action='$Action'";
+            $OpeningTag = "<form id='$ID' class='$Class' method='$Method' action='$Action'";
             if(isset($Attributes['enctype']))
             {
                 $Enctype = $Attributes['enctype'];
@@ -64,7 +63,7 @@
         /** Returns closing tag for the form. */
         public function closeTag()
         {
-            /* Close the ul and form tags. */
+            // Close the ul and form tags.
             return '</form>';
         }
         /** Renders an element. */
@@ -82,7 +81,7 @@
 			$Markup = "";
             $Class = "form-control";
             $Label = "<label class='control-label col-xs-2' for='$ID'>" . $Element->getLabel() . "</label>";
-            $Input = "<input id='$ID' class='$Class' name='$Name' type='$Type' placeholder='$Placeholder' $Required/>";
+            $Input = "<input id='$ID' class='$Class' name='$Name' type='$Type' placeholder='$Placeholder' value='$Value' $Required/>";
             
             // Render each element differently depending on its type attribute.
             if($Type == 'submit')
@@ -111,28 +110,16 @@
 			
 
             // Create the class variables.
-            $ErrorClass = '';
+            $Errors = '';
             
             // Check if there are errors.
-            foreach($Element->getMessages() as $Msg)
+            foreach($Element->getMessages() as $Message)
             {
-                $ErrorClass = 'error';
-                $Message = $Msg;
-                break;
-            }
-            
-            // If an error occurred, render an additional label that will inform the user about it.
-            if($ErrorClass == 'error')
-            {
-                $Error = "<label for='$ID' class='error'>$Message</label>";
-            }
-            else
-            {
-                $Error = '';
+                $Errors .= "<div class='col-xs-2'></div><label for='$ID' class='error col-xs-10'>$Message</label>";
             }
             
             // Assemble and return the final markup.
-			$Markup = "<div class='form-group'>" . $Label . "<div class='col-xs-10'>" . $Input . "</div></div>";
+			$Markup = "<div class='form-group'>" . $Label . "<div class='col-xs-10'>" . $Input . "</div>" . $Errors . "</div>";
             return $Markup;
         }
     }

@@ -1,6 +1,6 @@
-$(function()
+$(document).ready(function()
 {
-    $("form#contactForm").validate({
+    $("form#contactForm, form#contactForm textarea").validate({
         rules:
         {
             name:
@@ -15,8 +15,7 @@ $(function()
             },
             phoneNumber:
             {
-                required: true,
-                rangeLength: [2, 32]
+                required: false,
             },
             comments:
             {
@@ -34,10 +33,6 @@ $(function()
             {
                 required: "This field is required",
                 email: "This is not a valid email address"
-            },
-            phoneNumber:
-            {
-                required: "This field is required"
             },
             comments:
             {

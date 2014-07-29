@@ -110,17 +110,16 @@
         public function contactAction()
         {
 			// Create a ContactForm instance.
-			$ContactForm = new ContactForm();
+            $ContactForm = new ContactForm();
 			
 			// Check if the request is POST (that is, if the form was submitted)
 			if($this->getRequest()->isPost())
 			{
-				// Add an input filter and the data to the form.
-				$ContactForm->setInputFilter($ContactForm->getInputFilter());
+				// Feed the data into the form.
 				$ContactForm->setData($this->getRequest()->getPost()->toArray());
 				
 				if($ContactForm->isValid())
-				{
+				{					
 					// Bind the POST data to variables so it's easier to interpolate it.
 					$Name = $_POST['name'];
 					$EmailFrom = $_POST['email'];
@@ -128,7 +127,7 @@
 					$Comments = $_POST['comments'];
 					
 					// Message parts.
-					$Receiver = "zzaimer@gmail.com";//"info@martinmosaic.com";
+					$Receiver = "info@martinmosaic.com";
 				    $Subject = "martinmosaic";
 				
 				    $Message = "Name: $Name\r\n";
@@ -141,11 +140,7 @@
 					$Headers .= 'X-Mailer: PHP/' . phpversion();
 					
 					// Send the email.
-					//mail($Receiver, $Subject, $Message, $Headers);
-				}
-				else
-				{
-					echo "FAJLET";
+					mail($Receiver, $Subject, $Message, $Headers);
 				}
 			}
         	
@@ -153,7 +148,7 @@
             $this->layout()->setVariables(
             [
                 "Title" => "Contact - Martin's mosaics",
-                'Styles' => ["/css/Contact.css", "/css/validate.css"],
+                'Styles' => ["/css/Contact.css"],
                 'Scripts' => ["/js/Contact.js"]
             ]);
             

@@ -111,3 +111,21 @@ div#content
 	display: block;
 	margin: 50px auto auto auto;
 }
+
+label.error
+{
+	color: red;
+}
+
+form input.error, textarea.error
+{
+    #-webkit-box-shadow: 0 0 3px 3px red;
+    #-moz-box-shadow: 0 0 3px 3px red;
+    #-ms-box-shadow: 0 0 3px 3px red;
+    #-o-box-shadow: 0 0 3px 3px red;
+    box-shadow: 0 0 3px 2px red !important;
+}
+form input.error:focus, textarea.error:focus
+{
+    border-color: transparent; 
+}

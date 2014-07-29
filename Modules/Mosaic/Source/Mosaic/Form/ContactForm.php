@@ -92,10 +92,34 @@
             // Create a factory instance used to add more validators to the filter.
             $Factory = new InputFactory();
 			
-			// Add the necessary validators. 
+			// Add the necessary validators.
+            $Name =
+            [
+                'name' => 'name',
+                'required' => true,
+                'filters'  =>
+                [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim']
+                ],
+                'validators' =>
+                [
+                    [
+                        'name' => 'NotEmpty',
+                        'options' =>
+                        [
+                            'messages' =>
+                            [
+                                'isEmpty' => 'This field is required.'
+                            ]
+                        ]
+                    ]
+                ]
+            ];
             $Email =
             [
                 'name' => 'email',
+                'required' => true,
                 'validators' =>
                 [
                     [
@@ -151,10 +175,35 @@
                     ]
                 ]
             ];
+            $Comments =
+            [
+                'name' => 'comments',
+                'required' => true,
+                'filters'  =>
+                [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim']
+                ],
+                'validators' =>
+                [
+                    [
+                        'name' => 'NotEmpty',
+                        'options' =>
+                        [
+                            'messages' =>
+                            [
+                                'isEmpty' => 'This field is required.'
+                            ]
+                        ]
+                    ]
+                ]
+            ];
 			
             // Add the validators to the input filter and return it.
+            $InputFilter->add($Factory->createInput($Name));
             $InputFilter->add($Factory->createInput($Email));
             $InputFilter->add($Factory->createInput($PhoneNumber));
+            $InputFilter->add($Factory->createInput($Comments));
             return $InputFilter;
         }
     }
