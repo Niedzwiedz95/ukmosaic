@@ -1,0 +1,47 @@
+header#siteHeader ul.nav
+{
+	height: 105px;
+	padding: 0;
+}
+	header#siteHeader ul.nav > li.menu
+	{
+		height: 20px;
+		margin: 41.25px 0;
+		text-align: center;
+	}
+	header#siteHeader ul.nav > li.btn-group
+	{
+		width: 100px;
+	}
+		header#siteHeader ul.nav > li.menu > a
+		{
+			display: inline;
+			width: 100%;
+			height: 20px;
+			margin: 0;
+			padding: 0;
+		}
+		header#siteHeader ul.nav > li.open > a:focus
+		{
+			background: transparent;
+			border-bottom: 2px solid gold !important;
+		}
+		header#siteHeader ul.nav > li.menu > a:hover
+		{
+			border-bottom: 2px solid gold;
+		}
+		/*header#siteHeader ul.nav > li.btn-group >*/ ul.dropdown-menu
+		{
+			background: #222222;
+		}
+		/*header#siteHeader ul.nav > li.btn-group >*/ ul.dropdown-menu > li > a
+		{
+			color: #999 !important;	
+		}
+		/*header#siteHeader ul.nav > li >*/ ul.dropdown-menu > li > a:focus,
+		/*header#siteHeader ul.nav > li >*/ ul.dropdown-menu > li > a:hover
+		{
+			background: inherit !important;
+			color: gold !important;
+		}
+		/* The comments are due to the quirky thing that this styles are also used by a different menu in the catalogue. */

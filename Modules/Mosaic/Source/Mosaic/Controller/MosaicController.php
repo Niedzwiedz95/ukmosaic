@@ -1,5 +1,4 @@
 <?php
-    /** This namespace contains all the controllers used in the Mosaic module. */
     namespace Mosaic\Controller;
     
     use Zend\View\Model\ViewModel;
@@ -10,6 +9,7 @@
 	use Mosaic\Form\ContactForm;
 	use Mosaic\Form\SignupForm;
 
+	/** The sole controler of the Mosaic module. */
     class MosaicController extends BaseController
     {
     	private $ProductTable;
@@ -17,7 +17,7 @@
         /** Retrieves the PictureTable instance. */
         public function getProductTable()
         {
-            /* If the PictureTable is null, it gets loaded from the ServiceManager. */
+            // If the PictureTable is null, it gets loaded from the ServiceManager.
             if($this->ProductTable == null)
             {
                 $ServiceLocator = $this->getServiceLocator();
@@ -31,9 +31,9 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                "Title" => "Home - Martin's mosaics",
-                'Scripts' => ["/js/Home.js"],
-                'Styles' => ["/css/Home.css"]
+                'Title' => "Home - Martin's mosaics",
+                'Styles' => ['/css/pages/Home.css'],
+                'Scripts' => ['/js/Home.js']
             ]);
 			
             return (new ViewModel([]))->setTemplate('Mosaic/Home.phtml');
@@ -50,8 +50,8 @@
             $this->layout()->setVariables(
             [
                 'Title' => "Catalogue - Martin's mosaics",
-                'Scripts' => ['/js/Catalogue.js'],
-                'Styles' => ['/css/Catalogue.css']
+                'Styles' => ['/css/pages/Catalogue.css'],
+                'Scripts' => ['/js/Catalogue.js']
             ]);
 			
             return (new ViewModel(['Products' => $Products]))->setTemplate('Mosaic/Catalogue.phtml');
@@ -62,8 +62,8 @@
             $this->layout()->setVariables(
             [
                 'Title' => "Technical - Martin's mosaics",
-                'Scripts' => ["/js/Pullup.js"],
-                'Styles' => ["/css/Technical.css"]
+                'Styles' => ['/css/pages/Technical.css'],
+                'Scripts' => ['/js/Pullup.js']
             ]);
 			
 			// Get the URL param that determines which type of technical to show.
@@ -76,7 +76,7 @@
         	// Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                "Title" => "Special offers - Martin's mosaics",
+                'Title' => "Special offers - Martin's mosaics",
             ]);
 			
             return (new ViewModel([]))->setTemplate('Mosaic/Specialoffers.phtml');	
@@ -86,9 +86,9 @@
         	// Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                "Title" => "Accessories - Martin's mosaics",
-                'Scripts' => ["/js/Pullup.js"],
-                'Styles' => ["/css/Accessories.css"]
+                'Title' => "Accessories - Martin's mosaics",
+                'Styles' => ['/css/pages/Accessories.css'],
+                'Scripts' => ['/js/Pullup.js']
             ]);
 			
 			// Get the URL param that determines which type of accessories to show.
@@ -101,8 +101,8 @@
         	// Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                "Title" => "Information - Martin's mosaics",
-                'Styles' => ["/css/Information.css"],
+                'Title' => "Information - Martin's mosaics",
+                'Styles' => ['/css/pages/Information.css'],
             ]);
 			
             return (new ViewModel([]))->setTemplate('Mosaic/Information.phtml');	
@@ -127,8 +127,8 @@
 					$Comments = $_POST['comments'];
 					
 					// Message parts.
-					$Receiver = "info@martinmosaic.com";
-				    $Subject = "martinmosaic";
+					$Receiver = 'info@martinmosaic.com';
+				    $Subject = "Contact request from $Name";
 				
 				    $Message = "Name: $Name\r\n";
 				    $Message .= "Email: $EmailFrom\r\n";
@@ -147,9 +147,9 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                "Title" => "Contact - Martin's mosaics",
-                'Styles' => ["/css/Contact.css"],
-                'Scripts' => ["/js/Contact.js"]
+                'Title' => "Contact - Martin's mosaics",
+                'Styles' => ['/css/pages/Contact.css'],
+                'Scripts' => ['/js/Contact.js']
             ]);
             
             return (new ViewModel(['ContactForm' => $ContactForm]))->setTemplate('Mosaic/Contact.phtml');
@@ -159,9 +159,9 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                "Title" => "Creator - Martin's mosaics",
-                'Scripts' => ["/js/Creator.js"],
-                'Styles' => ["/css/Creator.css"]
+                'Title' => "Creator - Martin's mosaics",
+                'Scripts' => ['/js/Creator.js'],
+                'Styles' => ['/css/pages/Creator.css']
             ]);
 			
             return (new ViewModel([]))->setTemplate('Mosaic/Creator.phtml');
@@ -173,9 +173,9 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                "Title" => "Creator - Martin's mosaics",
+                'Title' => "Creator - Martin's mosaics",
                 'Scripts' => [],
-                'Styles' => ["/css/Product.css"]
+                'Styles' => ['/css/pages/Product.css']
             ]);
 			
         	// Get URL params.
@@ -205,7 +205,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                "Title" => "Sign up - Martin's mosaics",
+                'Title' => "Sign up - Martin's mosaics",
                 'Scripts' => [],
                 'Styles' => []
             ]);

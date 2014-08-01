@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="/js/lib/fancybox/source/jquery.fancybox.css" type="text/css" media="screen"/>
         <!--Own CSS=============================================================-->
-        <link rel="stylesheet" type="text/css" href="/css/Layout.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/general/Mosaic.css"/>
         <!--JS libs=========================================================-->
         <script type="text/javascript" src="/js/lib/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
@@ -26,22 +26,22 @@
         <?php //TODO ?>
         <!--Own JS===========================================================-->
         <?php
-            /* If an array with per page scripts was provided, attach them. */
+            // If an array with per page scripts was provided, attach them.
             if(is_array($this->Scripts))
-            {                
+            {
                 foreach($Scripts as $Script)
                 {
                     echo "<script type='text/javascript' src='$Script'></script>";
                 }
             }
-            /* If an array with per page styles was provided, attach them. */
+            // If an array with per page styles was provided, attach them.
             if(is_array($this->Styles))
-            {                
+            {
                 foreach($Styles as $Style)
                 {
-                    echo "<link rel='stylesheet' type='text/css' href='$Style'/>";
-                }
-            }
+					echo "<link rel='stylesheet' type='text/css' href='$Style'/>";
+				}
+			}
         ?>
     </head>
     <body>
@@ -49,7 +49,7 @@
             <div class="container">
             	<div id="logoWrapper" class="col-lg-3">
 	                <a href="http://www.martinmosaic.com/"><img id="logo" class="navbar-brand" src="/img/logos/logos.jpg" alt="Martin Mosaic"/></a>
-	            	<p id="fonty">YOUR IMAGINATION YOUR DESIGN</p>
+	            	<p id="fonts">YOUR IMAGINATION YOUR DESIGN</p>
 	            </div>
                 <ul class="nav navbar-nav col-lg-8">
                     <li class="menu col-lg-1"><a class="col-lg-12" href="<?php echo $this->url('mosaic', ['action' => 'home']); ?>">Home</a></li>

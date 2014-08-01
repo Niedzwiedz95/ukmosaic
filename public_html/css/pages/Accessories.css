@@ -1,14 +1,17 @@
-div.decorative1, div.decorative2 {
+div.decorative1, div.decorative2
+{
 	text-align: center;
 	padding-top: 20px;
 	padding-bottom: 40px;
 }
-p.decorative1, p.decorative2 {
+p.decorative1, p.decorative2
+{
 	font-size: large;
 	text-align: center;
 	padding-top: 20px;
 }
-p.contact {
+p.contact
+{
 	width: 250px;
 	margin: 10px auto auto;
 	font-size: 20px;
@@ -16,16 +19,19 @@ p.contact {
 	color: white;
 }
 
-p.contact > a:visited {
+p.contact > a:visited
+{
     text-decoration: none;
     color: gold;
 }
 
-p.contact > a:hover {
+p.contact > a:hover
+{
     text-decoration: none;
     border-bottom: 2px solid white;
 }
 
-p.contact > a:active {
+p.contact > a:active
+{
     text-decoration: none;
 }

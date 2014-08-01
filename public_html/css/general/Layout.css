@@ -1,0 +1,33 @@
+body
+{
+	background:#EEEEEE;
+}
+	header#siteHeader
+	{
+		position: static;
+		margin: 0;
+	}
+	header#siteHeader > div.container > div#logoWrapper
+	{
+		width: 350px;
+	}
+		header#siteHeader > div.container > div#logoWrapper > p#fonts
+		{
+			color: gold; 
+			text-align: center;
+			margin: 0; 
+			font-size: 16px;
+			font-style: italic;
+			font-family: "Arial Black";
+		}
+			header#siteHeader > div.container > div#logoWrapper > a > img#logo
+			{
+				width: 240px;
+				height: 70px;
+				margin: 5px 40px;
+				padding: 0px;
+			}
+	div#content
+	{
+		margin: 50px auto auto auto;
+	}
