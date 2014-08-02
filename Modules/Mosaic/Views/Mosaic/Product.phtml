@@ -1,27 +1,29 @@
-<div id="productWrapper" class="col-lgd-5">
+<div id="productWrapper">
 	<div id="product" class="col-lg-8">
 		<img src="<?php echo $Product->getPath(); ?>"/>
 	</div>
-	<div id="details" class="col-lg-4">
-		<h1><?php echo $Product->getProductName()?></h1>
-		<h1><?php echo $Product->getDescription(); ?></h1>
-		<?php
-		if($Product->getPriceLoose1() != '')
-		{
-			echo '<h2>Field per square metre</h2>';
-			echo '<h3>Loose Tiles  - ' . $Product->getPriceLoose1() . '£</h3>';
-			echo '<h3>Assembled Tiles - ' . $Product->getPriceAssembledTiles() . '£</h3>';
-			
-			echo '<h2>Border per linear metre</h2>';
-			echo '<h3>Loose Tiles - ' . $Product->getPriceLoose2() . '£</h3>';
-			echo '<h3>Assembled Borders - ' . $Product->getPriceAssembledBorders() . '£</h3>';
-		}
-		else
-		{
-			echo '<h1>' . $Product->getPrice() . '£ per 1m²</h1>';
-		}
-		?>
-		<button type="button" class="btn btn-default">Add to cart</button>
-		<a href="/catalogue/<?php echo $Product->getCategory(); ?>" type="button" class="btn btn-default">Back to catalogue</a>
+	<div id="rightWrapper" class="col-lg-4">
+		<div id="details" class="col-lg-12">
+			<h1><?php echo $Product->getProductName()?></h1>
+			<h1><?php echo $Product->getDescription(); ?></h1>
+			<?php
+			if($Product->getPriceLoose1() != '')
+			{
+				echo '<h2>Field per square metre</h2>';
+				echo '<h3>Loose Tiles  - ' . $Product->getPriceLoose1() . '£</h3>';
+				echo '<h3>Assembled Tiles - ' . $Product->getPriceAssembledTiles() . '£</h3>';
+				
+				echo '<h2>Border per linear metre</h2>';
+				echo '<h3>Loose Tiles - ' . $Product->getPriceLoose2() . '£</h3>';
+				echo '<h3>Assembled Borders - ' . $Product->getPriceAssembledBorders() . '£</h3>';
+			}
+			else
+			{
+				echo '<h1>' . $Product->getPrice() . '£ per 1m²</h1>';
+			}
+			?>
+		</div>
+			<button type="button" class="btn btn-default">Add to cart</button>
+			<a href="/catalogue/<?php echo $Product->getCategory(); ?>" type="button" class="btn btn-default">Back to catalogue</a>
 	</div>
 </div>  
