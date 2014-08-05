@@ -7,11 +7,11 @@
     use Core\Controller\BaseController;
 	
 	use Mosaic\Form\ContactForm;
-	use Mosaic\Form\SignupForm;
 
-	/** The sole controler of the Mosaic module. */
+	/** The sole controller of the Mosaic module. */
     class MosaicController extends BaseController
     {
+    	// Properties.
     	private $ProductTable;
 		
         /** Retrieves the PictureTable instance. */
@@ -81,6 +81,17 @@
 			
             return (new ViewModel([]))->setTemplate('Mosaic/Specialoffers.phtml');	
         }
+		public function informationAction()
+        {
+        	// Add metadata to the layout.
+            $this->layout()->setVariables(
+            [
+                'Title' => "Information - Martin's mosaics",
+                'Styles' => ['/css/pages/Information.css'],
+            ]);
+			
+            return (new ViewModel([]))->setTemplate('Mosaic/Information.phtml');	
+        }
 		public function accessoriesAction()
         {
         	// Add metadata to the layout.
@@ -95,17 +106,6 @@
 			$Param = strtolower($this->params()->fromRoute('accessoriesparam') ? $this->params()->fromRoute('accessoriesparam') : 'decorative1');
 			
             return (new ViewModel([]))->setTemplate("Mosaic/Accessories/$Param.phtml");		
-        }
-		public function informationAction()
-        {
-        	// Add metadata to the layout.
-            $this->layout()->setVariables(
-            [
-                'Title' => "Information - Martin's mosaics",
-                'Styles' => ['/css/pages/Information.css'],
-            ]);
-			
-            return (new ViewModel([]))->setTemplate('Mosaic/Information.phtml');	
         }
         public function contactAction()
         {
@@ -154,18 +154,6 @@
             
             return (new ViewModel(['ContactForm' => $ContactForm]))->setTemplate('Mosaic/Contact.phtml');
         }
-        public function creatorAction()
-        {
-            // Add metadata to the layout.
-            $this->layout()->setVariables(
-            [
-                'Title' => "Creator - Martin's mosaics",
-                'Scripts' => ['/js/Creator.js'],
-                'Styles' => ['/css/pages/Creator.css']
-            ]);
-			
-            return (new ViewModel([]))->setTemplate('Mosaic/Creator.phtml');
-        }
 		
 		/** A page with a description of a particular product. */
 		public function productAction()
@@ -198,21 +186,6 @@
 			
 			// Return the list encoded as JSON.
 			return new JsonModel(['html' => $Products]);
-		}
-		
-		public function signupAction()
-		{
-            // Add metadata to the layout.
-            $this->layout()->setVariables(
-            [
-                'Title' => "Sign up - Martin's mosaics",
-                'Scripts' => [],
-                'Styles' => []
-            ]);
-			
-			$SignupForm = new SignupForm();
-			
-            return (new ViewModel(['SignupForm' => $SignupForm]))->setTemplate('Mosaic/Signup.phtml');
 		}
 		
 		/** Renders the html code of the products that are to be displayed. */

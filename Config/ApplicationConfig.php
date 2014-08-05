@@ -1,12 +1,13 @@
 <?php
-    // Configuration of the whole site.
+    // Configuration of the whole site/application.
 	return
 	[
-        // Contains the list of all modules in the site.
+        // List of all modules.
 	    'modules' =>
 	    [
             'Core',
-            'Mosaic'
+            'Mosaic',
+            'User'
 	    ],
 	    'module_listener_options' =>
 	    [
@@ -15,7 +16,7 @@
 	        [
 	            'Config/Autoload/{,*.}{Global,Local}.php',
 	        ],
-	        // Paths to site modules (./Modules) and Zend Framework 2 and other modules (./Vendor).
+	        // Paths to site modules (./Modules) and Zend Framework 2 and other modules (./vendor).
 	        'module_paths' =>
 	        [
 	            './Modules',

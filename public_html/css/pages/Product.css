@@ -3,7 +3,7 @@ div#productWrapper
 	width: 60%;
 	height: 500px;
 	margin: 0 auto;
-	color: #999;
+	color: white; /*#999;*/
 	border-radius: 10px;
 	background: #222;
 }

@@ -1,8 +1,7 @@
 <?php
-    /* Config of the Mosaic module. */
 	return
 	[
-        /* List of all controllers in the User module. */
+        // List of all controllers in the User module.
 	    'controllers' =>
 	    [
 	        'invokables' =>
@@ -31,7 +30,7 @@
 	                    ],
 					],
 				],
-	            'catalogue' =>	
+	            'mosaic/catalogue' =>	
 	            [
 	            	'type' => 'segment',
 	            	'options' =>

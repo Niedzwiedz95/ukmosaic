@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="Bootstrap.php">
+    <testsuites>
+        <testsuite name="UserTest/Model">
+            <directory>./UserTest/Model/</directory>
+        </testsuite>
+        <testsuite name="UserTest/Form">
+            <directory>./UserTest/Form/</directory>
+        </testsuite>
+        <testsuite name="UserTest/Controller">
+            <directory>./UserTest/Controller/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

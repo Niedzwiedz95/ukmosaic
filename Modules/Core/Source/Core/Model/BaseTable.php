@@ -69,7 +69,7 @@
         public function delete(BaseModel $Where)
         {
             return $this->TableGateway->delete($Where->toArray()) == 1;
-        }        
+        }
         /** Return a random string of requested length. */ 
         public function getRandomString($Length, $Range = null)
         {

@@ -1,5 +1,6 @@
 <?php
-	namespace MosaicTest;
+    /* This namespace contains all tests used by the User module. */
+	namespace UserTest;
 	
 	use Zend\Loader\AutoloaderFactory;
 	use Zend\Mvc\Service\ServiceManagerConfig;
@@ -10,7 +11,7 @@
 	error_reporting(E_ALL | E_STRICT);
 	chdir(dirname(__DIR__));
     
-    //set_include_path(get_include_path() . ':/home/Zeimer/Projects/BusinessProject/');
+    set_include_path(get_include_path() . ':/home/Zeimer/Projects/BusinessProject/');
     define('Debug', true);
     define('Test', true);
 	
@@ -60,7 +61,7 @@
 	            ],
 	            'modules' =>
 	            [
-	               'Mosaic'
+	               'User'
 	            ]
 	        ];
 	
@@ -88,7 +89,7 @@
 	
 	    protected static function initAutoloader()
 	    {
-	        $vendorPath = static::findParentPath("vendor");
+	        $vendorPath = static::findParentPath("Vendor");
 	
 	        if(is_readable($vendorPath . "/autoload.php"))
 	        {

@@ -1,5 +1,5 @@
 <?php
-	namespace Mosaic\Model;
+	namespace User\Model;
 	
 	use Zend\InputFilter\Factory as InputFactory;
 	use Zend\InputFilter\InputFilter;
@@ -11,14 +11,14 @@
 	use Core\Model\BaseModel;
 	
 	/**	Product, that is a tile, mosaic, etc. */
-    class User extends BaseModel
+    class Address extends BaseModel
     {
 		// Properties.
-		protected $UserID;
-		protected $Username;
-		protected $Email;
-		protected $PasswordHash;
-		protected $Salt;
-		protected $Addresses;
+		protected $AddressID;
+		protected $FullName;
+		protected $Street;
+		protected $Locality;
+		protected $PostTown;
+		protected $Postcode;
     }
 ?>

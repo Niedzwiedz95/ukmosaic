@@ -1,7 +1,7 @@
 <?php
 	return
 	[
-        /* Database info. */
+        // Database info.
         'db' =>
         [
             'driver'         => 'Pdo_Mysql',

@@ -1,5 +1,5 @@
 <?php
-    /* Config of the Core module. */
+    // Config of the Core module.
 	return
 	[
         'view_manager' =>
