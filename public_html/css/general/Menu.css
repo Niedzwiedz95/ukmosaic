@@ -5,13 +5,10 @@ header#siteHeader ul.nav
 }
 	header#siteHeader ul.nav > li.menu
 	{
+		width: 12.5%;
 		height: 20px;
 		margin: 41.25px 0;
 		text-align: center;
-	}
-	header#siteHeader ul.nav > li.btn-group
-	{
-		width: 100px;
 	}
 		header#siteHeader ul.nav > li.menu > a
 		{

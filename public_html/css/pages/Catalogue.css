@@ -6,11 +6,20 @@ div#catalogueWrapper h1
 	margin: 0;
 }
 
+div#glazed h1, div#glazed h2
+{
+	text-align: center;
+}
+
 div#catalogue > div
 {
 	height: 320px;
 }
 
+div.hideable
+{
+	display: none;
+}
 
 a.thumbnail
 {

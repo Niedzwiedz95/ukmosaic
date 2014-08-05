@@ -7,6 +7,7 @@
     use Core\Form\BaseForm;
 	
 	use User\Model\User;
+	use User\Model\Address;
     
 	/**	This class represents the form used in the process of signing up (without buying anything). */
 	class SignupForm extends BaseForm
@@ -137,12 +138,13 @@
         /** Return the input filter appropriate for the current form. */
         public function getInputFilter()
         {
-            // Get parent's input filter and create new factory.
-            $InputFilter = (new User())->getInputFilter();
+            // Get an InputFilter instance for an Address and create an InputFactory instance.
+            $InputFilter = (new Address())->getInputFilter();
             $Factory = new InputFactory();
-            
+			
             // Create the additional necessary input specifications.
             // Account details.
+			$Email = (new User())->getInputFilter()->get('email');
             $Password =
             [
                 'name' => 'password',
@@ -222,167 +224,6 @@
                     ]
                 ]
             ];
-			
-			// Personal information.
-			$FullName = 
-			[
-				'name' => 'fullName',
-				'required' => true,
-                'filters'  =>
-                [
-                    ['name' => 'StripTags'],
-                ],
-                'validators' =>
-                [
-                    [
-                        'name' => 'NotEmpty',
-                        'options' =>
-                        [
-                            'messages' =>
-                            [
-                                'isEmpty' => "This field is required."
-                            ]
-                        ]
-                    ],
-                    [
-                    	'name' => 'StringLength',
-                    	'options' =>
-                    	[
-                    		'max' => 256,
-                    		'messages' =>
-                    		[
-                    			'stringLengthTooLong' => 'This field must not be longer than 256 characters!'
-                    		]
-                    	]
-                    ]
-                ]
-			];
-			$Street = 
-			[
-				'name' => 'street',
-				'required' => true,
-                'filters'  =>
-                [
-                    ['name' => 'StripTags'],
-                    ['name' => 'StringTrim']
-                ],
-                'validators' =>
-                [
-                    [
-                        'name' => 'NotEmpty',
-                        'options' =>
-                        [
-                            'messages' =>
-                            [
-                                'isEmpty' => "This field is required."
-                            ]
-                        ]
-                    ],
-                    [
-                    	'name' => 'StringLength',
-                    	'max' => 256,
-                    	'options' =>
-                    	[
-                    		'messages' =>
-                    		[
-                    			'stringLengthTooLong' => 'This field must not be longer than 256 characters!'
-                    		]
-                    	]
-                    ]
-                ]
-			];
-			$Locality = 
-			[
-				'name' => 'locality',
-				'required' => false,
-                'filters'  =>
-                [
-                    ['name' => 'StripTags'],
-                    ['name' => 'StringTrim']
-                ],
-                'validators' =>
-                [
-                    [
-                    	'name' => 'StringLength',
-                    	'max' => 256,
-                    	'options' =>
-                    	[
-                    		'messages' =>
-                    		[
-                    			'stringLengthTooLong' => 'This field must not be longer than 256 characters!'
-                    		]
-                    	]
-                    ]
-                ]
-			];
-			$PostTown = 
-			[
-				'name' => 'postTown',
-				'required' => true,
-                'filters'  =>
-                [
-                    ['name' => 'StripTags'],
-                    ['name' => 'StringTrim']
-                ],
-                'validators' =>
-                [
-                    [
-                        'name' => 'NotEmpty',
-                        'options' =>
-                        [
-                            'messages' =>
-                            [
-                                'isEmpty' => "This field is required."
-                            ]
-                        ]
-                    ],
-                    [
-                    	'name' => 'StringLength',
-                    	'max' => 256,
-                    	'options' =>
-                    	[
-                    		'messages' =>
-                    		[
-                    			'stringLengthTooLong' => 'This field must not be longer than 256 characters!'
-                    		]
-                    	]
-                    ]
-                ]
-			];
-			$Postcode = 
-			[
-				'name' => 'postcode',
-				'required' => true,
-                'filters'  =>
-                [
-                    ['name' => 'StripTags'],
-                    ['name' => 'StringTrim']
-                ],
-                'validators' =>
-                [
-                    [
-                        'name' => 'NotEmpty',
-                        'options' =>
-                        [
-                            'messages' =>
-                            [
-                                'isEmpty' => "This field is required."
-                            ]
-                        ]
-                    ],
-                    [
-                    	'name' => 'StringLength',
-                    	'max' => 256,
-                    	'options' =>
-                    	[
-                    		'messages' =>
-                    		[
-                    			'stringLengthTooLong' => 'This field must not be longer than 256 characters!'
-                    		]
-                    	]
-                    ]
-                ]
-			];
 			
 			// Submit button.
             $SubmitSignup = 

@@ -21,9 +21,16 @@ function displayTiles(category)
 	{
 		return;
 	}
+	
 	// Fetch the products' html from the server and change the page's URL.
 	$.post('/productsjson', {"category": category}, function(data)
 	{
+	    // Show the appropriate text describing all the products in the requested category.
+	    topCategory = category.split('_')[0] == 'satin&matt' ? 'satin_and_matt' : category.split('_')[0];
+	    $('div.hideable').hide();
+	    $('div#' + topCategory).show();
+	    
+	    // Fill the catalogue with the appropriate products and change the URL.
         $("div#catalogue").html(data.html);
         window.history.replaceState(null, null, '/catalogue/' + category);
 	});

@@ -1,16 +1,8 @@
 Zeimer:
 1. Ogarnąć walidację w js - patrz stary projekt. Dodać input filter do kontaktu (?).
-2. Narzędzie do dzielenia obrazków na kwadraciki: http://moz-bud.pl/dekoracje.php - wątpię
 3. Prototyp:
 	a) sklep - do roboty
-	b) kreatora mozajek - kwadraciki, trójkąciki, kolorki etc. - wątpię
-4. Rejestracja.
 5. Formularz do kupna.
-6. Dokończyć przerabianie send_form_email.php. -> działa, zmienić email Receivera i generalnie ogarnąć.
-7. Dokończyć Signup -> patrz snippet.php w Docs
 8. Wygenerować sitemap.
-9. Dodać do Google Business albo coś.
-
-
-Niedźwiedź:
-1. Złote elementy - gold gold gold 3x g :D
+10. HARMONIES - dzisiaj.
+11. Dodać ceny 1x1, 2x2, 2.5x2.5 do bazy.

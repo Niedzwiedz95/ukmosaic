@@ -95,5 +95,11 @@
 			
             return (new ViewModel(['SignupForm' => $SignupForm]))->setTemplate('User/Signup.phtml');
 		}
+
+		/** A page on which the user may sign in. */
+		public function signinAction()
+		{
+			return (new ViewModel())->setTemplate('User/Signin.phtml');
+		}
     }
 ?>
