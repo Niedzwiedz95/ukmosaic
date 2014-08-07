@@ -12,6 +12,7 @@
 	use User\Model\Address;
     
     use User\Form\SignupForm;
+    use User\Form\SigninForm;
 
     /** This controller manages all pages and operations related to users. */
     class UserController extends BaseController
@@ -48,6 +49,7 @@
 			// Create a form SignupForm instance.
 			$SignupForm = new SignupForm();
 			
+			// Check if it's a POST request with the form submitted.
 			if($this->getRequest()->isPost())
 			{
 				// Feed the data into the form.
@@ -99,7 +101,32 @@
 		/** A page on which the user may sign in. */
 		public function signinAction()
 		{
-			return (new ViewModel())->setTemplate('User/Signin.phtml');
+			// Create a form instance.
+			$SigninForm = new SigninForm();
+			
+			// Check if it's a POST request with the form submitted.
+			if($this->getRequest()->isPost())
+			{
+				// Validate the form.
+				if($this->getUserTable()->checkEmailAndPassword($_POST['email'], $_POST['password']))
+				{
+					echo 'Login successful!';	
+				}
+				else
+				{
+					echo 'Login failed!';
+				}
+			}
+			
+            // Add metadata to the layout.
+            $this->layout()->setVariables(
+            [
+                'Title' => "Sign in - Martin's mosaics",
+                'Scripts' => [],
+                'Styles' => ['/css/pages/Signin.css']
+            ]);
+			
+			return (new ViewModel(['SigninForm' => $SigninForm]))->setTemplate('User/Signin.phtml');
 		}
     }
 ?>

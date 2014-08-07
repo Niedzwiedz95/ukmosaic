@@ -36,5 +36,30 @@
 			
 			$this->getDB()->query($Query, $Values);
 		}
+		
+		/** Checks whether an user provided correct email and password when signing in. */
+		public function checkEmailAndPassword($Email, $Password)
+		{
+			// Check if there's an entry in the database with such email.
+			$Result = $this->select(['Email' => $Email]);
+			
+			if($Result->count() == 0)
+			{
+				// Wrong email, return false.
+				return false;
+			}
+			else
+			{
+				// Fetch the salt from the result and compute the password's hash.
+				$Salt = $Result->current()->toArray()['Salt'];
+				$Hash = hash('sha512', $Salt . $Password);
+				
+				// Check whether there's an entry in the database with such email and hash.
+				$Result = $this->select(['Email' => $Email, 'PasswordHash' => $Hash]);
+				
+				// If there is such a user, return true. If not, return false.
+				return $Result->count() == 1;
+			}
+		}
 	}
 ?>

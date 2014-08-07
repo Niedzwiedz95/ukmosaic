@@ -148,7 +148,7 @@
             $this->layout()->setVariables(
             [
                 'Title' => "Contact - Martin's mosaics",
-                'Styles' => ['/css/pages/Contact.css'],
+                'Styles' => [],
                 'Scripts' => ['/js/Contact.js']
             ]);
             

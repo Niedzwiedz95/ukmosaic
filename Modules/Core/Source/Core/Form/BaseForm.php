@@ -5,6 +5,7 @@
     use Zend\Form\Form;
     use Zend\View\Model\ViewModel;
     use Zend\Db\Adapter\Adapter;
+    use Zend\InputFilter\InputFilter;
     
     /** This class is the parent of all forms in the whole site. */
     abstract class BaseForm extends Form
@@ -44,7 +45,7 @@
         /** Returns the input filter appropriate for the current form */
         public function getInputFilter()
         {
-            return null;
+            return new InputFilter();
         }
         /** Returns the ViewModel template associated with this form. */
         public function getViewModel()

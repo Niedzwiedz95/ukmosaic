@@ -4,5 +4,3 @@ Zeimer:
 	a) sklep - do roboty
 5. Formularz do kupna.
 8. Wygenerować sitemap.
-10. HARMONIES - dzisiaj.
-11. Dodać ceny 1x1, 2x2, 2.5x2.5 do bazy.

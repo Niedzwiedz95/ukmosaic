@@ -1,0 +1,9 @@
+div#signupLinkWrapper
+{
+	float: none;
+	margin: 0 auto;
+}
+div#signupLinkWrapper > a
+{
+	float: right;
+}

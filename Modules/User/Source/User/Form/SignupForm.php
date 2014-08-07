@@ -228,18 +228,15 @@
 			// Submit button.
             $SubmitSignup = 
             [
-                'name' => 'SubmitSignupForm',
+                'name' => 'submitSignupForm',
                 'required' => true,
             ];
             
             // Add the inputs to the input filter and return it.
+            $InputFilter->add($Email);
             $InputFilter->add($Factory->createInput($Password));
             $InputFilter->add($Factory->createInput($RePassword));
-            $InputFilter->add($Factory->createInput($FullName));
-            $InputFilter->add($Factory->createInput($Street));
-            $InputFilter->add($Factory->createInput($Locality));
-            $InputFilter->add($Factory->createInput($PostTown));
-            $InputFilter->add($Factory->createInput($Postcode));
+            $InputFilter->add($Factory->createInput($SubmitSignup));
             return $InputFilter;
         }
     }

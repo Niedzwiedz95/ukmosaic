@@ -1,16 +1,26 @@
-form input.error, form textarea.error
+div.formWrapper
 {
-    #-webkit-box-shadow: 0 0 3px 3px red;
-    #-moz-box-shadow: 0 0 3px 3px red;
-    #-ms-box-shadow: 0 0 3px 3px red;
-    #-o-box-shadow: 0 0 3px 3px red;
-    box-shadow: 0 0 1px 1px red !important;
+	float: none;
+	margin: 0 auto;
 }
-form input.error:focus, textarea.error:focus
-{
-    border-color: transparent; 
-}
-form label.error
-{
-	color: red;
-}
+	div.formWrapper > h1
+	{
+		text-align: center;
+		margin-top: 0;
+	}
+	form label.error
+	{
+		color: red;
+	}
+	form input.error, form textarea.error
+	{
+	    #-webkit-box-shadow: 0 0 3px 3px red;
+	    #-moz-box-shadow: 0 0 3px 3px red;
+	    #-ms-box-shadow: 0 0 3px 3px red;
+	    #-o-box-shadow: 0 0 3px 3px red;
+	    box-shadow: 0 0 1px 1px red !important;
+	}
+	form input.error:focus, textarea.error:focus
+	{
+	    border-color: transparent; 
+	}
