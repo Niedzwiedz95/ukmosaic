@@ -4,9 +4,14 @@ div#catalogueWrapper h1
 	float: right;
 	width: 500px;
 	margin: 0;
+	font-weight: bold;
 }
 
-div.hideable h1, div.hideable h2
+div.hideable h1
+{
+	text-align: center;
+}
+div.hideable h2
 {
 	text-align: center;
 }
