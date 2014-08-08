@@ -4,26 +4,26 @@ div#catalogueWrapper h1
 	float: right;
 	width: 500px;
 	margin: 0;
-	font-weight: bold;
 }
-
-div.hideable h1
+div.hideable
 {
-	text-align: center;
+	display: none;
+	margin-bottom: 50px;
 }
-div.hideable h2
-{
-	text-align: center;
-}
+	div.hideable h1
+	{
+		text-align: center;
+		font-weight: bold;
+	}
+	div.hideable h2
+	{
+		text-align: center;
+		color: gold;
+	}
 
 div#catalogue > div
 {
 	height: 320px;
-}
-
-div.hideable
-{
-	display: none;
 }
 
 a.thumbnail
