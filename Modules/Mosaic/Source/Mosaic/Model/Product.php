@@ -24,6 +24,9 @@
 		protected $PriceAssembledTiles;
 		protected $PriceLoose2;
 		protected $PriceAssembledBorders;
+		protected $Price1x1;
+		protected $Price2x2;
+		protected $Price25x25;
 		
 		/** Returns the appropriate input filter. It's null, because there's no way to add products through the application itself. */
 		public function getInputFilter()

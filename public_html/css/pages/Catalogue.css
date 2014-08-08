@@ -6,7 +6,7 @@ div#catalogueWrapper h1
 	margin: 0;
 }
 
-div#glazed h1, div#glazed h2
+div.hideable h1, div.hideable h2
 {
 	text-align: center;
 }

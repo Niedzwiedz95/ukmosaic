@@ -11,13 +11,27 @@
 			{
 				echo '<h2>Field per square metre</h2>';
 				echo '<h3>Loose Tiles  - ' . $Product->getPriceLoose1() . '£</h3>';
-				echo '<h3>Assembled Tiles - ' . $Product->getPriceAssembledTiles() . '£</h3>';
-				
+				echo $Product->getPriceAssembledTiles() != '' ? '<h3>Assembled Tiles - ' . $Product->getPriceAssembledTiles() . '£</h3>' : '';
+			}
+			if($Product->getPriceLoose2() != '')
+			{
 				echo '<h2>Border per linear metre</h2>';
 				echo '<h3>Loose Tiles - ' . $Product->getPriceLoose2() . '£</h3>';
-				echo '<h3>Assembled Borders - ' . $Product->getPriceAssembledBorders() . '£</h3>';
+				echo $Product->getPriceAssembledBorders() != '' ? '<h3>Assembled Borders - ' . $Product->getPriceAssembledBorders() . '£</h3>' : '';
 			}
-			else
+			if($Product->getPrice1x1() != '')
+			{
+				echo '<h3>Size 1x1 - ' . $Product->getPrice1x1() . '£</h3>';
+			}
+			if($Product->getPrice2x2() != '')
+			{
+				echo '<h3>Size 2x2 - ' . $Product->getPrice2x2() . '£</h3>';
+			}
+			if($Product->getPrice25x25() != '')
+			{
+				echo '<h3>Size 2.5x2.5 - ' . $Product->getPrice25x25() . '£</h3>';
+			}
+			if($Product->getPrice() != '')
 			{
 				echo '<h1>' . $Product->getPrice() . '£ per 1m²</h1>';
 			}
