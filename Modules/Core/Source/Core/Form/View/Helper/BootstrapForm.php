@@ -73,7 +73,7 @@
             $ID = $Element->getAttribute('id');
             $Name = $Element->getName();
             $Type = $Element->getAttribute('type');
-            $Value = $Element->getValue();
+            $Value = $Type == 'password' ? '' : $Element->getValue();
             $Required = $Element->getAttribute('required');
             $Placeholder = $Element->getAttribute('placeholder');
             

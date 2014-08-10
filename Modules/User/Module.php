@@ -13,7 +13,7 @@
 	use User\Model\UserTable;
 	use User\Model\AddressTable;
     
-    use User\Form\SignupForm;
+    use User\Form\SigninForm;
     
     /** Class that manages the whole User module. */
     class Module extends BaseModule
@@ -66,12 +66,12 @@
                         return $AddressTable;
                     },
                     // Forms
-                    'User\Form\SignupForm' => function($ServiceManager)
+                    'User\Form\SigninForm' => function($ServiceManager)
                     {
-                        $DB = $ServiceManager->get('Zend\Db\Adapter\Adapter');
-                        $SignupForm = new SignupForm();
-                        $SignupForm->setDB($DB);
-                        return $SignupForm;
+                    	// Inject the UserTable into the SignupForm.
+                        $UserTable = $ServiceManager->get('User\Model\UserTable');
+                        $SigninForm = new SigninForm($UserTable);
+                        return $SigninForm;
                     },
                 ]
             ];

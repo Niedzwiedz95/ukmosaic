@@ -50,10 +50,11 @@
             /* Return the array. */
             return $Array;
         }
+		
         /** This method makes us no longer need to declare getters. */
         public function __call($Name, $Args)
         {
-            /* Get the property name. */
+            // Get the property name.
             $Property = substr($Name, 3, 100);
             
             /* Check if such poperty exists and determine if the first three letters are 'set' or 'get'. If no case is

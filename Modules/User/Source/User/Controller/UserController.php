@@ -84,6 +84,8 @@
 					
 					// Insert the link between the user and the address into the database.
 					$this->getUserTable()->insertLink($UserID, $AddressID);
+					
+					// TODO
 				}
 			}
 
@@ -102,19 +104,18 @@
 		public function signinAction()
 		{
 			// Create a form instance.
-			$SigninForm = new SigninForm();
+			$SigninForm = $this->getServiceLocator()->get('User\Form\SigninForm');
 			
 			// Check if it's a POST request with the form submitted.
 			if($this->getRequest()->isPost())
 			{
-				// Validate the form.
-				if($this->getUserTable()->checkEmailAndPassword($_POST['email'], $_POST['password']))
+				// Feed the data to the form.
+				$SigninForm->setData($this->getRequest()->getPost()->toArray());
+				
+				// If the user provided correct credentials, sign him in.
+				if($SigninForm->isValid())
 				{
-					echo 'Login successful!';	
-				}
-				else
-				{
-					echo 'Login failed!';
+					$this->signinUser($_POST['email'], $_POST['password']);
 				}
 			}
 			
@@ -126,7 +127,19 @@
                 'Styles' => ['/css/pages/Signin.css']
             ]);
 			
-			return (new ViewModel(['SigninForm' => $SigninForm]))->setTemplate('User/Signin.phtml');
+			return (new ViewModel(['SigninForm' => $SigninForm, ]))->setTemplate('User/Signin.phtml');
+		}
+
+		/** Sign in an user with the provided email and set the necessary session data. */
+		public function signinUser($Email, $Password)
+		{
+			// Fetch all the user data.
+			$User = $this->getUserTable()->select(['Email' => $Email])->buffer()->current();
+			
+			// Set the necessary session data.
+			$_SESSION['User'] = [];
+			$_SESSION['User']['UserID'] = $User->getUserID();
+			$_SESSION['User']['Email'] = $User->getEmail();
 		}
     }
 ?>

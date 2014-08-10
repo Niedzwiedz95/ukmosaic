@@ -92,7 +92,6 @@
 	                'type'  => 'text',
 	                'id' => 'locality',
                    	'placeholder' => 'e.g. Hedge End',
-                    'required' => 'required',
 	        	],
 	            'options' => ['label' => 'Locality (optional)']
 	        ]);

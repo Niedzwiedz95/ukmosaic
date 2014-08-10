@@ -1,5 +1,4 @@
 <?php
-    /* This namespace contains all forms used in the Core module. */
     namespace Core\Form;
     
     use Zend\Form\Form;
@@ -10,19 +9,24 @@
     /** This class is the parent of all forms in the whole site. */
     abstract class BaseForm extends Form
     {
-        /** Stores the name of the form. Used to retrieve the correct template. */
+        // Stores the name of the form. Used to retrieve the correct template.
         protected $FormName;
         
-        /** Stores the DB instance used to perform queries. */
-        protected $DB;
+        // Stores the DB instance used to perform queries.
+        //protected $DB;
         
         /** Constructor, calls parent constructor and builds up the whole form */
         public function __construct($FormName)
         {
+        	// Call parent constructor and set the form's name and attributes.
             parent::__construct($FormName);
             $this->FormName = $FormName;
             $this->setAttribute('method', 'post');
+			
+			// Sets the InputFilter. If the child forms don't override this method, it's empty.
             $this->setInputFilter($this->getInputFilter());
+			
+			// Add the CSRF element used for form security (I don't really remember what it does).
             $this->add(
             [
                 'name' => $FormName . 'CSRF',
@@ -55,15 +59,15 @@
             return $Form;
         }
         /** Sets the Adapter instance so the form can perform vlidating queries. */
-        public function setDB(Adapter $DB)
+        /*public function setDB(Adapter $DB)
         {
             $this->DB = $DB;
-        }
+        }*/
         /** Returns the Adapter instance. */
-        public function getDB()
+        /*public function getDB()
         {
             return $this->DB;
-        }
+        }*/
 		
 		/** Resets the form's data. */
 		public function resetData()
@@ -94,5 +98,28 @@
 				return false;
 			}
 		}
+		
+		/** This method makes us no longer need to declare getters or setters. */
+        public function __call($Name, $Args)
+        {
+            // Get the property name.
+            $Property = substr($Name, 3, 100);
+            
+            // Check if such poperty exists and determine if the first three letters are 'set' or 'get'.
+            // If neither is the case, throw an exception.
+            if(property_exists($this, $Property) && substr($Name, 0, 3) == 'get')
+            {
+                return $this->$Property;
+            }
+            else if(property_exists($this, $Property) && substr($Name, 0, 3) == 'set')
+            {
+                $this->$Property = $Args[0];
+            }
+            else
+            {
+                $Class = get_class($this);
+                throw new \Exception("$Class has no $Property property!");
+            }
+        }
     }
 ?>

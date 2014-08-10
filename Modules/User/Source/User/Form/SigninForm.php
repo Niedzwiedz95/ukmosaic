@@ -8,17 +8,25 @@
 	
 	use User\Model\User;
 	use User\Model\Address;
+	
+	use User\Model\UserTable;
     
 	/**	This class represents the form used in the process of signing up (without buying anything). */
 	class SigninForm extends BaseForm
 	{
+		// Properties.
+		protected $UserTable;
+		
 		/**	Constructor, sets attributes and adds the submit element. */
-	    public function __construct()
+	    public function __construct(UserTable $UserTable)
 	    {
 	        // Set all attributes of the form.
 	        parent::__construct('SigninForm');
             $this->setAttribute('action', '/user/signin');
             $this->setAttribute('id', 'signinForm');
+			
+			// Set all the additional form's properties.
+			$this->UserTable = $UserTable;
 			
             // Add the necessary elements.
             // Account info.
@@ -60,4 +68,25 @@
 	        	]
 	        ]);
 	    }
+
+		/** Checks whether the user provided correct email and password. */
+		public function isValid()
+		{
+			// Fetch data from the form.
+			$Email = $this->get('email')->getValue();
+			$Password = $this->get('password')->getValue();
+			
+			// Check whether the provided credentials are correct.
+			if($this->getUserTable()->checkEmailAndPassword($Email, $Password))
+			{
+				$this->resetData();
+				return true;
+			}
+			else
+			{
+				// Set a message to tell the user that the entered credentials are incorrect.
+				$this->setMessages(['password' => ['Credentials' => 'Incorrect username or password!']]);
+				return false;
+			}
+		}
     }
