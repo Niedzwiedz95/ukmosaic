@@ -4,3 +4,4 @@ Zeimer:
 	a) sklep - do roboty
 5. Formularz do kupna.
 8. Wygenerować sitemap.
+9. Pozbyć się napisu "Catalogue" z katalogu.

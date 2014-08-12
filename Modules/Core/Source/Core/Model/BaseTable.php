@@ -15,7 +15,7 @@
         /** TableGateway instance used to execute most queries. */
         protected $TableGateway;
         
-        /** Adapter instance used to execute queries to the Acitvations table. */
+        /** Adapter instance used to execute queries to the (TODO - fix) table. */
         protected $DB;
         
         /** Constructor, initializes the $TableGateway attribute with the provided instance of TableGateway class.
@@ -73,15 +73,15 @@
         /** Return a random string of requested length. */ 
         public function getRandomString($Length, $Range = null)
         {
-            /* List of all character permitted in the random string. */
+            // List of all character permitted in the random string.
             $Chars = "acbdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~!@#$%^&*()_+[]\;',./{}|:<>?";
             
-            /* Check if range is specified. */ 
+            // Check if range is specified.
             if($Range == null)
             {
                 $Range = strlen($Chars) - 1;
             }
-            /* Generate and return the string. */
+            // Generate and return the string.
             $String = '';
             for($i = 0; $i < $Length; ++$i)
             {

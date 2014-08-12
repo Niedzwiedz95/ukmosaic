@@ -14,6 +14,8 @@
 	use User\Model\AddressTable;
     
     use User\Form\SigninForm;
+	
+	use User\View\Helper\UserPanel;
     
     /** Class that manages the whole User module. */
     class Module extends BaseModule
@@ -76,5 +78,5 @@
                 ]
             ];
         }
-    }
+	}
 ?>

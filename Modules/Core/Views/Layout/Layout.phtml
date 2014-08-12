@@ -71,7 +71,18 @@
 						</ul>
 					</li>
                     <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'contact']); ?>">Contact</a></li>
+                    <?php
+	                    if(!isset($_SESSION['User']))
+						{
+					?>
                     <li class="menu"><a href="<?php echo $this->url('user', ['action' => 'signin']); ?>">Sign in</a></li>
+                    <?php
+						}
+                    	else
+                    	{
+                    		$this->renderUserPanel();
+						}
+					?>
                 </ul>
             </div>
         </header>

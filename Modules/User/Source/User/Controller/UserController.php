@@ -130,6 +130,48 @@
 			return (new ViewModel(['SigninForm' => $SigninForm, ]))->setTemplate('User/Signin.phtml');
 		}
 
+		/** A page on which the user can manage his account (change password). */
+		public function accountAction()
+		{
+            // Add metadata to the layout.
+            $this->layout()->setVariables(
+            [
+                'Title' => "Manage account - Martin's mosaics",
+                'Scripts' => [],
+                'Styles' => []
+            ]);
+			
+			return (new ViewModel())->setTemplate('User/Account.phtml');
+		}
+		
+		/** A page on which the user can manage addresses associated with his account. */
+		public function addressesAction()
+		{
+            // Add metadata to the layout.
+            $this->layout()->setVariables(
+            [
+                'Title' => "Manage addresses - Martin's mosaics",
+                'Scripts' => [],
+                'Styles' => []
+            ]);
+			
+			return (new ViewModel())->setTemplate('User/Addresses.phtml');			
+		}
+		
+		/** A page on which the user can view his previous and current orders. */
+		public function ordersAction()
+		{
+            // Add metadata to the layout.
+            $this->layout()->setVariables(
+            [
+                'Title' => "Manage orders - Martin's mosaics",
+                'Scripts' => [],
+                'Styles' => []
+            ]);
+			
+			return (new ViewModel())->setTemplate('User/Orders.phtml');			
+		}
+
 		/** Sign in an user with the provided email and set the necessary session data. */
 		public function signinUser($Email, $Password)
 		{

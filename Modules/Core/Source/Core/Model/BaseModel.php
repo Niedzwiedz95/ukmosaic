@@ -1,5 +1,4 @@
 <?php
-    /* This namespace contains all models used by the Core module. */
 	namespace Core\Model;
 	
 	use Zend\InputFilter\Factory as InputFactory;
@@ -30,24 +29,24 @@
         /** Convert the model to an array. If some attribute is null, it isn't included in that array. */
         public function toArray()
         {
-            /* Create an empty array. */
+            // Create an empty array.
             $Array = [];
             
-            /* Iterate over the model's attributes. */
+            // Iterate over the model's attributes.
             foreach(get_object_vars($this) as $Key => $Value)
             {
-                /* If the value isn't null, use getter method to get it's value. */
+                // If the value isn't null, use getter method to get it's value.
                 if($Value != null)
                 {
-                    /* Create the getter's name. */
+                    // Create the getter's name.
                     $Getter = "get$Key";
                     
-                    /* Insert the value into the array. */
+                    // Insert the value into the array.
                     $Array[$Key] = $this->$Getter();   
                 }     
             }
             
-            /* Return the array. */
+            // Return the array.
             return $Array;
         }
 		
@@ -57,8 +56,8 @@
             // Get the property name.
             $Property = substr($Name, 3, 100);
             
-            /* Check if such poperty exists and determine if the first three letters are 'set' or 'get'. If no case is
-             * matched, throw an exception. */
+            // Check if such poperty exists and determine if the first three letters are 'set' or 'get'.
+            // If neither is the case, throw an exception.
             if(property_exists($this, $Property) && substr($Name, 0, 3) == 'get')
             {
                 return $this->$Property;

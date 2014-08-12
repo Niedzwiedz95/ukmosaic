@@ -21,7 +21,7 @@
 	            		'route'    => '/user/:action',
 	                    'constraints' =>
 	                    [
-	                        'action' => '(signin)|(signup)',
+	                        'action' => '(signin)|(signup)|(account)|(addresses)|(orders)',
 	                    ],
 	                    'defaults' =>
 	                    [
@@ -37,6 +37,13 @@
 	        [
 	            'User' => __DIR__ . '/../Views/',       
 	        ]
-	    ]
+	    ],
+    	'view_helpers' =>
+    	[
+	        'invokables'=>
+	        [
+	            'renderUserPanel' => 'User\View\Helper\UserPanel'  
+	        ]
+    	]
 	];
 ?>

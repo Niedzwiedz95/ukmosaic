@@ -1,5 +1,4 @@
 <?php
-    /** This namespace contains all the controllers in the Core module. */
     namespace Core\Controller;
     
     use Zend\Mvc\Controller\AbstractActionController;
@@ -18,22 +17,21 @@
         /** Returns a random string of requested length. */ 
         public function getRandomString($Length, $Range = null)
         {
-            /* List of all character permitted in the random string. */
+            // List of all character permitted in the random string.
             $Chars = "acbdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~!@#$%^&*()_+[]\;',./{}|:<>?";
             
-            /* Check if range is specified. */ 
+            // Check if range is specified. 
             if($Range == null)
             {
                 $Range = strlen($Chars) - 1;
             }
-            /* Generate and return the string. */
+            // Generate and return the string.
             $String = '';
             for($i = 0; $i < $Length; ++$i)
             {
                 $String .= $Chars[rand(0, $Range)];
             }
             return $String;
-        }
-
+		}
     }
 ?>

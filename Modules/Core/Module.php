@@ -1,5 +1,4 @@
 <?php
-    /** This namespace contains all the code for the Core module. */
     namespace Core;
     
     use Zend\Mvc\ModuleRouteListener;

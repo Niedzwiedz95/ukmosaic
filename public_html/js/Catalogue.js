@@ -1,13 +1,14 @@
 $(document).ready(function()
 {	
 	// When a menu link is clicked, appropriate tiles are shown. 
-	$("nav#catalogueMenu button, nav#catalogueMenu a").click(function(event)
+	$("nav#catalogueMenu a").click(function(event)
 	{
 		// Prevent scrolling to the top of the page caused by clicking a link.
 		event.preventDefault();
 		
-		// Display the tiles. Category is the data-category attribute of the menu item.
-		var category = $(this).attr("data-category");
+		// Display the tiles. Category is the fetched from the href attribute of the link in the menu.
+		var splits = $(this).attr('href').split('/')
+		var category = splits[splits.length - 1]
 		displayTiles(category);
 	});
 	
