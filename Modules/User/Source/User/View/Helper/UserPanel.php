@@ -13,8 +13,9 @@
 						<a class='dropdown-toggle' data-toggle='dropdown' href='#'>$Email</a>
 						<ul class='dropdown-menu'>
 				  			<li><a href='/user/account'>My account</a></li>
-				  			<li><a href='/user/addresses'>My addresses</a></li>
+				  			<li><a href='/user/addressbook'>My address book</a></li>
 				  			<li><a href='/user/orders'>My orders</a></li>
+				  			<li><a href='/user/signout'>Sign out</a></li>
 						</ul>
 					</li>";
 		}

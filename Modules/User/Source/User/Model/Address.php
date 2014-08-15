@@ -15,11 +15,13 @@
     {
 		// Properties.
 		protected $AddressID;
+		protected $UserID;
 		protected $FullName;
 		protected $Street;
 		protected $Locality;
 		protected $PostTown;
 		protected $Postcode;
+		protected $PhoneNumber;
 		
         /** Returns an InputFilter that can verify the correctness of the address's attributes and can be later
          *  extended. */

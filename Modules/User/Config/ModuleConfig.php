@@ -21,14 +21,31 @@
 	            		'route'    => '/user/:action',
 	                    'constraints' =>
 	                    [
-	                        'action' => '(signin)|(signup)|(account)|(addresses)|(orders)',
+	                        'action' => '(signin)|(signout)|(signup)|(account)|(addressbook)|(orders)|(addaddress)',
 	                    ],
 	                    'defaults' =>
 	                    [
 	                        'controller' => 'UserController',
 	                    ]
 					]
-				]
+				],
+	            'user/editaddress' =>	
+	            [
+	            	'type' => 'segment',
+	            	'options' =>
+	            	[
+	            		'route'    => '/user/editaddress[/][:addressid]',
+	                    'constraints' =>
+	                    [
+	                        'addressid' => '[1-9]+[0-9]*',
+	                    ],
+	                    'defaults' =>
+	                    [
+	                        'controller' => 'UserController',
+	                        'action' => 'editaddress'
+	                    ]
+					]
+				],
 	        ]
 	    ],
 	    'view_manager' =>

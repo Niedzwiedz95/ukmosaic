@@ -36,7 +36,7 @@
                 'Scripts' => ['/js/Home.js']
             ]);
 			
-            return (new ViewModel([]))->setTemplate('Mosaic/Home.phtml');
+            return (new ViewModel())->setTemplate('Mosaic/Home.phtml');
         }
         public function catalogueAction()
         {

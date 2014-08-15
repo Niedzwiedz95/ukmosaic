@@ -80,7 +80,7 @@
             // Initialize the variables that store markup, input class, label and the input element itself.
 			$Markup = "";
             $Class = "form-control";
-            $Label = "<label class='control-label col-xs-2' for='$ID'>" . $Element->getLabel() . "</label>";
+            $Label = "<label class='control-label col-lg-3' for='$ID'>" . $Element->getLabel() . "</label>";
             $Input = "<input id='$ID' class='$Class' name='$Name' type='$Type' placeholder='$Placeholder' value='$Value' $Required/>";
             
             // Render each element differently depending on its type attribute.
@@ -115,11 +115,11 @@
             // Check if there are errors.
             foreach($Element->getMessages() as $Message)
             {
-                $Errors .= "<div class='col-xs-2'></div><label for='$ID' class='error col-xs-10'>$Message</label>";
+                $Errors .= "<div class='col-lg-3'></div><label for='$ID' class='error col-lg-9'>$Message</label>";
             }
             
             // Assemble and return the final markup.
-			$Markup = "<div class='form-group'>" . $Label . "<div class='col-xs-10'>" . $Input . "</div>" . $Errors . "</div>";
+			$Markup = "<div class='form-group'>" . $Label . "<div class='col-lg-9'>" . $Input . "</div>" . $Errors . "</div>";
             return $Markup;
         }
     }
