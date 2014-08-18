@@ -36,7 +36,7 @@
             foreach(get_object_vars($this) as $Key => $Value)
             {
                 // If the value isn't null, use getter method to get it's value.
-                if($Value != null)
+                if($Value != null || (is_integer($Value)))
                 {
                     // Create the getter's name.
                     $Getter = "get$Key";

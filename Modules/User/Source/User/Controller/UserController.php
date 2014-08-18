@@ -15,6 +15,8 @@
     use User\Form\SigninForm;
 	use User\Form\AddAddressForm;
 	use User\Form\EditAddressForm;
+	use User\Form\ChangePasswordForm;
+	use User\Form\RestorePasswordForm;
 
     /** This controller manages all pages and operations related to users. */
     class UserController extends BaseController
@@ -52,7 +54,7 @@
 			$this->assertSignedOut();
 			
 			// Create a form SignupForm instance.
-			$SignupForm = new SignupForm();
+			$SignupForm = $this->getServiceLocator()->get('User\Form\SignupForm');
 			
 			// Check if it's a POST request with the form submitted.
 			if($this->getRequest()->isPost())
@@ -133,10 +135,85 @@
             [
                 'Title' => "Sign in - Martin's mosaics",
                 'Scripts' => [],
-                'Styles' => ['/css/pages/Signin.css']
+                'Styles' => ['/css/pages/user/Signin.css']
             ]);
 			
 			return (new ViewModel(['SigninForm' => $SigninForm, ]))->setTemplate('User/Signin.phtml');
+		}
+		
+		/** A page on which the user may restore his password */
+		public function restorePasswordAction()
+		{
+			// Assert that the user is not signed in.
+			$this->assertSignedOut();
+			
+			// Variable to be used later, exempli gratia in case when the code provided is incorrect.
+			$CodeIncorrect = '';
+			
+			// Create a form instance.
+			$RestorePasswordForm = $this->getServiceLocator()->get('User\Form\RestorePasswordForm');
+			
+			// Check if it's a POST request with the form submitted.
+			if($this->getRequest()->isPost())
+			{
+				// Feed the data to the form.
+				$Data = $this->getRequest()->getPost()->toArray();
+				$RestorePasswordForm->setData($Data);
+				
+				// If the user provided correct credentials, sign him in.
+				if($RestorePasswordForm->isValid())
+				{
+					$this->sendNewPassword($Data['email']);
+				}
+			}
+			
+			// Fetch the activation code from the URL param.
+            $Code = isset($_GET['code']) ? $_GET['code'] : '';
+			
+            // Check if code is set.
+            if($Code != '')
+            {
+                // Build up and execute the query.
+                $Query = 'SELECT * FROM RestorePassword WHERE Code = ?';
+                $Values = [$Code];
+                $ResultSet = $this->getUserTable()->getDB()->query($Query, $Values);
+                
+                // Check whether the query was successful.
+                if($ResultSet->count() == 1)
+                {
+                	// Fetch the result from the result set. Fetch the email, password and saltfrom the result.
+                	$Result = $ResultSet->buffer()->current();
+					$Email = $Result['Email'];
+					$Password = $Result['NewPassword'];
+					$Salt = $Result['NewSalt'];
+					
+					// Hash the salt with the password.
+                    $PasswordHash = hash('sha512', $Salt . $Password);
+                    
+                   	// Create the set and where parts of the query and execute it.
+                    $Set = new User(['PasswordHash' => $PasswordHash, 'Salt' => $Salt]);
+                    $Where = new User(['Email' => $Email]);
+                    $this->getUserTable()->update($Set, $Where);
+					
+					// Delete the entry from the RestorePassword table.
+                	$Query = 'DELETE FROM RestorePassword WHERE Email = ?';
+                	$Values = [$Email];
+               		$this->getUserTable()->getDB()->query($Query, $Values);
+					
+					// Redirect the user to the sign in page.
+					return $this->redirect()->toRoute('user', ['action' => 'signin']);
+                }
+            }
+			
+            // Add metadata to the layout.
+            $this->layout()->setVariables(
+            [
+                'Title' => "Restore password - Martin's mosaics",
+                'Scripts' => [],
+                'Styles' => []
+            ]);
+			
+			return (new ViewModel(['RestorePasswordForm' => $RestorePasswordForm]))->setTemplate('User/RestorePassword.phtml');
 		}
 
 		/** A page on which the user can manage his account (change password). */
@@ -145,15 +222,42 @@
 			// Check whether an user is signed in.
 			$this->assertSignedIn();
 			
+			// Create instances of the necessary forms.
+			$ChangePasswordForm = new ChangePasswordForm();
+			
+			// Check whether this request is a POST request.
+			if($this->getRequest()->isPost())
+			{
+				// Feed data to the form.
+				$Data = $this->getRequest()->getPost()->toArray();
+				$ChangePasswordForm->setData($Data);
+				
+				// Check whether the form is valid.
+				if($ChangePasswordForm->isValid())
+				{
+					// Generate new salt and password hash for the user.
+					$Salt = $this->getRandomString(128);
+					$PasswordHash = hash('sha512', $Salt . $Data['newPassword']);
+					
+					// Create the SET and WHERE clauses of the query and update the user's password.
+					$Set = new User(['PasswordHash' => $PasswordHash, 'Salt' => $Salt]);
+					$Where = new User(['UserID' => $_SESSION['User']['UserID']]);
+					$this->getUserTable()->update($Set, $Where);
+					
+					// Sign the user out so that he can sign in using his new password.
+					$this->signout();
+				}
+			}
+			
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
                 'Title' => "Manage account - Martin's mosaics",
                 'Scripts' => [],
-                'Styles' => []
+                'Styles' => ['/css/pages/user/Account.css']
             ]);
 			
-			return (new ViewModel())->setTemplate('User/Account.phtml');
+			return (new ViewModel(['ChangePasswordForm' => $ChangePasswordForm]))->setTemplate('User/Account.phtml');
 		}
 		
 		/** A page on which the user can manage addresses associated with his account. */
@@ -162,15 +266,15 @@
 			// Check whether an user is signed in.
 			$this->assertSignedIn();
 						
-			// Render the user's address book.
-			$AddressBook = $this->renderAddressBook($_SESSION['User']['UserID']);
+			// Render the user's address book. The isset is there to guard against 'undefined index' error.
+			$AddressBook = $this->renderAddressBook(isset($_SESSION['User']['UserID']) ? $_SESSION['User']['UserID'] : 0);
 			
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
                 'Title' => "Manage addresses - Martin's mosaics",
                 'Scripts' => [],
-                'Styles' => []
+                'Styles' => ['/css/pages/user/AddressBook.css']
             ]);
 			
 			return (new ViewModel(['AddressBook' => $AddressBook]))->setTemplate('User/AddressBook.phtml');			
@@ -314,6 +418,35 @@
 			
 			return (new ViewModel(['EditAddressForm' => $EditAddressForm]))->setTemplate('User/EditAddress.phtml');	
 		}
+		
+		/** Deletes the requested address from the user's address book. */
+		public function deleteAddressAction()
+		{
+			// Check whether an user is signed in.
+			$this->assertSignedIn();
+			
+			// Get the AddressID from the URL parameter and save user id in a variable.
+			$AddressID = intval($this->params()->fromRoute('addressid'));
+			$UserID = $_SESSION['User']['UserID'];
+			
+			// Fetch all addresses that have the requested id and the user id that's stored in the session variable.
+			$Addresses = $this->getAddressTable()->select(['AddressID' => $AddressID, 'UserID' => $UserID]);
+			
+			// Check whether a unique address was selected.
+			if($Addresses->count() == 1)
+			{
+				// Fetch the address from the result set.
+				$Address = $Addresses->buffer()->current();
+				
+				// Create the SET and WHERE parts of the query and update the database.
+				$Set = new Address(['UserID' => 0]);
+				$Where = new Address(['AddressID' => $AddressID, 'UserID' => $UserID]);
+				$this->getAddressTable()->update($Set, $Where);
+			}
+			
+			// Redirect the user to the address book.
+			return $this->redirect()->toRoute('user', ['action' => 'addressbook']);
+		}
 
 		/** Sign in an user with the provided email and set the necessary session data. */
 		public function signinUser($Email, $Password)
@@ -330,12 +463,17 @@
 			return $this->redirect()->toRoute('user', ['action' => 'account']);
 		}
 		
-		/** Signs the user out. */
+		/** A page which signs the user out. */
 		public function signoutAction()
 		{
+			return $this->signout();
+		}
+		
+		/** Signs the user out and redirects him to the sign in page. */
+		public function signout()
+		{
             session_destroy();
-			$this->redirect()->toRoute('mosaic', ['action' => 'home']);//TODO
-			return (new ViewModel())->setTemplate('User/Orders.phtml');		
+			return $this->redirect()->toRoute('user', ['action' => 'signin']);			
 		}
 		
 		/** Renders the html markup of the addresses associated with a user. */
@@ -357,17 +495,21 @@
 				$Locality = $Address->getLocality() == '' ? '&nbsp;' : $Address->getLocality();
 				$PostTown = $Address->getPostTown();
 				$Postcode = $Address->getPostcode();
-				$PhoneNumber = $Address->getPhoneNumber();
+				$PhoneNumber = $Address->getPhoneNumber() == '' ? '&nbsp;' : $Address->getPhoneNumber();
 				
-				$HTML .= "<div class='address col-lg-4'>
-						      <p>Full name: $Name</p>
-							  <p>Number and street: $Street</p>
-							  <p>$Locality</p>
-							  <p>$PostTown</p>
-							  <p>$Postcode</p>
-							  <p>$PhoneNumber</p>
-							  <a class='btn btn-primary btn-lg' role='button' href='/user/editaddress/$AddressID'>Edit</a>
-							  <a class='btn btn-primary btn-lg' role='button' href='/user/deleteaddress/$AddressID'>Delete</a>
+				$HTML .= "<div class='addressWrapper col-lg-4'>
+						      <div class='address'>
+						          <p>Name: $Name</p>
+							      <p>Street: $Street</p>
+							      <p>Locality: $Locality</p>
+							      <p>Post town: $PostTown</p>
+							      <p>Postcode: $Postcode</p>
+							      <p>Phone: $PhoneNumber</p>
+							      <div class='btnWrapper col-lg-6'>
+							          <a class='btn btn-primary btn-lg' role='button' href='/user/editaddress/$AddressID'>Edit</a>
+							          <a class='btn btn-primary btn-lg' role='button' href='/user/deleteaddress/$AddressID'>Delete</a>
+							      </div>
+							  </div>
 						  </div>";
 			}
 			
@@ -378,19 +520,69 @@
 		/** Asserts that the user is signed in. If he's not, redirects him to the sign in page. */
 		public function assertSignedIn()
 		{
-			if(isset($_SESSION['User']) == false)
+			// This little hack makes sure that the redirect works as expected. This is because the redirect() method only
+			// works after using return. This makes it hard to use, because one needs either to call it like
+			// 'return $this->redirect()...' or paste paste the body of this method directl. Rather than paste, it would be
+			// way better to have an inline function, and this hack does just this: it makes this function work like an
+			// inline function in, exempli gratia, C++. 
+			$assertSignedIn = function($this)
 			{
-				return $this->redirect()->toRoute('user', ['action' => 'signin']);
-			}
+				if(isset($_SESSION['User']) == false)
+				{
+					return $this->redirect()->toRoute('user', ['action' => 'signin']);
+				}
+			};
+			$assertSignedIn($this);
 		}
 		
 		/** Asserts that the user is signed out. If he's not, redirects him to the sign in page. */
 		public function assertSignedOut()
 		{
-			if(isset($_SESSION['User']))
+			// This hack works the same way that the hack in assertSignedIn() works. 
+			$assertSignedOut = function($this)
 			{
-				return $this->redirect()->toRoute('user', ['action' => 'account']);
-			}
-		}	
+				if(isset($_SESSION['User']))
+				{
+					return $this->redirect()->toRoute('user', ['action' => 'account']);
+				}
+			};
+			$assertSignedOut($this);
+		}
+		
+		/** Send an email to the user with a new password and an activation code. */
+		public function sendNewPassword($Email)
+        {
+            // Fetch the user id from session and generate new password, salt and activation code.
+            $NewPassword = $this->getRandomString(9, 61);
+            $NewSalt = $this->getRandomString(128);
+            $Code = $this->getRandomString(128);
+            
+            // Build and execute a query that will insert a row into the RestorePassword table.
+            $Query = 'REPLACE INTO RestorePassword VALUES(?, ?, ?, ?)';
+            $Values = [$Email, $NewPassword, $NewSalt, $Code];
+            $Result = $this->getUserTable()->getDB()->query($Query, $Values);
+			
+			// Check whether the query was performed successfully. The query affects one row if it's a new insert and two if
+			// it replaces an old row in the database.
+			$QuerySuccess = $Result->getAffectedRows() == 1 || $Result->getAffectedRows() == 2;
+            
+            // Create an email that will be sent to the user.
+            $Title = 'Password reset request on martinmosaic.com';
+            $Message = 'There was a request to reset your password on martinmosaic.com' .
+                       'If you did not request to reset your password, you can ignore this email.\n' . 
+                       "Your new password is: $NewPassword\n" . 
+                       'You will be able to sign in using this password after clicking this link:\n' .
+                       'martinmosaic.com/user/restorepassword?code=' . urlencode($Code) . '\n';
+            $Headers = 'FROM: info@martinmosaic.com';
+            
+            // Send the mail and save the operation status in a variable. */
+            $EmailSent = mail($Email, $Title, $Message, $Headers);
+            
+            // If the query failed or the mail could not be sent, throw an exception.
+            if($QuerySuccess == false || $EmailSent == false)
+            {
+                throw new \Exception('There was a problem with restoring your password. Try again later or contact the support.');
+            }
+        }
     }
 ?>

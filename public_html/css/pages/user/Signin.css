@@ -1,0 +1,9 @@
+div#linkWrapper
+{
+	float: none;
+	margin: 0 auto;
+}
+	div#linkWrapper > a
+	{
+		float: right;
+	}

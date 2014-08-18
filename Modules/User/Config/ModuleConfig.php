@@ -21,7 +21,7 @@
 	            		'route'    => '/user/:action',
 	                    'constraints' =>
 	                    [
-	                        'action' => '(signin)|(signout)|(signup)|(account)|(addressbook)|(orders)|(addaddress)',
+	                        'action' => '(signin)|(signout)|(signup)|(account)|(addressbook)|(orders)|(addaddress)|(restorepassword)',
 	                    ],
 	                    'defaults' =>
 	                    [
@@ -29,20 +29,20 @@
 	                    ]
 					]
 				],
-	            'user/editaddress' =>	
+	            'edit&delete' =>	
 	            [
 	            	'type' => 'segment',
 	            	'options' =>
 	            	[
-	            		'route'    => '/user/editaddress[/][:addressid]',
+	            		'route'    => '/user/:action[/][:addressid]',
 	                    'constraints' =>
 	                    [
+	                    	'action' => '(editaddress)|(deleteaddress)',
 	                        'addressid' => '[1-9]+[0-9]*',
 	                    ],
 	                    'defaults' =>
 	                    [
 	                        'controller' => 'UserController',
-	                        'action' => 'editaddress'
 	                    ]
 					]
 				],

@@ -14,6 +14,7 @@
 	use User\Model\AddressTable;
     
     use User\Form\SigninForm;
+    use User\Form\SignupForm;
 	
 	use User\View\Helper\UserPanel;
     
@@ -70,10 +71,24 @@
                     // Forms
                     'User\Form\SigninForm' => function($ServiceManager)
                     {
-                    	// Inject the UserTable into the SignupForm.
+                    	// Inject the UserTable into the SigninForm.
                         $UserTable = $ServiceManager->get('User\Model\UserTable');
                         $SigninForm = new SigninForm($UserTable);
                         return $SigninForm;
+                    },
+                    'User\Form\SignupForm' => function($ServiceManager)
+                    {
+                    	// Inject the UserTable into the SignupForm.
+                        $UserTable = $ServiceManager->get('User\Model\UserTable');
+                        $SignupForm = new SignupForm($UserTable);
+                        return $SignupForm;
+                    },
+                    'User\Form\RestorePasswordForm' => function($ServiceManager)
+                    {
+                    	// Inject the UserTable into the RestorePasswordForm.
+                        $UserTable = $ServiceManager->get('User\Model\UserTable');
+                        $RestorePasswordForm = new \User\Form\RestorePasswordForm($UserTable);
+                        return $RestorePasswordForm;
                     },
                 ]
             ];

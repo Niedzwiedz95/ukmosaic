@@ -12,13 +12,19 @@
 	/**	This class represents the form used in the process of signing up (without buying anything). */
 	class SignupForm extends BaseForm
 	{
+		// The UserTable is used to check validity of the form (whether email is unique).
+		protected $UserTable;
+		
 		/**	Constructor, sets attributes and adds the submit element. */
-	    public function __construct()
+	    public function __construct($UserTable)
 	    {
 	        // Set all attributes of the form.
 	        parent::__construct('SignupForm');
             $this->setAttribute('action', '/user/signup');
             $this->setAttribute('id', 'signupForm');
+			
+			// Set the UserTable property.
+			$this->UserTable = $UserTable;
 			
             // Add the necessary elements.
             // Account info.
@@ -120,7 +126,18 @@
 	            'options' => ['label' => 'Postcode']
 	        ]);
 			
-	        // Submit button.
+			// Terms of service checkbox and the submit button.
+            $this->add(
+            [
+                'name' => 'acceptTos',
+                'attributes' =>
+                [
+                    'type' => 'checkbox',
+                    'id' => 'acceptTos',
+                    'required' => 'required'
+                ],
+                'options' => ['label' => 'I agree to the <a href="/tos">Terms of Service</a>']
+            ]);
 			$this->add(
 			[
 	            'name' => 'submitSignupForm',
@@ -224,7 +241,25 @@
                 ]
             ];
 			
-			// Submit button.
+            // Tos and submit button validators.
+            $AcceptTos =
+            [
+                'name' => 'acceptTos',
+                'required' => true,
+                'validators' =>
+                [
+                    [
+                        'name' => 'NotEmpty',
+                        'options' =>
+                        [
+                            'messages' =>
+                            [
+                                'isEmpty' => "This field is required."
+                            ]
+                        ]
+                    ],
+                ]
+            ];
             $SubmitSignup = 
             [
                 'name' => 'submitSignupForm',
@@ -235,7 +270,29 @@
             $InputFilter->add($Email);
             $InputFilter->add($Factory->createInput($Password));
             $InputFilter->add($Factory->createInput($RePassword));
+            $InputFilter->add($Factory->createInput($AcceptTos));
             $InputFilter->add($Factory->createInput($SubmitSignup));
             return $InputFilter;
+        }
+
+        /** Validate the form - the most important part is checking whether the email is already used.*/
+        public function isValid()
+        {
+            // Fetch email from the inputs.
+            $Email = $this->get('email')->getValue();
+			
+			// Check whether the email is already in use.
+        	$EmailUsed = $this->UserTable->select(['Email' => $Email])->count() != 0;
+            
+			// If the email is already used, set an appropriate message.
+            if($EmailUsed == true)
+            {
+            	$Messages = $this->getMessages();
+                $Messages['email']['Taken'] = 'This email address is already in use!';
+            	$this->setMessages($Messages);
+            }
+
+			// If email is not used and the parent form validates correctly, return true. Otherwise return false.
+            return ($EmailUsed == false) && parent::isValid();
         }
     }

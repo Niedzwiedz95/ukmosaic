@@ -35,9 +35,8 @@ CREATE TABLE `Addresses` (
   `PhoneNumber` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`AddressID`),
   UNIQUE KEY `AddressID_UNIQUE` (`AddressID`),
-  KEY `UserID_idx` (`UserID`),
-  CONSTRAINT `UserID` FOREIGN KEY (`UserID`) REFERENCES `Users` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  KEY `UserID_idx` (`UserID`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +45,7 @@ CREATE TABLE `Addresses` (
 
 LOCK TABLES `Addresses` WRITE;
 /*!40000 ALTER TABLE `Addresses` DISABLE KEYS */;
-INSERT INTO `Addresses` VALUES (1,1,'Zeimer','ul. Zeimera',NULL,'niedługo Breslau','kot',NULL),(2,1,'Nelson Menda','Afrika','eRPeA','śrut-ziemje','Postantysurnadrealizm','23498283049203'),(3,1,'embemarne','judea','bije rzydsona','kafelki','je suis sûr','123 zły numer'),(8,1,'EILEANDER','WALI W NOSA','hehe','MJUT','I OŻEŻGI',NULL),(9,1,'Dżony Boski','50 Cent','Lokalnie','Miastełko pocztowe','Czity pocztowe',NULL),(11,2,'ful name','dziwko','lokal','koks','123',NULL),(12,3,'asd _ dsa','42 ostateczna odpowiedź',NULL,'miasto','kod',NULL);
+INSERT INTO `Addresses` VALUES (11,1,'ful name','dziwko','lokal','koks','123',NULL),(12,1,'asd _ dsa','42 ostateczna odpowiedź',NULL,'miasto','kod',NULL),(15,1,'Fokus','Klaskaj','Klaskam','No to klaszcz','pozdro',NULL),(16,5,'jajko','kajko','dżejkob','elo','iksde',NULL);
 /*!40000 ALTER TABLE `Addresses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,6 +115,32 @@ INSERT INTO `Products` VALUES (1,'MN-21','unglazed_tiles15x15-9mm','/img/catalog
 UNLOCK TABLES;
 
 --
+-- Table structure for table `RestorePassword`
+--
+
+DROP TABLE IF EXISTS `RestorePassword`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `RestorePassword` (
+  `Email` varchar(255) NOT NULL,
+  `NewPassword` char(9) NOT NULL,
+  `NewSalt` char(128) NOT NULL,
+  `Code` char(128) NOT NULL,
+  PRIMARY KEY (`Email`),
+  UNIQUE KEY `UserID_UNIQUE` (`Email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `RestorePassword`
+--
+
+LOCK TABLES `RestorePassword` WRITE;
+/*!40000 ALTER TABLE `RestorePassword` DISABLE KEYS */;
+/*!40000 ALTER TABLE `RestorePassword` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Users`
 --
 
@@ -139,7 +164,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'zzaimer@gmail.com','ed960ec43793dd15a34ccfe5bb405d45d09dc1d6714d5b0fe809fc7d2aecf84e89f9978e338db69dcf716e55e6630fb6bb78e3963f4b390c62e51764540d0462','@v9&~BW$MCbKpK~[[y<QEO_U]!PT\\DgZZ%Fxf,aRsd,HN0tz\\q%s4Z@Ryp>mTe!g)eE\\}FFmIvU__#j8/\\;WM1c!^a[yfWF\\1~#Wdg8MBrwl{F([s8I4xKEbKpBP@6DB'),(2,'jadek@tadek.pl','afa294047606b6e4df56e08410f21135c7c37d68a4189e2473de7ebb9388b067bd8d6a441e30d00f476b8bc8e936ff3668040a1b69eab936c70470e55d793a3d','(h@190YJoe>DJ\'EO{\\>>]U{kwgPfC,Kk<l!7!ye;Cbr@/Wo[Jn+w7%H.++<m#Hx~S<FsvKhXMyyE_MqsZaPu^+m07j#IQ>h<|Nqq[x$yVa2EN*Xa*avX[IlSR\\\':[:}('),(3,'janbajew@wp.pl','062b70dd6efb7a8fd2fdbc6088d096fcb0323447f2292b950364983713981041f2d2c002bd5065101ecf7dcd2be6fc9418412bd8edc4f4b0b88460d70cfd2eac','lJC4~P;4Kl?;W|9;t8e,{1.Jj+<AYFp9$RCN|qgFBfu]c.@vZ&lTHd,R\\;&Lt|j:MLJI2Q#.V|^W\\Q&Nw.}3}[i)!;t{_D\'w%z4F^GxzCc+qS23$UXFOJOwiCQbm)/IX');
+INSERT INTO `Users` VALUES (1,'zzaimer@gmail.com','08996c89d6b6760e50a3ddbf55d23ef21baa85853d7a3891664fa4243124f54a41c138df499b37faa7acf25d8faccee4d8a96aaef579f3aa9adbc71a9524fa14','5z9r12|hmKN9>V.oRgnxUe!oAg_L#dbGC@Y.DT>P.Mm,|eeNls~5wK)XR3<s6aZ:@l;d4\\SWz5Mu9R7)9GO}&xSx;PPVPbRpoGt*t@DSF^#dvJ]{^B;VYG*M_w|zzNON'),(2,'jadek@tadek.pl','afa294047606b6e4df56e08410f21135c7c37d68a4189e2473de7ebb9388b067bd8d6a441e30d00f476b8bc8e936ff3668040a1b69eab936c70470e55d793a3d','(h@190YJoe>DJ\'EO{\\>>]U{kwgPfC,Kk<l!7!ye;Cbr@/Wo[Jn+w7%H.++<m#Hx~S<FsvKhXMyyE_MqsZaPu^+m07j#IQ>h<|Nqq[x$yVa2EN*Xa*avX[IlSR\\\':[:}('),(3,'janbajew@wp.pl','062b70dd6efb7a8fd2fdbc6088d096fcb0323447f2292b950364983713981041f2d2c002bd5065101ecf7dcd2be6fc9418412bd8edc4f4b0b88460d70cfd2eac','lJC4~P;4Kl?;W|9;t8e,{1.Jj+<AYFp9$RCN|qgFBfu]c.@vZ&lTHd,R\\;&Lt|j:MLJI2Q#.V|^W\\Q&Nw.}3}[i)!;t{_D\'w%z4F^GxzCc+qS23$UXFOJOwiCQbm)/IX');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -152,4 +177,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-15 21:16:49
+-- Dump completed on 2014-08-18 21:50:37

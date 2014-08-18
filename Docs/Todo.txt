@@ -5,3 +5,4 @@ Zeimer:
 5. Formularz do kupna.
 8. Wygenerować sitemap.
 9. Pozbyć się napisu "Catalogue" z katalogu.
+9. UWAGA: Zmieniłem kod w BaseModel.php na wyczucie, żeby lepiej działał. Mam nadzieję, że to się nie odbije na działaniu całej reszty.

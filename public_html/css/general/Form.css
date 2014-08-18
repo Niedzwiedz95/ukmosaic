@@ -24,3 +24,7 @@ div.formWrapper
 	{
 	    border-color: transparent; 
 	}
+	form input[type="checkbox"]:focus
+	{
+		box-shadow: none;
+	}

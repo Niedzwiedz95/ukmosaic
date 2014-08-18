@@ -1,0 +1,26 @@
+a#addAddressButton
+{
+	display: block;
+	float: none;
+	margin: 0 auto 25px auto;
+}
+
+div#addressBook > div.addressWrapper
+{
+	float: left;
+	padding: 25px;
+}
+
+	div#addressBook > div.addressWrapper > div.address
+	{
+		padding: 25px;
+		background: #222; /*rgb(195, 195, 195);*/
+		color: white;
+		border-radius: 5px;
+	}
+		div#addressBook > div.addressWrapper > div.address > div.btnWrapper
+		{
+			float: none;
+			padding: 0;
+			margin: 0 auto;
+		}

@@ -158,6 +158,12 @@
 		/** A page with a description of a particular product. */
 		public function productAction()
 		{
+        	// Get URL params.
+            $ProductID = $this->params()->fromRoute('productid') ? $this->params()->fromRoute('productid') : "";
+			
+			// Fetch the requested product.
+			$Products = $this->getProductTable()->select(['ProductID' => $ProductID])->buffer();
+			
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
@@ -165,14 +171,22 @@
                 'Scripts' => [],
                 'Styles' => ['/css/pages/Product.css']
             ]);
-			
-        	// Get URL params.
-            $ProductID = $this->params()->fromRoute('productid') ? $this->params()->fromRoute('productid') : "";
-			
-			// Fetch the requested product.
-			$Products = $this->getProductTable()->select(['ProductID' => $ProductID])->buffer();
 						
             return (new ViewModel(['Product' => $Products->current()]))->setTemplate('Mosaic/Product.phtml');
+		}
+		
+		/** A page on which the user can view the terms of use. */
+		public function tosAction()
+		{
+            // Add metadata to the layout.
+            $this->layout()->setVariables(
+            [
+                'Title' => "Terms of use - Martin's mosaics",
+                'Scripts' => [],
+                'Styles' => []
+            ]);
+						
+            return (new ViewModel())->setTemplate('Mosaic/Tos.phtml');
 		}
 		
 		/** Return the list of thumbnail paths in JSON format. */

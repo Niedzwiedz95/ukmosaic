@@ -56,7 +56,7 @@
                    'placeholder' => 'Phone number',
                    'required' => '',
                 ],
-                'options' => ['label' => 'Phone Number']
+                'options' => ['label' => 'Phone number']
             ]);
             $this->add(
             [
