@@ -78,10 +78,9 @@
             $Placeholder = $Element->getAttribute('placeholder');
             
             // Initialize the variables that store markup, input class, label and the input element itself.
-			$Markup = "";
-            $Class = "form-control";
+			$Markup = '';
+            $Class = 'form-control';
             $Label = "<label class='control-label col-lg-4' for='$ID'>" . $Element->getLabel() . "</label>";
-            $Input = "<input id='$ID' class='$Class' name='$Name' type='$Type' placeholder='$Placeholder' value='$Value' $Required/>";
             
             // Render each element differently depending on its type attribute.
             if($Type == 'submit')
@@ -107,8 +106,16 @@
 			{
 				$Input = "<textarea id='$ID' class='$Class' name='$Name' type='$Type' placeholder='$Placeholder' $Required></textarea>";
 			}
+			else if($Type == 'checkbox')
+			{
+				$Input = "<input id='$ID' class='$Class' name='$Name' type='$Type' $Required></input>";
+			}
+			else
+			{
+				// This is the default and the most used case.
+				$Input = "<input id='$ID' class='$Class' name='$Name' type='$Type' placeholder='$Placeholder' value='$Value' $Required/>";	
+			}
 			
-
             // Create the class variables.
             $Errors = '';
             
@@ -119,7 +126,7 @@
             }
             
             // Assemble and return the final markup.
-			$Markup = "<div class='form-group'>" . $Label . "<div class='col-lg-8'>" . $Input . "</div>" . $Errors . "</div>";
+			$Markup = "<div class='form-group'>" . $Label . "<div class='col-lg-8'>" . $Input . '</div>' . $Errors . '</div>';
             return $Markup;
         }
     }
