@@ -1,43 +1,11 @@
 <div id="productWrapper">
-	<div id="product" class="col-lg-8">
+	<div id="productPicture" class="col-lg-8">
 		<img src="<?php echo $Product->getPath(); ?>"/>
 	</div>
-	<div id="rightWrapper" class="col-lg-4">
-		<div id="details" class="col-lg-12">
-			<h1><?php echo $Product->getProductName()?></h1>
-			<h1><?php echo $Product->getDescription(); ?></h1>
-			<?php
-			if($Product->getPriceLoose1() != '')
-			{
-				echo '<h2>Field per square metre</h2>';
-				echo '<h3>Loose Tiles  - ' . $Product->getPriceLoose1() . '£</h3>';
-				echo $Product->getPriceAssembledTiles() != '' ? '<h3>Assembled Tiles - ' . $Product->getPriceAssembledTiles() . '£</h3>' : '';
-			}
-			if($Product->getPriceLoose2() != '')
-			{
-				echo '<h2>Border per linear metre</h2>';
-				echo '<h3>Loose Tiles - ' . $Product->getPriceLoose2() . '£</h3>';
-				echo $Product->getPriceAssembledBorders() != '' ? '<h3>Assembled Borders - ' . $Product->getPriceAssembledBorders() . '£</h3>' : '';
-			}
-			if($Product->getPrice1x1() != '')
-			{
-				echo '<h3>Size 1x1 - ' . $Product->getPrice1x1() . '£</h3>';
-			}
-			if($Product->getPrice2x2() != '')
-			{
-				echo '<h3>Size 2x2 - ' . $Product->getPrice2x2() . '£</h3>';
-			}
-			if($Product->getPrice25x25() != '')
-			{
-				echo '<h3>Size 2.5x2.5 - ' . $Product->getPrice25x25() . '£</h3>';
-			}
-			if($Product->getPrice() != '')
-			{
-				echo '<h1>' . $Product->getPrice() . '£ per 1m²</h1>';
-			}
-			?>
+	<div id="productDetails" class="col-lg-4">
+		<?php echo $this->renderAddToCartForm($Product); ?>
+		<div class='col-lg-12'>
+			<a class='btn btn-primary col-lg-12' href="/catalogue/<?php echo $Product->getCategory(); ?>" type="button" class="btn btn-default">Back to catalogue</a>
 		</div>
-			<button type="button" class="btn btn-default">Add to cart</button>
-			<a href="/catalogue/<?php echo $Product->getCategory(); ?>" type="button" class="btn btn-default">Back to catalogue</a>
 	</div>
 </div>  

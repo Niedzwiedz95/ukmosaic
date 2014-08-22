@@ -162,7 +162,10 @@
             $ProductID = $this->params()->fromRoute('productid') ? $this->params()->fromRoute('productid') : "";
 			
 			// Fetch the requested product.
-			$Products = $this->getProductTable()->select(['ProductID' => $ProductID])->buffer();
+			$Product = $this->getProductTable()->select(['ProductID' => $ProductID])->buffer()->current();
+			
+			// Create a form that allows adding the product to cart.
+			$AddToCartForm = new \Mosaic\Form\AddToCartForm($Product);
 			
             // Add metadata to the layout.
             $this->layout()->setVariables(
@@ -172,7 +175,7 @@
                 'Styles' => ['/css/pages/Product.css']
             ]);
 						
-            return (new ViewModel(['Product' => $Products->current()]))->setTemplate('Mosaic/Product.phtml');
+            return (new ViewModel(['Product' => $Product, 'AddToCartForm' => $AddToCartForm]))->setTemplate('Mosaic/Product.phtml');
 		}
 		
 		/** A page on which the user can view the terms of use. */

@@ -17,6 +17,7 @@
 	        parent::__construct('AddAddressForm');
             $this->setAttribute('action', '/user/addaddress');
             $this->setAttribute('id', 'addAddressForm');
+			$this->setAttribute('header', 'Add a new address');
 			
 	        // Submit button.
 			$this->add(

@@ -2,6 +2,10 @@ div.formWrapper
 {
 	float: none;
 	margin: 0 auto;
+	/*background: #333;
+	color: white;*/
+	border-radius: 5px;
+	padding: 25px;
 }
 	div.formWrapper > h1
 	{

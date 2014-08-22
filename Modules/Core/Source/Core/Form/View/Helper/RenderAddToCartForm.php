@@ -5,38 +5,40 @@
     use Zend\Form\ElementInterface;
     use Zend\Form\FormInterface;
     use Zend\Form\View\Helper\AbstractHelper;
+	
+	use Mosaic\Model\Product;
+	use Mosaic\Form\AddToCartForm;
     
     /** Custom view helper used to render all forms in the whole site. */
-    class BootstrapForm extends AbstractHelper
+    class RenderAddToCartForm extends AbstractHelper
     {
         /** The view helper can be invoked from the view using $this->bootstrapForm($Form). */
-        public function __invoke(FormInterface $Form = null)
+        public function __invoke(Product $Product)
         {
-            if(!$Form)
-            {
-                return $this;
-            }
-            return $this->render($Form);
+            return $this->render(new AddToCartForm($Product));
         }
 		
         /** Renders the form. */
         public function render(FormInterface $Form)
         {
             // If the form has a 'prepare' method, call it now.
-            if(method_exists($Form, 'prepare'))
+            /*if(method_exists($Form, 'prepare'))
             {
                 $Form->prepare();
-            }
+            }*/
             
+			$Markup = '<h1>' . $Form->getProduct()->getProductName() . '</h1>';
+			$Markup .= '<h2>' . $Form->getProduct()->getDescription() . '</h2>';
+			
             // Render each element and append its HTML to the variable.
-            $FormContent = "<h2 class='formHeader'>" . $Form->getAttribute('header') . '</h2>';
+            $FormContent = $Form->getAttribute('header') != '' ? "<h2 class='formHeader'>" . $Form->getAttribute('header') . '</h2>' : '';
             foreach($Form->getElements() as $Element)
             {
                 $FormContent .= $this->renderElement($Element);
             }
             
             // Open the form tag, append the form content and close the form tag.
-            return $this->openTag($Form) . $FormContent . $this->closeTag();
+            return $Markup . $this->openTag($Form) . $FormContent . $this->closeTag();
         }
         /** Generates the opening tag for the form. */
         public function openTag(FormInterface $Form)
@@ -49,7 +51,7 @@
             $Class = 'form-horizontal' . (isset($Attributes['class']) ? $Attributes['class'] : '');
             
             // The opening tag with an optional enctype attribute.
-            $OpeningTag = "<form id='$ID' class='$Class col-lg-6' method='$Method' action='$Action'";
+            $OpeningTag = "<form id='$ID' class='$Class col-lg-12' method='$Method' action='$Action'";
             if(isset($Attributes['enctype']))
             {
                 $Enctype = $Attributes['enctype'];
@@ -63,7 +65,6 @@
         /** Returns closing tag for the form. */
         public function closeTag()
         {
-            // Close the ul and form tags.
             return '</form>';
         }
         /** Renders an element. */
@@ -80,13 +81,13 @@
             // Initialize the variables that store markup, input class, label and the input element itself.
 			$Markup = '';
             $Class = 'form-control';
-            $Label = "<label class='control-label col-lg-4' for='$ID'>" . $Element->getLabel() . "</label>";
+            $Label = '';
             
             // Render each element differently depending on its type attribute.
             if($Type == 'submit')
             {
-            	//$Label = "<label class='control-label col-lg-2' for='$ID'>" . $Element->getLabel() . "</label>";
                 $Input = "<input id='$ID' class='form-control btn btn-primary' name='$Name' type='$Type' value='$Value' $Required/>";
+				$Markup = "<div class='form-group'><div class='col-lg-12'>" . $Input . '</div></div>';
             }
             else if($Type == 'Zend\Form\Element\Csrf' || $Type == 'hidden')
             {
@@ -94,45 +95,26 @@
                 $Input = "<div class='form-group hidden'><input id='$ID' name='$Name' type='$Type' value='$Value' $Required/></div>";
                 return $Input;
             }
-            else if($Type == 'Zend\Form\Element\Select')
-            {				
-                $Input = "<select id='$ID' class='form-control' name='$Name'>";
-                
-				// Fetch the value options from the select element.
-				//$ValueOptions = 
-				// Check whether there the select is divided into groups.
-				
-                foreach($Element->getOptions()['value_options'] as $Type => $Name)
+            else if($Type == 'Zend\Form\Element\Radio')
+            {
+                $Input = '<h3>' . $Element->getOptions()['header'] . '</h3>';
+                foreach($Element->getOptions()['value_options'] as $Value => $Display)
                 {
-                   $Input .= "<option value='$Type'>$Name</option>";
+                   $Input .= "<input class='col-lg-1' type='radio' name='$Name' value='$Value'/><p class='col-lg-11'>$Display</p>";
                 }
-				$Input .= '</select>';
+				$Markup = "<div class='form-group'>" . $Label . "<div class='col-lg-12'>" . $Input . '</div></div>';
             }
-			else if($Type == "textarea")
-			{
-				$Input = "<textarea id='$ID' class='$Class' name='$Name' type='$Type' placeholder='$Placeholder' $Required></textarea>";
-			}
-			else if($Type == 'checkbox')
-			{
-				$Input = "<input id='$ID' class='$Class' name='$Name' type='$Type' $Required></input>";
-			}
 			else
 			{
+				// Attributes of number inputs.
+				$Min = $Element->getAttribute('min');
 				// This is the default and the most used case.
-				$Input = "<input id='$ID' class='$Class' name='$Name' type='$Type' placeholder='$Placeholder' value='$Value' $Required/>";	
+				$Label = "<label class='control-label' for='$ID'>" . $Element->getLabel() . "</label>";
+				$Input = "<input id='$ID' class='$Class' name='$Name' type='$Type' placeholder='$Placeholder' value='$Value' $Required min='$Min'/>";
+				$Markup = "<div class='form-group'><div class='col-lg-10'>" . $Input . '</div>' . $Label . '</div>';
 			}
 			
-            // Create the class variables.
-            $Errors = '';
-            
-            // Check if there are errors.
-            foreach($Element->getMessages() as $Message)
-            {
-                $Errors .= "<div class='col-lg-4'></div><label for='$ID' class='error col-lg-8'>$Message</label>";
-            }
-            
-            // Assemble and return the final markup.
-			$Markup = "<div class='form-group'>" . $Label . "<div class='col-lg-8'>" . $Input . '</div>' . $Errors . '</div>';
+			// Return the assembled markup.
             return $Markup;
         }
     }

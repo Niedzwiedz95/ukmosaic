@@ -3,34 +3,49 @@ div#productWrapper
 	width: 60%;
 	height: 500px;
 	margin: 0 auto;
-	color: white; /*#999;*/
+	color: white;
 	border-radius: 10px;
 	background: #222;
 }
-	div#productWrapper > div#product, div#productWrapper > div#rightWrapper
+	div#productWrapper > div#productPicture, div#productWrapper > div#productDetails
 	{
 		padding: 0;
 	}
-		div#productWrapper > div#product > img
+		div#productWrapper > div#productPicture > img
 		{
 			display: block;
 			max-width: 450px;
 			max-height: 450px;
 			margin: 25px auto;
 		}
-	div#productWrapper > div#rightWrapper > div#details
+	div#productWrapper > div#productDetails
 	{
 		padding: 0;
 	}
-		div#productWrapper > div#rightWrapper > div#details > h1
+		div#productWrapper > div#productDetails h1
 		{
 			font-size: 22px;
+			margin: 10px 0;
+			text-align: center;
 		}
-		div#productWrapper > div#rightWrapper > div#details > h2
+		div#productWrapper > div#productDetails h2
 		{
-			font-size: 18px;
+			font-size: 19px;
+			margin: 10px 0;
+			text-align: center;
 		}
-		div#productWrapper > div#rightWrapper > div#details > h3
+		div#productWrapper > div#productDetails h3
 		{
-			font-size: 14px;
+			font-size: 16px;
+			font-weight: bold;
+			margin: 10px 0;
 		}
+		div#productWrapper > div#productDetails p
+		{
+			margin: 0;
+		}
+		
+div.form-group
+{
+	margin: 5px 0;
+}

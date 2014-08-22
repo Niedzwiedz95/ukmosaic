@@ -1,5 +1,4 @@
 <?php
-    /* This namespace contains all forms used in the Mosaic module. */
     namespace Mosaic\Form;
     
     use Zend\Form\Form;
@@ -10,7 +9,6 @@
 
     use Core\Form\BaseForm;
     
-    /** This class represents the form used to contact Martin. */
     class ContactForm extends BaseForm
     {
         /** Construct the form. */
@@ -20,6 +18,7 @@
             parent::__construct('ContactForm');
             $this->setAttribute('id', 'contactForm');
             $this->setAttribute('action', '/contact');
+			//$this->setAttribute('header', 'Contact us');
             
             // Create the necessary elements.
             $this->add(

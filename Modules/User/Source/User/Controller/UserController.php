@@ -402,7 +402,7 @@
 				[
 					'fullName' => $Address['FullName'],
 					'street' => $Address['Street'],
-					'locality' => $Address['Locality'],
+					'locality' => isset($Address['Locality']) ? $Address['Locality'] : '',
 					'postTown' => $Address['PostTown'],
 					'postcode' => $Address['Postcode']
 				]);	
