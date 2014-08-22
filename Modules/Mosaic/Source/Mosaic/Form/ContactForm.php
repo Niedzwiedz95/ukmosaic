@@ -18,7 +18,7 @@
             parent::__construct('ContactForm');
             $this->setAttribute('id', 'contactForm');
             $this->setAttribute('action', '/contact');
-			//$this->setAttribute('header', 'Contact us');
+			$this->setAttribute('header', 'Contact us');
             
             // Create the necessary elements.
             $this->add(

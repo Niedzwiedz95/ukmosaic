@@ -22,6 +22,7 @@
 	        parent::__construct('SignupForm');
             $this->setAttribute('action', '/user/signup');
             $this->setAttribute('id', 'signupForm');
+			$this->setAttribute('header', 'Sign up');
 			
 			// Set the UserTable property.
 			$this->UserTable = $UserTable;

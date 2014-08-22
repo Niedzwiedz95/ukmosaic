@@ -36,7 +36,7 @@ CREATE TABLE `Addresses` (
   PRIMARY KEY (`AddressID`),
   UNIQUE KEY `AddressID_UNIQUE` (`AddressID`),
   KEY `UserID_idx` (`UserID`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `Addresses` (
 
 LOCK TABLES `Addresses` WRITE;
 /*!40000 ALTER TABLE `Addresses` DISABLE KEYS */;
-INSERT INTO `Addresses` VALUES (11,1,'ful name','dziwko','lokal','koks','123',NULL),(12,1,'asd _ dsa','42 ostateczna odpowiedź',NULL,'miasto','kod',NULL),(15,1,'Fokus','Klaskaj','Klaskam','No to klaszcz','pozdro',NULL),(16,5,'jajko','kajko','dżejkob','elo','iksde',NULL);
+INSERT INTO `Addresses` VALUES (1,1,'Pan Test','ul. Testowa 42','na jachcie','na morzu','tajne kody',NULL);
 /*!40000 ALTER TABLE `Addresses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,10 +90,10 @@ CREATE TABLE `Products` (
   `Path` varchar(128) NOT NULL,
   `Description` char(255) DEFAULT NULL,
   `Price` double DEFAULT NULL,
-  `PriceLoose1` double DEFAULT NULL,
-  `PriceAssembledTiles` double DEFAULT NULL,
-  `PriceLoose2` double DEFAULT NULL,
-  `PriceAssembledBorders` double DEFAULT NULL,
+  `PriceSquareLoose` double DEFAULT NULL,
+  `PriceSquareAssembled` double DEFAULT NULL,
+  `PriceLinearLoose` double DEFAULT NULL,
+  `PriceLinearAssembled` double DEFAULT NULL,
   `Price1x1` double DEFAULT NULL,
   `Price2x2` double DEFAULT NULL,
   `Price25x25` double DEFAULT NULL,
@@ -155,7 +155,7 @@ CREATE TABLE `Users` (
   PRIMARY KEY (`UserID`),
   UNIQUE KEY `CustomerID_UNIQUE` (`UserID`),
   UNIQUE KEY `Email_UNIQUE` (`Email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,7 +164,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'zzaimer@gmail.com','08996c89d6b6760e50a3ddbf55d23ef21baa85853d7a3891664fa4243124f54a41c138df499b37faa7acf25d8faccee4d8a96aaef579f3aa9adbc71a9524fa14','5z9r12|hmKN9>V.oRgnxUe!oAg_L#dbGC@Y.DT>P.Mm,|eeNls~5wK)XR3<s6aZ:@l;d4\\SWz5Mu9R7)9GO}&xSx;PPVPbRpoGt*t@DSF^#dvJ]{^B;VYG*M_w|zzNON'),(2,'jadek@tadek.pl','afa294047606b6e4df56e08410f21135c7c37d68a4189e2473de7ebb9388b067bd8d6a441e30d00f476b8bc8e936ff3668040a1b69eab936c70470e55d793a3d','(h@190YJoe>DJ\'EO{\\>>]U{kwgPfC,Kk<l!7!ye;Cbr@/Wo[Jn+w7%H.++<m#Hx~S<FsvKhXMyyE_MqsZaPu^+m07j#IQ>h<|Nqq[x$yVa2EN*Xa*avX[IlSR\\\':[:}('),(3,'janbajew@wp.pl','062b70dd6efb7a8fd2fdbc6088d096fcb0323447f2292b950364983713981041f2d2c002bd5065101ecf7dcd2be6fc9418412bd8edc4f4b0b88460d70cfd2eac','lJC4~P;4Kl?;W|9;t8e,{1.Jj+<AYFp9$RCN|qgFBfu]c.@vZ&lTHd,R\\;&Lt|j:MLJI2Q#.V|^W\\Q&Nw.}3}[i)!;t{_D\'w%z4F^GxzCc+qS23$UXFOJOwiCQbm)/IX');
+INSERT INTO `Users` VALUES (1,'test@test.com','7721506723ce05ace069262acc6dba77dabcb23cc3e52ce271350f2eb107c74742ff6982359ff47338e83fa02ef60805e2ccf0f3bc2351da36927c64859f6129','v+x1$EQ!lx@eG_+rX6,~*vE*PSm&t!mOWJez$U>;*~/mU$DfJu%qQi:{0j!()[wEvA3<)1[0A%#)Sf\\,z3g%@d9AmIi}uEzP5,NOSyd*b^1V_OLjgS]*VWh8{p2nT,3n');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -177,4 +177,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-18 21:50:37
+-- Dump completed on 2014-08-22 17:36:17

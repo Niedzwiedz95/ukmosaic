@@ -3,14 +3,15 @@ div.formWrapper
 	float: none;
 	margin: 0 auto;
 	/*background: #333;
-	color: white;*/
+	color: white;
 	border-radius: 5px;
-	padding: 25px;
+	padding: 25px;*/
 }
-	div.formWrapper > h1
+	form h2
 	{
 		text-align: center;
 		margin-top: 0;
+		margin-bottom: 20px;
 	}
 	form label.error
 	{

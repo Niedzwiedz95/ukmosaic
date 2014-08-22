@@ -24,6 +24,7 @@
 	        parent::__construct('SigninForm');
             $this->setAttribute('action', '/user/signin');
             $this->setAttribute('id', 'signinForm');
+			$this->setAttribute('header', 'Sign in');
 			
 			// Set all the additional form's properties.
 			$this->UserTable = $UserTable;

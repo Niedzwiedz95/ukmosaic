@@ -473,7 +473,7 @@
 		public function signout()
 		{
             session_destroy();
-			return $this->redirect()->toRoute('user', ['action' => 'signin']);			
+			return $this->redirect()->toRoute('mosaic', ['action' => 'home']);			
 		}
 		
 		/** Renders the html markup of the addresses associated with a user. */

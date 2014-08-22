@@ -32,7 +32,7 @@
             $this->layout()->setVariables(
             [
                 'Title' => "Home - Martin's mosaics",
-                'Styles' => ['/css/pages/Home.css'],
+                'Styles' => ['/css/pages/mosaic/Home.css'],
                 'Scripts' => ['/js/Home.js']
             ]);
 			
@@ -50,7 +50,7 @@
             $this->layout()->setVariables(
             [
                 'Title' => "Catalogue - Martin's mosaics",
-                'Styles' => ['/css/pages/Catalogue.css'],
+                'Styles' => ['/css/pages/mosaic/Catalogue.css'],
                 'Scripts' => ['/js/Catalogue.js']
             ]);
 			
@@ -62,7 +62,7 @@
             $this->layout()->setVariables(
             [
                 'Title' => "Technical - Martin's mosaics",
-                'Styles' => ['/css/pages/Technical.css'],
+                'Styles' => ['/css/pages/mosaic/Technical.css'],
                 'Scripts' => ['/js/Pullup.js']
             ]);
 			
@@ -87,7 +87,7 @@
             $this->layout()->setVariables(
             [
                 'Title' => "Information - Martin's mosaics",
-                'Styles' => ['/css/pages/Information.css'],
+                'Styles' => ['/css/pages/mosaic/Information.css'],
             ]);
 			
             return (new ViewModel([]))->setTemplate('Mosaic/Information.phtml');	
@@ -98,7 +98,7 @@
             $this->layout()->setVariables(
             [
                 'Title' => "Accessories - Martin's mosaics",
-                'Styles' => ['/css/pages/Accessories.css'],
+                'Styles' => ['/css/pages/mosaic/Accessories.css'],
                 'Scripts' => ['/js/Pullup.js']
             ]);
 			
@@ -172,7 +172,7 @@
             [
                 'Title' => "Creator - Martin's mosaics",
                 'Scripts' => [],
-                'Styles' => ['/css/pages/Product.css']
+                'Styles' => ['/css/pages/mosaic/Product.css']
             ]);
 						
             return (new ViewModel(['Product' => $Product, 'AddToCartForm' => $AddToCartForm]))->setTemplate('Mosaic/Product.phtml');

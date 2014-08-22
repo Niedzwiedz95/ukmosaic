@@ -53,6 +53,7 @@
 	                [
 	                   'type'  => 'number',
 	                   'id' => 'normalAmount',
+	                   'min' => 0
 	                ],
 	                'options' =>
 	                [
@@ -84,6 +85,7 @@
 	                [
 	                   'type'  => 'number',
 	                   'id' => 'squareAmount',
+	                   'min' => 0
 	                ],
 	                'options' =>
 	                [
@@ -142,11 +144,11 @@
 	            ]);
 	            $this->add(
 	            [
-	                'name' => 'linearAmount',
+	                'name' => 'mosaicDesignsAmount',
 	                'attributes' =>
 	                [
 	                   'type'  => 'number',
-	                   'id' => 'linearAmount',
+	                   'id' => 'mosaicDesignsAmount',
 	                   'min' => 0
 	                ],
 	                'options' =>

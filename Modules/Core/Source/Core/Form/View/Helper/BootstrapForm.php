@@ -49,7 +49,7 @@
             $Class = 'form-horizontal' . (isset($Attributes['class']) ? $Attributes['class'] : '');
             
             // The opening tag with an optional enctype attribute.
-            $OpeningTag = "<form id='$ID' class='$Class col-lg-6' method='$Method' action='$Action'";
+            $OpeningTag = "<div class='formWrapper col-lg-4'><form id='$ID' class='$Class' method='$Method' action='$Action'";
             if(isset($Attributes['enctype']))
             {
                 $Enctype = $Attributes['enctype'];
@@ -64,7 +64,7 @@
         public function closeTag()
         {
             // Close the ul and form tags.
-            return '</form>';
+            return '</form></div>';
         }
         /** Renders an element. */
         public function renderElement(ElementInterface $Element)

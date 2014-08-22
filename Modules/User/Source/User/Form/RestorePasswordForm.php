@@ -20,6 +20,7 @@
 	        parent::__construct('RestorePasswordForm');
             $this->setAttribute('action', '/user/restorepassword');
 			$this->setAttribute('id', 'restorePasswordForm');
+			$this->setAttribute('header', 'Restore password');
 
 			// Set the UserTable property;
 			$this->UserTable = $UserTable;

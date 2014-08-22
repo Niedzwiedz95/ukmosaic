@@ -4,3 +4,8 @@ a#changePasswordButton
 	float: none;
 	margin: 0 auto 25px auto;
 }
+h1
+{
+	text-align: center;
+	margin: 0 auto 30px;
+}

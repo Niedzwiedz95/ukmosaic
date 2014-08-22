@@ -16,6 +16,7 @@
             parent::__construct('ChangePasswordForm');
             $this->setAttribute('action', '/user/account');
             $this->setAttribute('id', 'changePasswordForm');
+			$this->setAttribute('header', 'Change password');
             
             // Add the necessary elements.
             $this->add(
