@@ -46,11 +46,21 @@
                 ]              
             ]);
         }
+
         /** Returns the input filter appropriate for the current form */
         public function getInputFilter()
         {
             return new InputFilter();
         }
+		
+		/** Returns an instance of a validator that can validate the CSRF input. */
+		public function getCsrfInputSpecification()
+		{
+			$CsrfInputSpecification = (new \Zend\Form\Element\Csrf())->getInputSpecification();
+			$CsrfInputSpecification['name'] = $this->getFormName() . 'CSRF';
+			return $CsrfInputSpecification;
+		}
+		
         /** Returns the ViewModel template associated with this form. */
         public function getViewModel()
         {

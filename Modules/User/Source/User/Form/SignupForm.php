@@ -269,9 +269,9 @@
             
             // Add the inputs to the input filter and return it.
             $InputFilter->add($Email);
-            $InputFilter->add($Factory->createInput($Password));
+            $InputFilter->add($Password);
             $InputFilter->add($Factory->createInput($RePassword));
-            $InputFilter->add($Factory->createInput($AcceptTos));
+            $InputFilter->add($AcceptTos);
             $InputFilter->add($Factory->createInput($SubmitSignup));
             return $InputFilter;
         }

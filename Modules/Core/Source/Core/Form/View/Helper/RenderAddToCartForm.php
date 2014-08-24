@@ -82,12 +82,21 @@
 			$Markup = '';
             $Class = 'form-control';
             $Label = '';
+			
+            // Create the class variables.
+            $Errors = '';
+
+            // Check if there are errors.
+            foreach($Element->getMessages() as $Message)
+            {
+                $Errors .= "<div class='col-lg-4'></div><label for='$ID' class='error col-lg-8'>$Message</label>";
+            }
             
             // Render each element differently depending on its type attribute.
             if($Type == 'submit')
             {
                 $Input = "<input id='$ID' class='form-control btn btn-primary' name='$Name' type='$Type' value='$Value' $Required/>";
-				$Markup = "<div class='form-group'><div class='col-lg-12'>" . $Input . '</div></div>';
+				$Markup = "<div class='form-group'><div class='col-lg-12'>" . $Errors . $Input . '</div></div>';
             }
             else if($Type == 'Zend\Form\Element\Csrf' || $Type == 'hidden')
             {
@@ -102,7 +111,7 @@
                 {
                    $Input .= "<input class='col-lg-1' type='radio' name='$Name' value='$Value'/><p class='col-lg-11'>$Display</p>";
                 }
-				$Markup = "<div class='form-group'>" . $Label . "<div class='col-lg-12'>" . $Input . '</div></div>';
+				$Markup = "<div class='form-group'>" . $Errors . "<div class='col-lg-12'>" . $Input . '</div></div>';
             }
 			else
 			{
@@ -113,6 +122,7 @@
 				$Input = "<input id='$ID' class='$Class' name='$Name' type='$Type' placeholder='$Placeholder' value='$Value' $Required min='$Min'/>";
 				$Markup = "<div class='form-group'><div class='col-lg-10'>" . $Input . '</div>' . $Label . '</div>';
 			}
+			
 			
 			// Return the assembled markup.
             return $Markup;

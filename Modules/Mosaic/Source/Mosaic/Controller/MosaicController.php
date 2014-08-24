@@ -158,15 +158,25 @@
 		/** A page with a description of a particular product. */
 		public function productAction()
 		{
-        	// Get URL params.
+        	// Get the ProductID from the URL param. Fetch the product from database and construct an AddToCartForm isntance.
             $ProductID = $this->params()->fromRoute('productid') ? $this->params()->fromRoute('productid') : "";
-			
-			// Fetch the requested product.
 			$Product = $this->getProductTable()->select(['ProductID' => $ProductID])->buffer()->current();
-			
-			// Create a form that allows adding the product to cart.
 			$AddToCartForm = new \Mosaic\Form\AddToCartForm($Product);
 			
+			// Check whether the request is a POST request.
+			if($this->getRequest()->isPost())
+			{
+				// Save data in a variable and feed it to the form.
+				$Data = $this->getRequest()->getPost();
+				$AddToCartForm->setData($Data);
+				
+				// Check whether the form is valid.
+				if($AddToCartForm->isValid())
+				{
+					echo 'walit';
+				}
+				
+			}
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
@@ -190,6 +200,22 @@
             ]);
 						
             return (new ViewModel())->setTemplate('Mosaic/Tos.phtml');
+		}
+		
+		/** A page on which the user can view the contens of his cart. */
+		public function cartAction()
+		{
+			
+			
+            // Add metadata to the layout.
+            $this->layout()->setVariables(
+            [
+                'Title' => "Cart - Martin's mosaics",
+                'Scripts' => [],
+                'Styles' => []
+            ]);
+						
+            return (new ViewModel())->setTemplate('Mosaic/Cart.phtml');
 		}
 		
 		/** Return the list of thumbnail paths in JSON format. */

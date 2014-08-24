@@ -1,3 +1,9 @@
+div#content
+{
+	padding: 25px;
+	background: inherit !important;
+}
+
 div#infotxt {
 	font-size: 20px;
 	font-family:"Copperplate Gothic Bold";

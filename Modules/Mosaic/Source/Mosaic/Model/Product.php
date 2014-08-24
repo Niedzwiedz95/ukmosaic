@@ -43,9 +43,9 @@
 			// Build up the array.
 			if($this->getPrice() != null)
 			{
-				$ValueOptions['Normal'] =
+				$ValueOptions['Standard'] =
 				[
-					'Price' => 'Price - £' . $this->getPrice()
+					'Price' => 'Standard - £' . $this->getPrice()
 				];
 			}
 			if($this->getPriceSquareLoose() != null)
@@ -74,7 +74,7 @@
 			}
 			if($this->getPrice1x1() != null)
 			{
-				$ValueOptions['MosaicDesign'] =
+				$ValueOptions['Mosaic Designs'] =
 				[
 					'Price1x1' => 'Size 1x1 - £' . $this->getPrice1x1(),
 					'Price2x2' => 'Size 2x2 - £' . $this->getPrice2x2(),

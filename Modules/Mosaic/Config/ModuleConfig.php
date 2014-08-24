@@ -21,7 +21,7 @@
 	            		'route'    => '/[:action]',
 	                    'constraints' =>
 	                    [
-	                        'action' => '(home)|(specialoffers)|(information)|(contact)|(product)|(productsjson)|(signup)|(tos)',
+	                        'action' => '(home)|(specialoffers)|(information)|(contact)|(product)|(productsjson)|(signup)|(tos)|(cart)',
 	                    ],
 	                    'defaults' =>
 	                    [

@@ -197,12 +197,18 @@
                     ]
                 ]
             ];
+            $SubmitContactForm = 
+            [
+                'name' => 'submitContactForm',
+                'required' => true,
+            ];
 			
             // Add the validators to the input filter and return it.
             $InputFilter->add($Factory->createInput($Name));
             $InputFilter->add($Factory->createInput($Email));
             $InputFilter->add($Factory->createInput($PhoneNumber));
             $InputFilter->add($Factory->createInput($Comments));
+            $InputFilter->add($SubmitContactForm);
             return $InputFilter;
         }
     }
