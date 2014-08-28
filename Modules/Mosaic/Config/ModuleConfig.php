@@ -21,7 +21,8 @@
 	            		'route'    => '/[:action]',
 	                    'constraints' =>
 	                    [
-	                        'action' => '(home)|(specialoffers)|(information)|(contact)|(product)|(productsjson)|(signup)|(tos)|(cart)',
+	                        'action' => '(home)|(specialoffers)|(information)|(contact)|(product)|(productsjson)|(signup)|
+	                        			 (tos)|(cart)|(checkout)',
 	                    ],
 	                    'defaults' =>
 	                    [
@@ -97,6 +98,19 @@
 	                    [
 	                        'controller' => 'MosaicController',
 	                        'action'     => 'product'
+	                    ],
+					],
+				],
+	            'cart/remove' =>	
+	            [
+	            	'type' => 'segment',
+	            	'options' =>
+	            	[
+	            		'route'    => '/cart/remove/:productid/:producttype',
+	                    'defaults' =>
+	                    [
+	                        'controller' => 'MosaicController',
+	                        'action'     => 'cartremove'
 	                    ],
 					],
 				],

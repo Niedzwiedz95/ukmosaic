@@ -28,14 +28,47 @@
 		protected $Price2x2;
 		protected $Price25x25;
 		
-		/** Returns the appropriate input filter. It's null, because there's no way to add products through the application itself. */
-		/*public function getInputFilter()
+		/* Build up the product details that is displayed on the product page. */
+		public function getProductDetails()
 		{
-			return false;
-		}*/
+			$Details = '<h1>' . $this->getProductName() . '</h1>';
+			$Details .= '<h2>' . $this->getDescription() . '</h2>';
+			
+			// Build up the array.
+			if($this->getPrice() != null)
+			{
+				$Standard = '<h3>Standard</h3>';
+				$Standard .= "<p>Standard - £<span class='pricePrice'>" . $this->getPrice() . '</span></p>';
+				$Details .= "<div class='col-lg-12'>$Standard</div>";
+			}
+			if($this->getPriceSquareLoose() != null)
+			{
+				$Square = '<h3>Field per square metre</h3>';
+				$Square .= "<p>Loose Tiles - £<span class='pricePriceSquareLoose'>" . $this->getPriceSquareLoose() . '</span></p>';
+				$Square .= $this->getPriceSquareAssembled() != null ? "<p>Assembled Tiles - £<span class='pricePriceSquareAssembled'>" . $this->getPriceSquareAssembled() . '</span></p>' : '';
+				$Details .= "<div class='col-lg-12'>$Square</div>";
+			}
+			if($this->getPriceLinearLoose() != null)
+			{
+				$Linear = '<h3>Border per linear metre</h3>';
+				$Linear .= "<p>Loose Tiles - £<span class='pricePriceLinearLoose'>" . $this->getPriceLinearLoose() . '</span></p>';
+				$Linear .= $this->getPriceLinearAssembled() != null ? "<p>Assembled Borders - £<span class='pricePriceLinearAssembled'>" . $this->getPriceLinearAssembled() . '</span></p>' : '';
+				$Details .= "<div class='col-lg-12'>$Linear</div>";
+			}
+			if($this->getPrice1x1() != null)
+			{
+				$MosaicDesigns = '<h3>Mosaic Designs</h3>';
+				$MosaicDesigns .= "<p>Size 1x1 - £<span class='pricePrice1x1'>" . $this->getPrice1x1() . '</span></p>';
+				$MosaicDesigns .= $this->getPrice2x2() != null ? "<p>Size 2x2 - £<span class='pricePrice2x2'>" . $this->getPrice2x2() . '</span></p>' : '';
+				$MosaicDesigns .= $this->getPrice25x25() != null ? "<p>Size 2.5x2.5 - £<span class='pricePrice25x25'>" . $this->getPrice25x25() . '</span></p>' : '';
+				$Details .= "<div class='col-lg-12'>$MosaicDesigns</div>";
+			}
+			
+			return $Details;
+		}
 		
 		/* Builds up a value_options array used in constructing the AddToCartForm instance. */
-		public function buildValueOptions()
+		public function getValueOptions()
 		{
 			// Create an empty array to store the options.
 			$ValueOptions = [];
@@ -43,51 +76,35 @@
 			// Build up the array.
 			if($this->getPrice() != null)
 			{
-				$ValueOptions['Standard'] =
-				[
-					'Price' => 'Standard - £' . $this->getPrice()
-				];
+				$ValueOptions['Standard']['Price'] = 'Standard';
 			}
 			if($this->getPriceSquareLoose() != null)
 			{
-				$ValueOptions['Field per square metre'] = 
-				[
-					'PriceSquareLoose' => 'Loose Tiles - £' . $this->getPriceSquareLoose(),
-					'PriceSquareAssembled' => 'Assembled Tiles - £' . $this->getPriceSquareAssembled() 
-				];
-				/*if($this->getPriceSquareAssembled() != null)
-				{
-					$ValueOptions['PriceSquareAssembled'] = $this->getPriceSquareAssembled();
-				}*/
+				$ValueOptions['Field per square metre']['PriceSquareLoose'] = 'Loose Tiles';
+			}
+			if($this->getPriceSquareAssembled() != null)
+			{
+				$ValueOptions['Field per square metre']['PriceSquareAssembled'] = 'Assembled Tiles';
 			}
 			if($this->getPriceLinearLoose() != null)
 			{
-				$ValueOptions['Border per linear metre'] =
-				[
-					'PriceLinearLoose' => 'Loose Tiles - £' . $this->getPriceLinearLoose(),
-					'PriceLinearAssembled' => 'Assembled Borders - £' . $this->getPriceLinearAssembled()
-				];
-				/*if($this->getPriceLinearAssembled() != null)
-				{
-					$ValueOptions['PriceLinearAssembled'] = $this->getPriceLinearAssembled();
-				}*/
+				$ValueOptions['Border per linear metre']['PriceLinearLoose'] = 'Loose Tiles';
+			}
+			if($this->getPriceLinearAssembled() != null)
+			{
+				$ValueOptions['Border per linear metre']['PriceLinearAssembled'] = 'Assembled Borders';
 			}
 			if($this->getPrice1x1() != null)
 			{
-				$ValueOptions['Mosaic Designs'] =
-				[
-					'Price1x1' => 'Size 1x1 - £' . $this->getPrice1x1(),
-					'Price2x2' => 'Size 2x2 - £' . $this->getPrice2x2(),
-					'Price25x25' => 'Size 2.5x2.5 - £' . $this->getPrice25x25(),
-				];
-				/*if($this->getPrice2x2() != null)
-				{
-					$ValueOptions['Price2x2'] = $this->getPrice2x2();
-				}
-				if($this->getPrice25x25() != null)
-				{
-					$ValueOptions['Price25x25'] = $this->getPrice25x25();
-				}*/
+				$ValueOptions['Mosaic Designs']['Price1x1'] = 'Size 1x1';
+			}
+			if($this->getPrice2x2() != null)
+			{
+				$ValueOptions['Mosaic Designs']['Price2x2'] = 'Size 2x2';
+			}
+			if($this->getPrice25x25() != null)
+			{
+				$ValueOptions['Mosaic Designs']['Price2.5x2.5'] = 'Size 2.5x2.5';
 			}
 			
 			// Return the options array.

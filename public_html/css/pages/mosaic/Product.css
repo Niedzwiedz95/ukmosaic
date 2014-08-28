@@ -1,51 +1,75 @@
+div#content
+{
+	text-align: center;
+}
 div#productWrapper
 {
-	width: 60%;
-	height: 500px;
+	display: inline-block;
+	max-width: 60%;
+	/*height: 500px;*/
 	margin: 0 auto;
 	color: white;
+	text-align: left;
 	border-radius: 10px;
 	background: #222;
 }
-	div#productWrapper > div#productPicture, div#productWrapper > div#productDetails
+	div#productWrapper > div#productPicture, div#productWrapper > div#rightWrapper
 	{
 		padding: 0;
 	}
 		div#productWrapper > div#productPicture > img
 		{
 			display: block;
-			max-width: 450px;
-			max-height: 450px;
+			/*max-width: 450px;
+			max-height: 450px;*/
+			max-width: 95%;
+			max-height: 95%;
 			margin: 25px auto;
 		}
-	div#productWrapper > div#productDetails
+	div#productWrapper > div#rightWrapper
 	{
 		padding: 0;
 	}
-		div#productWrapper > div#productDetails h1
+		div#productWrapper > div#rightWrapper h1
 		{
 			font-size: 22px;
 			margin: 10px 0;
 			text-align: center;
 		}
-		div#productWrapper > div#productDetails h2
+		div#productWrapper > div#rightWrapper h2
 		{
 			font-size: 19px;
 			margin: 10px 0;
 			text-align: center;
 		}
-		div#productWrapper > div#productDetails h3
+		div#productWrapper > div#rightWrapper h3
 		{
 			font-size: 16px;
 			font-weight: bold;
 			margin: 10px 0;
 		}
-		div#productWrapper > div#productDetails p
+		div#productWrapper > div#rightWrapper p
 		{
 			margin: 0;
 		}
-		
-div.form-group
-{
-	margin: 5px 0;
-}
+		div#productWrapper > div#rightWrapper > div#addToCartFormWrapper
+		{
+			display: inline-block;
+		}
+		div#productWrapper > div#rightWrapper div.form-group
+		{
+			margin: 5px 0;
+		}
+		div#productWrapper > div#rightWrapper div.form-group > div
+		{
+			padding: 0;
+		}
+		div#productWrapper > div#rightWrapper div.form-group:nth-child(3)
+		{
+			margin-top: 10px;
+		}
+	div#productWrapper a#backButton
+	{
+		display: block;
+		margin: 0 auto;
+	}

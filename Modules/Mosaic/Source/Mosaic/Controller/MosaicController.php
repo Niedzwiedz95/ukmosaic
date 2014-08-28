@@ -33,7 +33,7 @@
             [
                 'Title' => "Home - Martin's mosaics",
                 'Styles' => ['/css/pages/mosaic/Home.css'],
-                'Scripts' => ['/js/Home.js']
+                'Scripts' => ['/js/pages/Home.js']
             ]);
 			
             return (new ViewModel())->setTemplate('Mosaic/Home.phtml');
@@ -51,7 +51,7 @@
             [
                 'Title' => "Catalogue - Martin's mosaics",
                 'Styles' => ['/css/pages/mosaic/Catalogue.css'],
-                'Scripts' => ['/js/Catalogue.js']
+                'Scripts' => ['/js/pages/Catalogue.js']
             ]);
 			
             return (new ViewModel(['Products' => $Products]))->setTemplate('Mosaic/Catalogue.phtml');
@@ -63,7 +63,7 @@
             [
                 'Title' => "Technical - Martin's mosaics",
                 'Styles' => ['/css/pages/mosaic/Technical.css'],
-                'Scripts' => ['/js/Pullup.js']
+                'Scripts' => ['/js/pages/Pullup.js']
             ]);
 			
 			// Get the URL param that determines which type of technical to show.
@@ -99,7 +99,7 @@
             [
                 'Title' => "Accessories - Martin's mosaics",
                 'Styles' => ['/css/pages/mosaic/Accessories.css'],
-                'Scripts' => ['/js/Pullup.js']
+                'Scripts' => ['/js/pages/Pullup.js']
             ]);
 			
 			// Get the URL param that determines which type of accessories to show.
@@ -149,7 +149,7 @@
             [
                 'Title' => "Contact - Martin's mosaics",
                 'Styles' => [],
-                'Scripts' => ['/js/Contact.js']
+                'Scripts' => ['/js/pages/Contact.js']
             ]);
             
             return (new ViewModel(['ContactForm' => $ContactForm]))->setTemplate('Mosaic/Contact.phtml');
@@ -169,19 +169,41 @@
 				// Save data in a variable and feed it to the form.
 				$Data = $this->getRequest()->getPost();
 				$AddToCartForm->setData($Data);
-				
+
 				// Check whether the form is valid.
 				if($AddToCartForm->isValid())
 				{
-					echo 'walit';
+					// Assemble the name of the getter that gets the product's price basing on the product type.
+					$Getter = "get" . $Data['productType'];
+					
+					// Add the OrderProduct instance to cart.
+					$OrderProduct = new \Mosaic\Model\OrderProduct(
+					[
+						'ProductID' => $ProductID,
+						'ProductName' => $Product->getProductName(),
+						'Price' => $Product->$Getter(),
+						'Amount' => $Data['productAmount'],
+						'Path' => $Product->getPath(),
+						'Type' => $Data['productType']
+					]);
+					
+					// Set an appropriate type of the ordered product (appropriate for being displayed).
+					$OrderProduct->setDisplayTypeFromPriceType($Data['productType']);
+					
+					// Add the product to the cart. Each product (identified by its ID) can be added to cart multiple times,
+					// but only once per type.
+					$_SESSION['Cart'][$ProductID][$Data['productType']] = $OrderProduct->toArray();
+					
+					// Redirect the user to his cart.
+					$this->redirect()->toRoute('mosaic', ['action' => 'cart']);
 				}
-				
 			}
+
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
                 'Title' => "Creator - Martin's mosaics",
-                'Scripts' => [],
+                'Scripts' => ['/js/pages/Product.js'],
                 'Styles' => ['/css/pages/mosaic/Product.css']
             ]);
 						
@@ -205,17 +227,62 @@
 		/** A page on which the user can view the contens of his cart. */
 		public function cartAction()
 		{
+			$Cart = '';
+			if(isset($_SESSION['Cart']) && $_SESSION['Cart'] != [])
+			{
+				$Cart = '<h1>My cart</h1>';
+				$Cart .= $this->renderCartProducts($_SESSION['Cart']);
+			}
+			else
+			{
+				$Cart = '<h1>Your cart is empty</h1>';
+			}
 			
+			// Compute the grand total (the sum) of all the items in the cart.
+			$GrandTotal = $this->computeGrandTotal($_SESSION['Cart']);
 			
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
                 'Title' => "Cart - Martin's mosaics",
                 'Scripts' => [],
-                'Styles' => []
+                'Styles' => ['/css/pages/mosaic/Cart.css']
             ]);
 						
-            return (new ViewModel())->setTemplate('Mosaic/Cart.phtml');
+            return (new ViewModel(['Cart' => $Cart, 'GrandTotal' => $GrandTotal]))->setTemplate('Mosaic/Cart.phtml');
+		}
+		
+		/** Removes a product with the cart identifier given in the url parameter from the cart. */
+		public function cartRemoveAction()
+		{
+        	// Get URL params.
+            $ID = $this->params()->fromRoute('productid');
+            $Type = $this->params()->fromRoute('producttype');
+			
+			//var_dump($_SESSION['Cart'][$ID][$Type]);exit;
+			
+			// Check whether actually a cart is set in the session.
+			if(isset($_SESSION['Cart'][$ID][$Type]))
+			{
+				// Unset the requested item.
+				unset($_SESSION['Cart'][$ID][$Type]);
+			}
+			
+			return $this->redirect()->toRoute('mosaic', ['action' => 'cart']);
+		}
+		
+		/** A page on which the user can finalize the transaction. */
+		public function checkoutAction()
+		{
+            // Add metadata to the layout.
+            $this->layout()->setVariables(
+            [
+                'Title' => "Cart - Martin's mosaics",
+                'Scripts' => [],
+                'Styles' => ['/css/pages/mosaic/Cart.css']
+            ]);
+						
+            return (new ViewModel([]))->setTemplate('Mosaic/Checkout.phtml');				
 		}
 		
 		/** Return the list of thumbnail paths in JSON format. */
@@ -258,6 +325,69 @@
 			
 			// Return the markup.
 			return $HTML;
+		}
+		
+		/** Renders products as displayed in the cart. */
+		public function renderCartProducts($Cart)
+		{
+			// Variables that gold the markup and grand total.
+			$Markup = '';
+			
+			// Iterate over all items in the cart and render their markup (that requires double foreach loop).
+			foreach($Cart as $OrderProducts)
+			{
+				foreach($OrderProducts as $OrderProduct)
+				{
+					// Fetch the properties of the OrderProduct instance for easy interpolation.
+					$ID = $OrderProduct['ProductID'];
+					$Path = $OrderProduct['Path'];
+					$ProductName = $OrderProduct['ProductName'];
+					$Type = $OrderProduct['Type'];
+					$DisplayType = $OrderProduct['DisplayType'];
+					$Amount = $OrderProduct['Amount'];
+					$Price = $OrderProduct['Price'];
+					$Subtotal = $Price * $Amount;
+					
+					// Assemble the markup.
+					$Markup .= 
+					"<div class='cartProduct col-lg-7'>
+						<div class='imgWrapper col-lg-5'>
+							<a href='/product/$ID'><img src='$Path' alt='$ProductName'/></a>
+						</div>
+						<div class='infoWrapper col-lg-5'>
+							<h1>$ProductName</h1>
+							<h2>$DisplayType</h2>
+							<p>Amount: $Amount</p>
+							<p>Unit price: £$Price</p>
+							<p>Subtotal: £$Subtotal</p>
+							<a class='btn btn-primary col-lg-12' href='/cart/remove/$ID/$Type'>Remove from cart</a>
+						</div>
+						<div class='btnWrapper col-lg-0'>
+							<!--<a class='btn btn-primary col-lg-12' href='/product/$ID'>Change</a>-->
+						</div>
+					</div>";
+				}
+			}
+			
+			// Return the assembled markup.
+			return $Markup;
+		}
+
+		/** Computes the cart's grand total. */
+		public function computeGrandTotal($Cart)
+		{
+			$GrandTotal = 0;
+			
+			// Iterate over all items in the cart to compute the grand total.
+			foreach($Cart as $OrderProducts)
+			{
+				foreach($OrderProducts as $OrderProduct)
+				{
+					$GrandTotal += $OrderProduct['Amount'] * $OrderProduct['Price'];
+				}
+			}
+			
+			return $GrandTotal;
 		}
     }
 ?>

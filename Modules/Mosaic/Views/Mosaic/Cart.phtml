@@ -1,1 +1,10 @@
-<h1>Muj koszyg</h1>
+<?php
+	echo $Cart;
+	if($GrandTotal != 0):
+?>
+	<div id='cartSummary'>
+		<div id='grandTotal' class='col-lg-3'>
+			Grand Total: £<?php echo $GrandTotal; ?></div>
+		<a id='checkoutButton' class='btn btn-primary col-lg-3' href='/checkout'>Proceed to checkout</a>
+	</div>
+<?php endif; ?>

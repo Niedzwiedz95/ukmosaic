@@ -2,10 +2,9 @@
 	<div id="productPicture" class="col-lg-8">
 		<img src="<?php echo $Product->getPath(); ?>"/>
 	</div>
-	<div id="productDetails" class="col-lg-4">
-		<?php echo $this->renderAddToCartForm($Product); ?>
-		<div class='col-lg-12'>
-			<a class='btn btn-primary col-lg-12' href="/catalogue/<?php echo $Product->getCategory(); ?>" type="button" class="btn btn-default">Back to catalogue</a>
-		</div>
+	<div id="rightWrapper" class="col-lg-4">
+		<div id='productDetails' class='col-lg-12'><?php echo $Product->getProductDetails(); ?></div>
+		<div id='addToCartFormWrapper'><?php echo $this->renderAddToCartForm($AddToCartForm);?></div>
+		<div class='zapychacz col-lg-2'></div><a id='backButton' class='btn btn-primary col-lg-8' href="/catalogue/<?php echo $Product->getCategory(); ?>" type="button" class="btn btn-default">Back to catalogue</a>
 	</div>
 </div>  

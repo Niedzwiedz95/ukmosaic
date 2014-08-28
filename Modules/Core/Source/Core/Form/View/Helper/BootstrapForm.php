@@ -10,17 +10,17 @@
     class BootstrapForm extends AbstractHelper
     {
         /** The view helper can be invoked from the view using $this->bootstrapForm($Form). */
-        public function __invoke(FormInterface $Form = null)
+        public function __invoke(FormInterface $Form = null, $WrapperWidth = 4)
         {
             if(!$Form)
             {
                 return $this;
             }
-            return $this->render($Form);
+            return $this->render($Form, $WrapperWidth);
         }
 		
         /** Renders the form. */
-        public function render(FormInterface $Form)
+        public function render(FormInterface $Form, $WrapperWidth)
         {
             // If the form has a 'prepare' method, call it now.
             if(method_exists($Form, 'prepare'))
@@ -36,10 +36,10 @@
             }
             
             // Open the form tag, append the form content and close the form tag.
-            return $this->openTag($Form) . $FormContent . $this->closeTag();
+            return $this->openTag($Form, $WrapperWidth) . $FormContent . $this->closeTag();
         }
         /** Generates the opening tag for the form. */
-        public function openTag(FormInterface $Form)
+        public function openTag(FormInterface $Form, $WrapperWidth)
         {
             // Variables to make the rendering easier.
             $Attributes = $Form->getAttributes();
@@ -49,7 +49,7 @@
             $Class = 'form-horizontal' . (isset($Attributes['class']) ? $Attributes['class'] : '');
             
             // The opening tag with an optional enctype attribute.
-            $OpeningTag = "<div class='formWrapper col-lg-4'><form id='$ID' class='$Class' method='$Method' action='$Action'";
+            $OpeningTag = "<div class='formWrapper col-lg-$WrapperWidth'><form id='$ID' class='$Class' method='$Method' action='$Action'";
             if(isset($Attributes['enctype']))
             {
                 $Enctype = $Attributes['enctype'];
@@ -94,14 +94,13 @@
                 $Input = "<div class='form-group hidden'><input id='$ID' name='$Name' type='$Type' value='$Value' $Required/></div>";
                 return $Input;
             }
-            else if($Type == 'Zend\Form\Element\Select')
-            {				
-                $Input = "<select id='$ID' class='form-control' name='$Name'>";
-                
-				// Fetch the value options from the select element.
-				//$ValueOptions = 
-				// Check whether there the select is divided into groups.
+            else if($Type == 'Zend\Form\Element\Select' || $Type == 'select')
+            {
+            	// The label is there so that no CSS is needed.
+            	$Label = "<div class='col-lg-2'></div>";
 				
+				// Assembled the whole select input.
+				$Input = "<select id='$ID' class='form-control' name='$Name'>";
                 foreach($Element->getOptions()['value_options'] as $Type => $Name)
                 {
                    $Input .= "<option value='$Type'>$Name</option>";
@@ -115,6 +114,12 @@
 			else if($Type == 'checkbox')
 			{
 				$Input = "<input id='$ID' class='$Class' name='$Name' type='$Type' $Required></input>";
+			}
+			else if($Type == 'number')
+			{
+            	// The label is there so that no CSS is needed.
+            	$Label = "<div class='col-lg-2'></div>";
+				$Input = "<input id='$ID' class='$Class' name='$Name' type='$Type' value='$Value' $Required/>";	
 			}
 			else
 			{
