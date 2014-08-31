@@ -12,7 +12,6 @@
 	/**	TableGateway to the Addresses table. */
 	class AddressTable extends BaseTable
 	{
-		
 		/** Insert a new address into the database and return its id. */
         public function insertAddress(Address $Address)
         {

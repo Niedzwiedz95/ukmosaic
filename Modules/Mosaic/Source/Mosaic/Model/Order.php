@@ -16,6 +16,10 @@
 		// Properties.
 		protected $OrderID;
 		protected $UserID;
+		protected $AddressID;
 		protected $Value;
+		protected $PlacementDate;
+		protected $Status;
+		protected $OrderProducts;
     }
 ?>

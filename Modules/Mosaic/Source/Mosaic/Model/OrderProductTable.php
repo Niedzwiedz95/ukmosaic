@@ -8,7 +8,7 @@
     use Core\Model\BaseTable;
     
 	/**	TableGateway to the Orders table. */
-	class OrdersTable extends BaseTable
+	class OrderTable extends BaseTable
 	{
 		
 	}

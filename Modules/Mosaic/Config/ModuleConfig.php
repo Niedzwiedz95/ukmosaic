@@ -22,7 +22,7 @@
 	                    'constraints' =>
 	                    [
 	                        'action' => '(home)|(specialoffers)|(information)|(contact)|(product)|(productsjson)|(signup)|
-	                        			 (tos)|(cart)|(checkout)',
+	                        			 (tos)|(cart)|(checkout)|(payment)',
 	                    ],
 	                    'defaults' =>
 	                    [
@@ -111,6 +111,19 @@
 	                    [
 	                        'controller' => 'MosaicController',
 	                        'action'     => 'cartremove'
+	                    ],
+					],
+				],
+	            'ship' =>	
+	            [
+	            	'type' => 'segment',
+	            	'options' =>
+	            	[
+	            		'route'    => '/ship/:addressid',
+	                    'defaults' =>
+	                    [
+	                        'controller' => 'MosaicController',
+	                        'action'     => 'ship'
 	                    ],
 					],
 				],

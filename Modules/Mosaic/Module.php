@@ -13,7 +13,6 @@
 	use Mosaic\Model\User;
 	
 	use Mosaic\Model\AddressesTable;
-	use Mosaic\Model\OrdersTable;
 	use Mosaic\Model\ProductTable;
 	use Mosaic\Model\UsersTable;
 	
@@ -54,7 +53,7 @@
             [
                 'factories' =>
                 [
-                    'Mosaic\Model\AddressesTable' => function($ServiceManager)
+                    /*'Mosaic\Model\AddressTable' => function($ServiceManager)
                     {
                     	// Get a database adapter instance.
                     	$DB = $ServiceManager->get('Zend\Db\Adapter\Adapter');
@@ -68,14 +67,14 @@
 						
 						// Return a new instance of the AddressesTable.
                         return new AddressesTable($TableGateway);
-                    },
-                    'Mosaic\Model\OrdersTable' => function($ServiceManager)
+                    },*/
+                    'Mosaic\Model\OrderTable' => function($ServiceManager)
                     {
                     	$DB = $ServiceManager->get('Zend\Db\Adapter\Adapter');
                         $ResultSet = new ResultSet();
                         $ResultSet->setArrayObjectPrototype(new Order());
                         $TableGateway = new TableGateway("Orders", $DB, null, $ResultSet);
-                        return new OrdersTable($TableGateway);
+                        return new \Mosaic\Model\OrderTable($TableGateway);
                     },
                     'Mosaic\Model\ProductTable' => function($ServiceManager)
                     {
@@ -85,14 +84,22 @@
                         $TableGateway = new TableGateway('Products', $DB, null, $ResultSet);
                         return new ProductTable($TableGateway);
                     },
-                    'Mosaic\Model\UsersTable' => function($ServiceManager)
+                    'Mosaic\Model\OrderProductTable' => function($ServiceManager)
+                    {
+                    	$DB = $ServiceManager->get('Zend\Db\Adapter\Adapter');
+                        $ResultSet = new ResultSet();
+                        $ResultSet->setArrayObjectPrototype(new \Mosaic\Model\OrderProduct());
+                        $TableGateway = new TableGateway('OrderProducts', $DB, null, $ResultSet);
+                        return new ProductTable($TableGateway);
+                    },
+                    /*'Mosaic\Model\UsersTable' => function($ServiceManager)
                     {
                     	$DB = $ServiceManager->get('Zend\Db\Adapter\Adapter');
                         $ResultSet = new ResultSet();
                         $ResultSet->setArrayObjectPrototype(new User());
                         $TableGateway = new TableGateway('Users', $DB, null, $ResultSet);
                         return new UsersTable($TableGateway);
-                    },
+                    },*/
                     /*'Mosaic\Form\ContactForm' => function($ServiceManager)
                     {
                         $DB = $ServiceManager->get('Zend\Db\Adapter\Adapter');
