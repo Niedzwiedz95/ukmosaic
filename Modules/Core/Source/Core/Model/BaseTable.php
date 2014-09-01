@@ -89,5 +89,28 @@
             }
             return $String;
         }
+		
+        /** This method makes us no longer need to declare getters. */
+        public function __call($Name, $Args)
+        {
+            // Get the property name.
+            $Property = substr($Name, 3, 100);
+            
+            // Check if such poperty exists and determine if the first three letters are 'set' or 'get'.
+            // If neither is the case, throw an exception.
+            if(property_exists($this, $Property) && substr($Name, 0, 3) == 'get')
+            {
+                return $this->$Property;
+            }
+            else if(property_exists($this, $Property) && substr($Name, 0, 3) == 'set')
+            {
+                $this->$Property = $Args[0];
+            }
+            else
+            {
+                $Class = get_class($this);
+                throw new \Exception("$Class has no $Property property!");
+            }
+        }
     }
 ?>

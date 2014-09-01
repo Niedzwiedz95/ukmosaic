@@ -74,7 +74,13 @@
                         $ResultSet = new ResultSet();
                         $ResultSet->setArrayObjectPrototype(new Order());
                         $TableGateway = new TableGateway("Orders", $DB, null, $ResultSet);
-                        return new \Mosaic\Model\OrderTable($TableGateway);
+						
+						// Inject an OrderProductTable instance to the OrderTable instance.
+						$OrderTable = new \Mosaic\Model\OrderTable($TableGateway);
+						$OrderTable->setOrderProductTable($ServiceManager->get('Mosaic\Model\OrderProductTable'));
+						
+						// Return the OrderTable.
+                        return $OrderTable;
                     },
                     'Mosaic\Model\ProductTable' => function($ServiceManager)
                     {

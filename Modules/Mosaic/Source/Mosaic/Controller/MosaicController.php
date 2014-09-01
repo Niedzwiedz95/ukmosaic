@@ -54,7 +54,7 @@
         /** Retrieve the OrderProductTable instance. */
         public function getOrderProductTable()
         {
-            /* If the UserTable is null, it gets loaded from the ServiceManager. */
+            // If the UserTable is null, it gets loaded from the ServiceManager.
             if($this->OrderProductTable == null)
             {
                 $this->OrderProductTable = $this->getServiceLocator()->get('Mosaic\Model\OrderProductTable');
@@ -217,10 +217,11 @@
 					[
 						'ProductID' => $ProductID,
 						'ProductName' => $Product->getProductName(),
-						'Price' => $Product->$Getter(),
 						'Amount' => $Data['productAmount'],
+						'Price' => $Product->$Getter(),
 						'Path' => $Product->getPath(),
-						'Type' => $Data['productType']
+						'Description' => $Product->getDescription(),
+						'PriceType' => $Data['productType']
 					]);
 					
 					// Set an appropriate type of the ordered product (appropriate for being displayed).
@@ -309,7 +310,7 @@
 		
 		/** A page on which the user can finalize the transaction. */
 		public function checkoutAction()
-		{
+		{			
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
@@ -317,6 +318,12 @@
                 'Scripts' => [],
                 'Styles' => ['/css/pages/mosaic/Checkout.css']
             ]);
+            
+			// If the user is not signed in, redirect him to the sign up page.
+			if(isset($_SESSION['User']) == false)
+			{
+				return $this->redirect()->toRoute('user', ['action' => 'signup']);
+			}
 
 			// Renders the address list used at the checkout page.
 			$ShippingAddresses = $this->renderShippingAddresses($_SESSION['User']['UserID']);
@@ -362,16 +369,21 @@
 				// Insert the ordered products to the database
 				foreach($_SESSION['Cart'] as $ProductClass)
 				{
-					foreach($ProductClass as $OrderProduct)
+					foreach($ProductClass as $OrderProductArray)
 					{
-						$this->getOrderProductTable()->getTableGateway()->insert(
+						// Create an OrderProduct instance, set its OrderID and insert it to the database.
+						$OrderProduct = new \Mosaic\Model\OrderProduct($OrderProductArray);
+						$OrderProduct->setOrderID($OrderID);
+						
+						$this->getOrderProductTable()->insert($OrderProduct);
+						/*$this->getOrderProductTable()->getTableGateway()->insert(
 						[
 							'OrderID' => $OrderID,
 							'ProductID' => $OrderProduct['ProductID'],
 							'ProductType' => $OrderProduct['DisplayType'],
 							'Amount' => $OrderProduct['Amount'],
 							'Price' => $OrderProduct['Price'],
-						]);
+						]);*/
 					}
 				}
 				
@@ -386,6 +398,9 @@
 		/** A page on which the user may pay for the order. */
 		public function paymentAction()
 		{
+			// Assert that an user is signed in.
+			$this->assertSignedIn();
+			
 			// Add metadata to the layout.
             $this->layout()->setVariables(
             [
@@ -395,6 +410,38 @@
             ]);
 
             return (new ViewModel())->setTemplate('Mosaic/Payment.phtml');
+		}
+		
+		/** Page that shows details of an order. */
+		public function orderAction()
+		{
+			// Assert that an user is signed in.
+			$this->assertSignedIn();
+			
+        	// Get URL params.
+            $OrderID = $this->params()->fromRoute('orderid');
+			
+			// Fetch the Order and the associated Address from the database.
+			$Order = $this->getOrderTable()->selectOrder($OrderID);
+			$Address = $this->getAddressTable()->select(['AddressID' => $Order->getAddressID()])->buffer()->current();
+			
+			// Render the markups of the address and the cart.
+			$AddressMarkup = $Address->render();
+			$CartMarkup = '';
+			foreach($Order->getOrderProducts() as $OrderProduct)
+			{
+				$CartMarkup .= $OrderProduct->render();
+			}
+			
+			// Add metadata to the layout.
+            $this->layout()->setVariables(
+            [
+                'Title' => "Order | Martin's mosaics",
+                'Scripts' => [],
+                'Styles' => ['/css/pages/mosaic/Order.css', '/css/pages/mosaic/Cart.css']
+            ]);
+
+            return (new ViewModel(['Address' => $AddressMarkup, 'Cart' => $CartMarkup]))->setTemplate('Mosaic/Order.phtml');			
 		}
 		
 		/** Return the list of thumbnail paths in JSON format. */
@@ -451,20 +498,20 @@
 				foreach($OrderProducts as $OrderProduct)
 				{
 					// Fetch the properties of the OrderProduct instance for easy interpolation.
-					$ID = $OrderProduct['ProductID'];
-					$Path = $OrderProduct['Path'];
+					$ProductID = $OrderProduct['ProductID'];
 					$ProductName = $OrderProduct['ProductName'];
-					$Type = $OrderProduct['Type'];
 					$DisplayType = $OrderProduct['DisplayType'];
 					$Amount = $OrderProduct['Amount'];
 					$Price = $OrderProduct['Price'];
+					$Path = $OrderProduct['Path'];
+					$PriceType = $OrderProduct['PriceType'];
 					$Subtotal = $Price * $Amount;
 					
 					// Assemble the markup.
 					$Markup .= 
 					"<div class='cartProduct col-lg-7'>
 						<div class='imgWrapper col-lg-5'>
-							<a href='/product/$ID'><img src='$Path' alt='$ProductName'/></a>
+							<a href='/product/$ProductID'><img src='$Path' alt='$ProductName'/></a>
 						</div>
 						<div class='infoWrapper col-lg-5'>
 							<h1>$ProductName</h1>
@@ -472,10 +519,10 @@
 							<p>Amount: $Amount</p>
 							<p>Unit price: £$Price</p>
 							<p>Subtotal: £$Subtotal</p>
-							<a class='btn btn-primary col-lg-12' href='/cart/remove/$ID/$Type'>Remove from cart</a>
+							<a class='btn btn-primary col-lg-12' href='/cart/remove/$ProductID/$PriceType'>Remove from cart</a>
 						</div>
 						<div class='btnWrapper col-lg-0'>
-							<!--<a class='btn btn-primary col-lg-12' href='/product/$ID'>Change</a>-->
+							<!--<a class='btn btn-primary col-lg-12' href='/product/$ProductID'>Change</a>-->
 						</div>
 					</div>";
 				}
@@ -509,7 +556,7 @@
 			$Addresses = $this->getAddressTable()->select(['UserID' => $UserID])->buffer();
 			
 			// Variable to hold the markup.
-			$HTML = "";
+			$Markup = "";
 			
 			// Iterate over all the addresses and build up the markup.
 			foreach($Addresses as $Address)
@@ -523,7 +570,7 @@
 				$Postcode = $Address->getPostcode();
 				$PhoneNumber = $Address->getPhoneNumber() == '' ? '&nbsp;' : $Address->getPhoneNumber();
 				
-				$HTML .= "<div class='addressWrapper col-lg-4'>
+				$Markup .= "<div class='addressWrapper col-lg-4'>
 						      <div class='address'>
 						          <p>Name: $Name</p>
 							      <p>Street: $Street</p>
@@ -539,7 +586,7 @@
 			}
 			
 			// Return the markup.
-			return $HTML;
+			return $Markup;
 		}
     }
 ?>

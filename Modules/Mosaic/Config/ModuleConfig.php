@@ -127,6 +127,19 @@
 	                    ],
 					],
 				],
+	            'order' =>	
+	            [
+	            	'type' => 'segment',
+	            	'options' =>
+	            	[
+	            		'route'    => '/order/:orderid',
+	                    'defaults' =>
+	                    [
+	                        'controller' => 'MosaicController',
+	                        'action'     => 'order'
+	                    ],
+					],
+				],
 	        ],
 	    ],
 	    'view_manager' =>

@@ -24,6 +24,7 @@
     	// Properties.
         protected $UserTable;
 		protected $AddressTable;
+		protected $OrderTable;
         
         /** Retrieve the UserTable instance. */
         public function getUserTable()
@@ -45,6 +46,17 @@
                 $this->AddressTable = $this->getServiceLocator()->get('User\Model\AddressTable');
             }
             return $this->AddressTable;
+        }
+		
+        /** Retrieve the OrderTable instance. */
+        public function getOrderTable()
+        {
+            /* If the UserTable is null, it gets loaded from the ServiceManager. */
+            if($this->OrderTable == null)
+            {
+                $this->OrderTable = $this->getServiceLocator()->get('Mosaic\Model\OrderTable');
+            }
+            return $this->OrderTable;
         }
 		
 		/** A page on which the user may sign up. Also processes the form after it's submitted. */
@@ -291,10 +303,12 @@
             [
                 'Title' => "Manage orders - Martin's mosaics",
                 'Scripts' => [],
-                'Styles' => []
-            ]);			
+                'Styles' => ['/css/pages/user/Orders.css']
+            ]);
+			
+			$Orders = $this->renderOrders($_SESSION['User']['UserID']);
 
-			return (new ViewModel())->setTemplate('User/Orders.phtml');			
+			return (new ViewModel(['Orders' => $Orders]))->setTemplate('User/Orders.phtml');			
 		}
 
 		/** A page on which the user can add a new address to his address book. */
@@ -566,5 +580,40 @@
                 throw new \Exception('There was a problem with restoring your password. Try again later or contact the support.');
             }
         }
+
+		/** Renders the markup of all the orders every made by the user. */
+		public function renderOrders($UserID)
+		{
+			// Fetch the orders from the database.
+			$Orders = $this->getOrderTable()->select(['UserID' => $UserID])->buffer();
+			
+			// Variable to hold the markup.
+			$Markup = "<div class='orderHeader'>
+					       <div class='col-lg-2'>OrderID</div>
+					       <div class='col-lg-2'>Value</div>
+					       <div class='col-lg-2'>Status</div>
+					       <div class='col-lg-3'>Placement date</div>
+					       <div class='col-lg-2'>Details</div>
+					   </div>";
+			
+			// Iterate over all orders and render them.
+			foreach($Orders as $Order)
+			{
+				$OrderID = $Order->getOrderID();
+				$Value = $Order->getValue();
+				$Status = $Order->getStatus();
+				$PlacementDate = $Order->getPlacementDate();
+				$Details = "<a class='btn btn-primary' href='/order/$OrderID'>Details</a>";
+				$Markup .= "<div class='order'>
+					            <div class='col-lg-2'>$OrderID</div>
+					            <div class='col-lg-2'>£$Value</div>
+					            <div class='col-lg-2'>$Status</div>
+					            <div class='col-lg-3'>$PlacementDate</div>
+					            <div class='col-lg-2'>$Details</div>
+							</div>";
+			}
+			
+			return "<div class='orderWrapper col-lg-7'>" . $Markup . "</div>";
+		}
     }
 ?>

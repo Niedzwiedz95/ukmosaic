@@ -13,14 +13,16 @@
 	/**	A product that was added to cart or ordered. */
     class OrderProduct extends BaseModel
     {
-		// Properties.
+		// Properties stored in the database.
+		protected $OrderID;
 		protected $ProductID;
 		protected $ProductName;
 		protected $DisplayType;
-		protected $Type;
-		protected $Price;
 		protected $Amount;
+		protected $Price;
 		protected $Path;
+		protected $PriceType;
+		protected $Description;
 		
 		/** Sets the type basing on the "price type" assigned to the product. */
 		public function setDisplayTypeFromPriceType($PriceType)
@@ -59,8 +61,37 @@
 			}
 			else
 			{
-				throw new Exception("Incorrect 'price type' as an argument to OrderProduct->setTypeFromPriceType");	
+				throw new Exception("Incorrect 'price type' as an argument to OrderProduct->setDisplayTypeFromPriceType");	
 			}
+		}
+
+		/** Renders the markup of this OrderProduct instance. This is the version used in the order details, without the
+		 *  remove from cart button. */
+		public function render()
+		{
+			// Fetch the properties of the OrderProduct instance for easy interpolation.
+			$ProductID = $this->getProductID();
+			$ProductName = $this->getProductName();
+			$DisplayType = $this->getDisplayType();
+			$Amount = $this->getAmount();
+			$Price = $this->getPrice();
+			$Path = $this->getPath();
+			$PriceType = $this->getPriceType();
+			$Subtotal = $Price * $Amount;
+					
+			// Return the assembled markup.
+			return "<div class='cartProduct col-lg-7'>
+						<div class='imgWrapper col-lg-5'>
+							<a href='/product/$ProductID'><img src='$Path' alt='$ProductName'/></a>
+						</div>
+						<div class='infoWrapper col-lg-5'>
+							<h1>$ProductName</h1>
+							<h2>$DisplayType</h2>
+							<p>Amount: $Amount</p>
+							<p>Unit price: £$Price</p>
+							<p>Subtotal: £$Subtotal</p>
+						</div>
+					</div>";
 		}
     }
 ?>
