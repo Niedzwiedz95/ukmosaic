@@ -1,7 +1,6 @@
 <?php
 	return
 	[
-        // List of all controllers in the User module.
 	    'controllers' =>
 	    [
 	        'invokables' =>

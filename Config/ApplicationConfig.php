@@ -5,6 +5,7 @@
         // List of all modules.
 	    'modules' =>
 	    [
+	    	'Admin',
             'Core',
             'Mosaic',
             'User'
