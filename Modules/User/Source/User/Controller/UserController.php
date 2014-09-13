@@ -472,6 +472,7 @@
 			$_SESSION['User'] = [];
 			$_SESSION['User']['UserID'] = $User->getUserID();
 			$_SESSION['User']['Email'] = $User->getEmail();
+			$_SESSION['User']['IsAdmin'] = $User->getIsAdmin() == 1;
 			
 			// Redirect the user to the account management page.
 			return $this->redirect()->toRoute('user', ['action' => 'account']);

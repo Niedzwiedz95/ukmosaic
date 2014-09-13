@@ -217,7 +217,7 @@
 					[
 						'ProductID' => $ProductID,
 						'ProductName' => $Product->getProductName(),
-						'Amount' => $Data['productAmount'],
+						'Quantity' => $Data['quantity'],
 						'Price' => $Product->$Getter(),
 						'Path' => $Product->getPath(),
 						'Description' => $Product->getDescription(),
@@ -381,7 +381,7 @@
 							'OrderID' => $OrderID,
 							'ProductID' => $OrderProduct['ProductID'],
 							'ProductType' => $OrderProduct['DisplayType'],
-							'Amount' => $OrderProduct['Amount'],
+							'Quantity' => $OrderProduct['Quantity'],
 							'Price' => $OrderProduct['Price'],
 						]);*/
 					}
@@ -501,11 +501,11 @@
 					$ProductID = $OrderProduct['ProductID'];
 					$ProductName = $OrderProduct['ProductName'];
 					$DisplayType = $OrderProduct['DisplayType'];
-					$Amount = $OrderProduct['Amount'];
+					$Quantity = $OrderProduct['Quantity'];
 					$Price = $OrderProduct['Price'];
 					$Path = $OrderProduct['Path'];
 					$PriceType = $OrderProduct['PriceType'];
-					$Subtotal = $Price * $Amount;
+					$Subtotal = $Price * $Quantity;
 					
 					// Assemble the markup.
 					$Markup .= 
@@ -516,7 +516,7 @@
 						<div class='infoWrapper col-lg-5'>
 							<h1>$ProductName</h1>
 							<h2>$DisplayType</h2>
-							<p>Amount: $Amount</p>
+							<p>Quantity: $Quantity</p>
 							<p>Unit price: £$Price</p>
 							<p>Subtotal: £$Subtotal</p>
 							<a class='btn btn-primary col-lg-12' href='/cart/remove/$ProductID/$PriceType'>Remove from cart</a>
@@ -542,7 +542,7 @@
 			{
 				foreach($OrderProducts as $OrderProduct)
 				{
-					$GrandTotal += $OrderProduct['Amount'] * $OrderProduct['Price'];
+					$GrandTotal += $OrderProduct['Quantity'] * $OrderProduct['Price'];
 				}
 			}
 			

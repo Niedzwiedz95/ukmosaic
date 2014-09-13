@@ -44,11 +44,11 @@
             ]);
             $this->add(
             [
-                'name' => 'productAmount',
+                'name' => 'quantity',
                 'attributes' =>
                 [
                    'type'  => 'number',
-                   'id' => 'productAmount',
+                   'id' => 'quantity',
                    'required' => 'required',
                    'value' => 1,
                    'min' => 1
@@ -102,9 +102,9 @@
                     ],
                 ]
             ];
-            $ProductAmount =
+            $Quantity =
             [
-                'name' => 'productAmount',
+                'name' => 'quantity',
                 'required' => true,
                 'filters'  =>
                 [
@@ -120,7 +120,7 @@
                         	'min' => 1,
                             'messages' =>
                             [
-                                'notBetween' => 'You must purchase at least one square meter of tiles'
+                                'notBetween' => 'You must purchase at least one square meter of tiles!'
                             ]
                         ]
                     ],
@@ -146,7 +146,7 @@
 			// Assemble the input filter. The first entry is the CSRF input specification.
 			//$InputFilter->add($Factory->createInput($this->getCsrfInputSpecification()));
 			$InputFilter->add($Factory->createInput($ProductType));
-			$InputFilter->add($Factory->createInput($ProductAmount));
+			$InputFilter->add($Factory->createInput($Quantity));
 			$InputFilter->add($Factory->createInput($SubmitAddToCartForm));			
             return $InputFilter;
         }

@@ -28,7 +28,7 @@
 		protected $Price2x2;
 		protected $Price25x25;
 		
-		/* Build up the product details that is displayed on the product page. */
+		/** Builds up the product details that are displayed on the product page. */
 		public function getProductDetails()
 		{
 			$Details = '<h1>' . $this->getProductName() . '</h1>';
@@ -67,7 +67,7 @@
 			return $Details;
 		}
 		
-		/* Builds up a value_options array used in constructing the AddToCartForm instance. */
+		/** Builds up a value_options array used in constructing the AddToCartForm instance. */
 		public function getValueOptions()
 		{
 			// Create an empty array to store the options.
@@ -109,6 +109,302 @@
 			
 			// Return the options array.
 			return $ValueOptions;
+		}
+
+		/** Provides the appropriate input filter for the product. */
+		public function getInputFilter()
+		{
+			// Create the input filter and input factory instances.
+            $InputFilter = new InputFilter();
+            $Factory = new InputFactory();
+            
+			// Create the validator specifications.
+            $ProductName =
+            [
+                'name' => 'productName',
+                'required' => true,
+                'filters' =>
+                [
+                	['name' => 'StripTags'],
+                	['name' => 'StringTrim']
+            	],
+                'validators' =>
+                [
+                    [
+                        'name' => 'NotEmpty',
+                        'options' =>
+                        [
+                            'messages' =>
+                            [
+                                'isEmpty' => 'This field is required.'
+                            ]
+                        ]
+                    ],
+                    [
+                    	'name' => 'StringLength',
+                    	'options' =>
+                    	[
+                    		'max' => 64,
+                    		'messages' =>
+                    		[
+                    			'stringLengthTooLong' => 'The product name must not be longer than 64 characters!'
+                    		]
+                    	]
+                    ]
+                ],
+            ];
+            $Category =
+            [
+                'name' => 'category',
+                'required' => true,
+                'filters' =>
+                [
+                	['name' => 'StripTags'],
+                	['name' => 'StringTrim']
+            	],
+                'validators' =>
+                [
+                    [
+                        'name' => 'Regex',
+                        'options' =>
+                        [
+                        	'pattern' => '/^(unglazed_tiles15x15-9mm)|(unglazed_octagon10x10-9mm)|(unglazed_tiles5x5-9mm)|'.
+                        	             '(unglazed_tiles2x2-3.8mm)|(unglazed_tiles10x10-9mm)|(unglazed_victorian-9mm)' .
+                        	             '|(unglazed_basket)|(unglazed_tiles7x7-9mm)|(unglazed_tiles3.5x3.5-9mm)|' .
+                        	             '(unglazed_octagon15x15-9mm)|(satin&matt_tiles2.5x2.5-cmm)|(glazed_tiles2.5x2.5-cmm)|' .
+                        	             '(mosaicdesigns_mosaicdesigns)|(unglazed_tiles5x5-5mm)$/',
+                            'messages' =>
+                            [
+                                \Zend\Validator\Regex::INVALID => 'Ivalid categroy chosen.'
+                            ]
+                        ]
+                    ]
+                ],
+            ];
+            $Description =
+            [
+                'name' => 'description',
+                'required' => true,
+                'filters' =>
+                [
+                	['name' => 'StripTags'],
+                	['name' => 'StringTrim']
+            	],
+                'validators' =>
+                [
+                    [
+                        'name' => 'NotEmpty',
+                        'options' =>
+                        [
+                            'messages' =>
+                            [
+                                'isEmpty' => 'This field is required.'
+                            ]
+                        ]
+                    ],
+                    [
+                    	'name' => 'StringLength',
+                    	'options' =>
+                    	[
+                    		'max' => 255,
+                    		'messages' =>
+                    		[
+                    			'stringLengthTooLong' => 'The description must be shorter than 255 characters!'
+                    		]
+                    	]
+                    ]
+                ],
+            ];
+            $Price =
+            [
+                'name' => 'price',
+                'filters' =>
+                [
+                	['name' => 'StripTags'],
+                	['name' => 'StringTrim']
+            	],
+                'validators' =>
+                [
+                    [
+                        'name' => 'Zend\I18n\Validator\Float',
+                        'options' =>
+                        [
+                            'messages' =>
+                            [
+                                \Zend\I18n\Validator\Float::INVALID => 'This field must contain an integer or a decimal value!'
+                            ]
+                        ]
+                    ],
+                ],
+            ];
+            $PriceSquareLoose =
+            [
+                'name' => 'priceSquareLoose',
+                'filters' =>
+                [
+                	['name' => 'StripTags'],
+                	['name' => 'StringTrim']
+            	],
+                'validators' =>
+                [
+                    [
+                        'name' => 'Zend\I18n\Validator\Float',
+                        'options' =>
+                        [
+                            'messages' =>
+                            [
+                                \Zend\I18n\Validator\Float::INVALID => 'This field must contain an integer or a decimal value!'
+                            ]
+                        ]
+                    ],
+                ],
+            ];
+            $PriceSquareAssembled =
+            [
+                'name' => 'priceSquareAssembled',
+                'filters' =>
+                [
+                	['name' => 'StripTags'],
+                	['name' => 'StringTrim']
+            	],
+                'validators' =>
+                [
+                    [
+                        'name' => 'Zend\I18n\Validator\Float',
+                        'options' =>
+                        [
+                            'messages' =>
+                            [
+                                \Zend\I18n\Validator\Float::INVALID => 'This field must contain an integer or a decimal value!'
+                            ]
+                        ]
+                    ],
+                ],
+            ];
+            $PriceLinearLoose =
+            [
+                'name' => 'priceLinearLoose',
+                'filters' =>
+                [
+                	['name' => 'StripTags'],
+                	['name' => 'StringTrim']
+            	],
+                'validators' =>
+                [
+                    [
+                        'name' => 'Zend\I18n\Validator\Float',
+                        'options' =>
+                        [
+                            'messages' =>
+                            [
+                                \Zend\I18n\Validator\Float::INVALID => 'This field must contain an integer or a decimal value!'
+                            ]
+                        ]
+                    ],
+                ],
+            ];
+            $PriceLinearAssembled =
+            [
+                'name' => 'priceLinearAssembled',
+                'filters' =>
+                [
+                	['name' => 'StripTags'],
+                	['name' => 'StringTrim']
+            	],
+                'validators' =>
+                [
+                    [
+                        'name' => 'Zend\I18n\Validator\Float',
+                        'options' =>
+                        [
+                            'messages' =>
+                            [
+                                \Zend\I18n\Validator\Float::INVALID => 'This field must contain an integer or a decimal value!'
+                            ]
+                        ]
+                    ],
+                ],
+            ];
+            $Price1x1 =
+            [
+                'name' => 'price1x1',
+                'filters' =>
+                [
+                	['name' => 'StripTags'],
+                	['name' => 'StringTrim']
+            	],
+                'validators' =>
+                [
+                    [
+                        'name' => 'Zend\I18n\Validator\Float',
+                        'options' =>
+                        [
+                            'messages' =>
+                            [
+                                \Zend\I18n\Validator\Float::INVALID => 'This field must contain an integer or a decimal value!'
+                            ]
+                        ]
+                    ],
+                ],
+            ];
+            $Price2x2 =
+            [
+                'name' => 'price2x2',
+                'filters' =>
+                [
+                	['name' => 'StripTags'],
+                	['name' => 'StringTrim']
+            	],
+                'validators' =>
+                [
+                    [
+                        'name' => 'Zend\I18n\Validator\Float',
+                        'options' =>
+                        [
+                            'messages' =>
+                            [
+                                \Zend\I18n\Validator\Float::INVALID => 'This field must contain an integer or a decimal value!'
+                            ]
+                        ]
+                    ],
+                ],
+            ];
+            $Price25x25 =
+            [
+                'name' => 'price25x25',
+                'filters' =>
+                [
+                	['name' => 'StripTags'],
+                	['name' => 'StringTrim']
+            	],
+                'validators' =>
+                [
+                    [
+                        'name' => 'Zend\I18n\Validator\Float',
+                        'options' =>
+                        [
+                            'messages' =>
+                            [
+                                \Zend\I18n\Validator\Float::INVALID => 'This field must contain an integer or a decimal value!'
+                            ]
+                        ]
+                    ],
+                ],
+            ];
+            
+            // Assemble the input filter and return it.
+            $InputFilter->add($Factory->createInput($ProductName));
+            $InputFilter->add($Factory->createInput($Category));
+            $InputFilter->add($Factory->createInput($Description));
+            $InputFilter->add($Factory->createInput($Price));
+            $InputFilter->add($Factory->createInput($PriceSquareLoose));
+            $InputFilter->add($Factory->createInput($PriceSquareAssembled));
+            $InputFilter->add($Factory->createInput($PriceLinearLoose));
+            $InputFilter->add($Factory->createInput($PriceLinearAssembled));
+            $InputFilter->add($Factory->createInput($Price1x1));
+            $InputFilter->add($Factory->createInput($Price2x2));
+            $InputFilter->add($Factory->createInput($Price25x25));
+            return $InputFilter;	
 		}
     }
 ?>

@@ -18,7 +18,7 @@
 		protected $ProductID;
 		protected $ProductName;
 		protected $DisplayType;
-		protected $Amount;
+		protected $Quantity;
 		protected $Price;
 		protected $Path;
 		protected $PriceType;
@@ -73,11 +73,11 @@
 			$ProductID = $this->getProductID();
 			$ProductName = $this->getProductName();
 			$DisplayType = $this->getDisplayType();
-			$Amount = $this->getAmount();
+			$Quantity = $this->getQuantity();
 			$Price = $this->getPrice();
 			$Path = $this->getPath();
 			$PriceType = $this->getPriceType();
-			$Subtotal = $Price * $Amount;
+			$Subtotal = $Price * $Quantity;
 					
 			// Return the assembled markup.
 			return "<div class='cartProduct col-lg-7'>
@@ -87,7 +87,7 @@
 						<div class='infoWrapper col-lg-5'>
 							<h1>$ProductName</h1>
 							<h2>$DisplayType</h2>
-							<p>Amount: $Amount</p>
+							<p>Quantity: $Quantity</p>
 							<p>Unit price: £$Price</p>
 							<p>Subtotal: £$Subtotal</p>
 						</div>

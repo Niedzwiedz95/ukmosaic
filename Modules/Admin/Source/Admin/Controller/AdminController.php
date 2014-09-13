@@ -61,5 +61,32 @@
             }
             return $this->OrderProductTable;
         }
+		
+		/** A page on which the admin can add a product to the database. */
+		public function addProductAction()
+		{
+			// Assert that the user requesting the page is an admin.
+			$this->assertIsAdmin();
+			
+			
+		}
+		
+		/** Asserts that the user currently signed in is an admin. */
+		public function assertIsAdmin()
+		{
+			// This little hack makes sure that the redirect works as expected. This is because the redirect() method only
+			// works after using return. This makes it hard to use, because one needs either to call it like
+			// 'return $this->redirect()...' or paste paste the body of this method directl. Rather than paste, it would be
+			// way better to have an inline function, and this hack does just this: it makes this function work like an
+			// inline function in, exempli gratia, C++. 
+			$assertIsAdmin = function($this)
+			{
+				if(isset($_SESSION['User']['IsAdmin']) == false || $_SESSION['User']['IsAdmin'] == false)
+				{
+					return $this->redirect()->toRoute('mosaic', ['action' => 'home']);
+				}
+			};
+			$assertIsAdmin($this);
+		}
     }
 ?>

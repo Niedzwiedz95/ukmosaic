@@ -15,8 +15,9 @@
     {
 		// Properties.
 		protected $UserID;
-		protected $Username;
+		//protected $Username;
 		protected $Email;
+		protected $IsAdmin;
 		protected $PasswordHash;
 		protected $Salt;
 		protected $Addresses;
