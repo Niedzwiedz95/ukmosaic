@@ -24,8 +24,7 @@
 	                    ],
 	                    'defaults' =>
 	                    [
-	                        'controller' => 'MosaicController',
-	                        'action'     => 'home',
+	                        'controller' => 'AdminController',
 	                    ],
 					],
 				],

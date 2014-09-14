@@ -388,7 +388,7 @@
 				}
 				
 				// Clear the cart.
-				unset($_SESSION['Cart']);
+				//unset($_SESSION['Cart']);
 				
 				// Redirect the user to the payment page.
 				return $this->redirect()->toRoute('mosaic', ['action' => 'payment']);
@@ -408,6 +408,8 @@
                 'Scripts' => [],
                 'Styles' => []
             ]);
+			
+			
 
             return (new ViewModel())->setTemplate('Mosaic/Payment.phtml');
 		}
