@@ -356,15 +356,22 @@
 			}
 			else // Insert the order to the database, clear the cart and redirect the user to his orders page.
 			{
+				// Compute the order's grand total and add it to the session.
+				$GrandTotal = $this->computeGrandTotal($_SESSION['Cart']);
+				$_SESSION['GrandTotal'] = $GrandTotal;
+				
 				// Insert the order to the database and retrieve the order's id.
 				$Order = new \Mosaic\Model\Order(
 				[
 					'UserID' => $_SESSION['User']['UserID'],
 					'AddressID' => $AddressID,
-					'Value' => $this->computeGrandTotal($_SESSION['Cart']),
+					'Value' => $GrandTotal,
 					'Status' => 'Placed'
 				]);
 				$OrderID = $this->getOrderTable()->insertOrder($Order);
+				
+				// Store the OrderID in the session to be accessed later.
+				$_SESSION['OrderID'] = $OrderID;
 				
 				// Insert the ordered products to the database
 				foreach($_SESSION['Cart'] as $ProductClass)
@@ -408,10 +415,8 @@
                 'Scripts' => [],
                 'Styles' => []
             ]);
-			
-			
 
-            return (new ViewModel())->setTemplate('Mosaic/Payment.phtml');
+            return (new ViewModel(['OrderID' => $_SESSION['OrderID'], 'GrandTotal' => $_SESSION['GrandTotal']]))->setTemplate('Mosaic/Payment.phtml');
 		}
 		
 		/** Page that shows details of an order. */

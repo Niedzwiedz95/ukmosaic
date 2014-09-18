@@ -1,28 +1,28 @@
-<form id="paypalCheckout" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<div class='col-lg-5'></div><form id="paypalCheckout" class='col-lg-1' action="https://www.paypal.com/cgi-bin/webscr" method="post">
 	<div class='form-group'>
-        <input type="hidden" name="cmd" value="_cart" />
-        <input type="hidden" name="upload" value="1" />			
-        <input type="hidden" name="no_note" value="0" />						
-        <input type="hidden" name="bn" value="PP-BuyNowBF" />					
-        <input type="hidden" name="tax" value="0" />			
-        <input type="hidden" name="rm" value="2" />
+        <input type="hidden" name="cmd" value="_cart"/>
+        <input type="hidden" name="upload" value="1"/>			
+        <input type="hidden" name="no_note" value="0"/>						
+        <input type="hidden" name="bn" value="PP-BuyNowBF"/>					
+        <input type="hidden" name="tax" value="0"/>			
+        <input type="hidden" name="rm" value="2"/>
 	</div>
 	<div class='form-group'>
        <input type="hidden" name="business" value="info@martinmosaic.com"/>
        <input type="hidden" name="handling_cart" value="0"/>
        <input type="hidden" name="currency_code" value="GBP"/>
        <input type="hidden" name="lc" value="GB"/>
-       <input type="hidden" name="return" value="http://martinmosaic.com/shop/paymentreturn"/>			
+       <input type="hidden" name="return" value="<?php echo $this->url('mosaic', ['action' => 'orders']); ?>"/>			
        <input type="hidden" name="cbt" value="Return to martinmosaic.com"/>
-       <input type="hidden" name="cancel_return" value="http://martinmosaic.com/shop/paymentcancel"/>			
-       <!--<input type="hidden" name="custom" value="'.$this->custom.'" />-->
+       <input type="hidden" name="cancel_return" value="<?php echo $this->url('mosaic', ['action' => 'payment']); ?>"/>			
+       <!--<input type="hidden" name="custom" value="'.$this->custom.'"/>-->
 	</div>
 	<div class='form-group'>    
           <div id="item_1" class="itemwrap">
-            <input type="hidden" name="item_name_1" value="VAL_TODO"/>
+            <input type="hidden" name="item_name_1" value="martinmosaic.com, order no. <?php echo $this->OrderID; ?>"/>
             <input type="hidden" name="quantity_1" value="1"/>
-            <input type="hidden" name="amount_1" value="AMOUNT_TODO" />
-           	<input type="hidden" name="shipping_1" value="0" />
+            <input type="hidden" name="amount_1" value="<?php echo $this->GrandTotal; ?>"/>
+           	<input type="hidden" name="shipping_1" value="0"/>
          </div>
      </div>
-     <input type='submit' name='submitPaypalCheckout' value='Proceed to PayPal'/>
+     <input class='btn btn-primary' type='submit' name='submitPaypalCheckout' value='Proceed to PayPal'/>
