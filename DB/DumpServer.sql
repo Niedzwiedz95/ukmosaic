@@ -36,7 +36,7 @@ CREATE TABLE `Addresses` (
   PRIMARY KEY (`AddressID`),
   UNIQUE KEY `AddressID_UNIQUE` (`AddressID`),
   KEY `UserID_idx` (`UserID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,8 +45,42 @@ CREATE TABLE `Addresses` (
 
 LOCK TABLES `Addresses` WRITE;
 /*!40000 ALTER TABLE `Addresses` DISABLE KEYS */;
-INSERT INTO `Addresses` VALUES (1,1,'Pan Test','ul. Testowa 42','na jachcie','na morzu','tajne kody',NULL);
+INSERT INTO `Addresses` VALUES (1,0,'Pan Test','ul. Testowa 42','na jachcie','na morzu','tajne kody',NULL),(2,0,'asd','dsa','Lokal','majka`','123',NULL),(3,1,'Ful','name ulica','lokal','miasto','kot',NULL);
 /*!40000 ALTER TABLE `Addresses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `OrderProducts`
+--
+
+DROP TABLE IF EXISTS `OrderProducts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `OrderProducts` (
+  `OrderID` int(10) unsigned NOT NULL,
+  `ProductID` int(10) unsigned NOT NULL,
+  `ProductName` varchar(64) NOT NULL,
+  `DisplayType` varchar(64) NOT NULL,
+  `Quantity` int(11) NOT NULL,
+  `Price` double NOT NULL,
+  `Path` varchar(128) NOT NULL,
+  `PriceType` varchar(32) NOT NULL,
+  `Description` varchar(128) DEFAULT NULL,
+  KEY `OrderID_idx` (`OrderID`),
+  KEY `ProductID_idx` (`ProductID`),
+  CONSTRAINT `OrderID` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `ProductID` FOREIGN KEY (`ProductID`) REFERENCES `Products` (`ProductID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `OrderProducts`
+--
+
+LOCK TABLES `OrderProducts` WRITE;
+/*!40000 ALTER TABLE `OrderProducts` DISABLE KEYS */;
+INSERT INTO `OrderProducts` VALUES (3,85,'Sydney Design','Border per linear metre: Loose Tiles',4,36.25,'/img/catalogue/unglazed/victorian-9mm/pl-x21.jpg','PriceLinearLoose',NULL),(4,134,'Bahamas 348x348','Standard',1,79.4,'/img/catalogue/glazed/tiles2.5x2.5-cmm/Bahamas 348x348.jpg','Price',NULL),(5,84,'Coral Design','Field per square meter: Loose Tiles',4,311.25,'/img/catalogue/unglazed/victorian-9mm/pl-x15.jpg','PriceSquareLoose',NULL),(6,85,'Sydney Design','Field per square meter: Loose Tiles',3,339.25,'/img/catalogue/unglazed/victorian-9mm/pl-x21.jpg','PriceSquareLoose',NULL),(7,85,'Sydney Design','Field per square meter: Loose Tiles',3,339.25,'/img/catalogue/unglazed/victorian-9mm/pl-x21.jpg','PriceSquareLoose',NULL),(8,85,'Sydney Design','Field per square meter: Loose Tiles',3,339.25,'/img/catalogue/unglazed/victorian-9mm/pl-x21.jpg','PriceSquareLoose',NULL),(9,85,'Sydney Design','Field per square meter: Loose Tiles',3,339.25,'/img/catalogue/unglazed/victorian-9mm/pl-x21.jpg','PriceSquareLoose',NULL),(10,85,'Sydney Design','Field per square meter: Loose Tiles',3,339.25,'/img/catalogue/unglazed/victorian-9mm/pl-x21.jpg','PriceSquareLoose',NULL),(11,134,'Bahamas 348x348','Standard',2,79.4,'/img/catalogue/glazed/tiles2.5x2.5-cmm/Bahamas 348x348.jpg','Price',NULL),(12,134,'Bahamas 348x348','Standard',1,79.4,'/img/catalogue/glazed/tiles2.5x2.5-cmm/Bahamas 348x348.jpg','Price',NULL);
+/*!40000 ALTER TABLE `OrderProducts` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -57,14 +91,19 @@ DROP TABLE IF EXISTS `Orders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Orders` (
-  `OderID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `OrderID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `UserID` int(10) unsigned NOT NULL,
+  `AddressID` int(10) unsigned NOT NULL,
   `Value` double unsigned NOT NULL,
-  PRIMARY KEY (`OderID`),
-  UNIQUE KEY `OderID_UNIQUE` (`OderID`),
+  `Status` enum('Placed','Shipped') NOT NULL,
+  `PlacementDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`OrderID`),
+  UNIQUE KEY `OrderID_UNIQUE` (`OrderID`),
   KEY `UserID_idx` (`UserID`),
-  CONSTRAINT `fk_UserID` FOREIGN KEY (`UserID`) REFERENCES `Users` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `fk_AddressID_idx` (`AddressID`),
+  CONSTRAINT `AddressID` FOREIGN KEY (`AddressID`) REFERENCES `Addresses` (`AddressID`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `UserID` FOREIGN KEY (`UserID`) REFERENCES `Users` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,6 +112,7 @@ CREATE TABLE `Orders` (
 
 LOCK TABLES `Orders` WRITE;
 /*!40000 ALTER TABLE `Orders` DISABLE KEYS */;
+INSERT INTO `Orders` VALUES (3,1,1,145,'Placed','2014-08-31 12:53:54'),(4,1,2,79.4,'Placed','2014-09-09 15:18:06'),(5,1,2,1245,'Placed','2014-09-13 11:37:44'),(6,1,2,1017.75,'Placed','2014-09-14 15:03:29'),(7,1,2,1017.75,'Placed','2014-09-14 15:17:27'),(8,1,2,1017.75,'Placed','2014-09-17 11:42:58'),(9,1,2,1017.75,'Placed','2014-09-17 11:44:09'),(10,1,2,1017.75,'Placed','2014-09-17 11:47:49'),(11,1,2,158.8,'Placed','2014-09-17 12:28:11'),(12,1,3,79.4,'Placed','2014-09-18 15:02:42');
 /*!40000 ALTER TABLE `Orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,11 +124,11 @@ DROP TABLE IF EXISTS `Products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Products` (
-  `ProductID` int(11) NOT NULL AUTO_INCREMENT,
+  `ProductID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ProductName` varchar(64) NOT NULL,
   `Category` varchar(32) NOT NULL,
   `Path` varchar(128) NOT NULL,
-  `Description` char(255) DEFAULT NULL,
+  `Description` varchar(255) DEFAULT NULL,
   `Price` double DEFAULT NULL,
   `PriceSquareLoose` double DEFAULT NULL,
   `PriceSquareAssembled` double DEFAULT NULL,
@@ -150,6 +190,7 @@ DROP TABLE IF EXISTS `Users`;
 CREATE TABLE `Users` (
   `UserID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Email` varchar(255) NOT NULL,
+  `IsAdmin` bit(1) NOT NULL,
   `PasswordHash` char(128) NOT NULL,
   `Salt` char(128) NOT NULL,
   PRIMARY KEY (`UserID`),
@@ -164,7 +205,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'test@test.com','7721506723ce05ace069262acc6dba77dabcb23cc3e52ce271350f2eb107c74742ff6982359ff47338e83fa02ef60805e2ccf0f3bc2351da36927c64859f6129','v+x1$EQ!lx@eG_+rX6,~*vE*PSm&t!mOWJez$U>;*~/mU$DfJu%qQi:{0j!()[wEvA3<)1[0A%#)Sf\\,z3g%@d9AmIi}uEzP5,NOSyd*b^1V_OLjgS]*VWh8{p2nT,3n');
+INSERT INTO `Users` VALUES (1,'test@test.com','\0','7721506723ce05ace069262acc6dba77dabcb23cc3e52ce271350f2eb107c74742ff6982359ff47338e83fa02ef60805e2ccf0f3bc2351da36927c64859f6129','v+x1$EQ!lx@eG_+rX6,~*vE*PSm&t!mOWJez$U>;*~/mU$DfJu%qQi:{0j!()[wEvA3<)1[0A%#)Sf\\,z3g%@d9AmIi}uEzP5,NOSyd*b^1V_OLjgS]*VWh8{p2nT,3n');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -177,4 +218,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-22 17:36:17
+-- Dump completed on 2014-09-18 17:06:47

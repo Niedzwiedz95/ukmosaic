@@ -67,7 +67,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Home - Martin's mosaics",
+                'Title' => "Home | Martin's mosaics",
                 'Styles' => ['/css/pages/mosaic/Home.css'],
                 'Scripts' => ['/js/pages/Home.js']
             ]);
@@ -85,7 +85,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Catalogue - Martin's mosaics",
+                'Title' => "Catalogue | Martin's mosaics",
                 'Styles' => ['/css/pages/mosaic/Catalogue.css'],
                 'Scripts' => ['/js/pages/Catalogue.js']
             ]);
@@ -97,7 +97,7 @@
         	// Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Technical - Martin's mosaics",
+                'Title' => "Technical | Martin's mosaics",
                 'Styles' => ['/css/pages/mosaic/Technical.css'],
                 'Scripts' => ['/js/pages/Pullup.js']
             ]);
@@ -112,7 +112,7 @@
         	// Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Special offers - Martin's mosaics",
+                'Title' => "Special offers | Martin's mosaics",
             ]);
 			
             return (new ViewModel([]))->setTemplate('Mosaic/Specialoffers.phtml');	
@@ -122,7 +122,7 @@
         	// Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Information - Martin's mosaics",
+                'Title' => "Information | Martin's mosaics",
                 'Styles' => ['/css/pages/mosaic/Information.css'],
             ]);
 			
@@ -133,7 +133,7 @@
         	// Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Accessories - Martin's mosaics",
+                'Title' => "Accessories | Martin's mosaics",
                 'Styles' => ['/css/pages/mosaic/Accessories.css'],
                 'Scripts' => ['/js/pages/Pullup.js']
             ]);
@@ -183,7 +183,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Contact - Martin's mosaics",
+                'Title' => "Contact | Martin's mosaics",
                 'Styles' => [],
                 'Scripts' => ['/js/pages/Contact.js']
             ]);
@@ -239,7 +239,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Creator - Martin's mosaics",
+                'Title' => "Creator | Martin's mosaics",
                 'Scripts' => ['/js/pages/Product.js'],
                 'Styles' => ['/css/pages/mosaic/Product.css']
             ]);
@@ -253,7 +253,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Terms of use - Martin's mosaics",
+                'Title' => "Terms of use | Martin's mosaics",
                 'Scripts' => [],
                 'Styles' => []
             ]);
@@ -283,7 +283,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Cart - Martin's mosaics",
+                'Title' => "Cart | Martin's mosaics",
                 'Scripts' => [],
                 'Styles' => ['/css/pages/mosaic/Cart.css']
             ]);
@@ -314,7 +314,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Cart - Martin's mosaics",
+                'Title' => "Checkout | Martin's mosaics",
                 'Scripts' => [],
                 'Styles' => ['/css/pages/mosaic/Checkout.css']
             ]);

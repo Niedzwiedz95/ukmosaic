@@ -34,7 +34,7 @@
 	    [
 	        'template_path_stack' =>
 	        [
-	            'Mosaic' => __DIR__ . '/../Views/',          
+	            'Admin' => __DIR__ . '/../Views/',          
 	        ]
 	    ],
 	];

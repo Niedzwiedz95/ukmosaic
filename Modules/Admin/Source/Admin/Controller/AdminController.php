@@ -68,7 +68,62 @@
 			// Assert that the user requesting the page is an admin.
 			$this->assertIsAdmin();
 			
+			// Create an AddProductForm instance.
+			$AddProductForm = new \Admin\Form\AddProductForm();
 			
+			// Check if it's a POST request with the form submitted.
+			if($this->getRequest()->isPost())
+			{
+				// Feed the data into the form.
+				$AddProductForm->setData($this->getRequest()->getPost()->toArray());
+				
+				if($AddProductForm->isValid())
+				{
+					
+				}
+			}
+			
+            // Add metadata to the layout.
+            $this->layout()->setVariables(
+            [
+                'Title' => "Add product | Martin's mosaics",
+                'Scripts' => [],
+                'Styles' => []
+            ]);
+			
+            return (new ViewModel(['AddProductForm' => $AddProductForm]))->setTemplate('Admin/AddProduct.phtml');
+		}
+		
+		/** A page on which the admin can edit a product. */
+		public function editProductAction()
+		{
+			// Assert that the user requesting the page is an admin.
+			$this->assertIsAdmin();
+			
+			// Create an AddProductForm instance.
+			$EditProductForm = new \Admin\Form\EditProductForm();
+			
+			// Check if it's a POST request with the form submitted.
+			if($this->getRequest()->isPost())
+			{
+				// Feed the data into the form.
+				$EditProductForm->setData($this->getRequest()->getPost()->toArray());
+				
+				if($EditProductForm->isValid())
+				{
+					
+				}
+			}
+			
+            // Add metadata to the layout.
+            $this->layout()->setVariables(
+            [
+                'Title' => "Edit product | Martin's mosaics",
+                'Scripts' => [],
+                'Styles' => []
+            ]);
+			
+            return (new ViewModel(['EditProductForm' => $EditProductForm]))->setTemplate('Admin/EditProduct.phtml');
 		}
 		
 		/** Asserts that the user currently signed in is an admin. */

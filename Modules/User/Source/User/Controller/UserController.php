@@ -65,7 +65,7 @@
 			// Assert that the user is signed out.
 			$this->assertSignedOut();
 			
-			// Create a form SignupForm instance.
+			// Create a SignupForm instance.
 			$SignupForm = $this->getServiceLocator()->get('User\Form\SignupForm');
 			
 			// Check if it's a POST request with the form submitted.
@@ -112,7 +112,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Sign up - Martin's mosaics",
+                'Title' => "Sign up | Martin's mosaics",
                 'Scripts' => [],
                 'Styles' => []
             ]);
@@ -145,7 +145,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Sign in - Martin's mosaics",
+                'Title' => "Sign in | Martin's mosaics",
                 'Scripts' => [],
                 'Styles' => ['/css/pages/user/Signin.css']
             ]);
@@ -220,7 +220,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Restore password - Martin's mosaics",
+                'Title' => "Restore password | Martin's mosaics",
                 'Scripts' => [],
                 'Styles' => []
             ]);
@@ -264,7 +264,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Manage account - Martin's mosaics",
+                'Title' => "Manage account | Martin's mosaics",
                 'Scripts' => [],
                 'Styles' => ['/css/pages/user/Account.css']
             ]);
@@ -284,7 +284,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Manage addresses - Martin's mosaics",
+                'Title' => "Manage addresses | Martin's mosaics",
                 'Scripts' => [],
                 'Styles' => ['/css/pages/user/AddressBook.css']
             ]);
@@ -301,7 +301,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Manage orders - Martin's mosaics",
+                'Title' => "Manage orders | Martin's mosaics",
                 'Scripts' => [],
                 'Styles' => ['/css/pages/user/Orders.css']
             ]);
@@ -352,7 +352,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Add a new address - Martin's mosaics",
+                'Title' => "Add a new address | Martin's mosaics",
                 'Scripts' => [],
                 'Styles' => []
             ]);
@@ -425,7 +425,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Edit address - Martin's mosaics",
+                'Title' => "Edit address | Martin's mosaics",
                 'Scripts' => [],
                 'Styles' => []
             ]);
@@ -472,7 +472,7 @@
 			$_SESSION['User'] = [];
 			$_SESSION['User']['UserID'] = $User->getUserID();
 			$_SESSION['User']['Email'] = $User->getEmail();
-			$_SESSION['User']['IsAdmin'] = $User->getIsAdmin() == 1;
+			$_SESSION['User']['IsAdmin'] = $User->getIsAdmin() == '1';
 			
 			// Redirect the user to the account management page.
 			return $this->redirect()->toRoute('user', ['action' => 'account']);

@@ -45,7 +45,8 @@
                 'invokables' =>
                 [
                     'BootstrapForm' => 'Core\Form\View\Helper\BootstrapForm',
-                    'RenderAddToCartForm' => 'Core\Form\View\Helper\RenderAddToCartForm'
+                    'RenderAddToCartForm' => 'Core\Form\View\Helper\RenderAddToCartForm',
+                    'renderProductForm' => 'Core\Form\View\Helper\ProductFormRenderer'
                 ],
             ];
         }
