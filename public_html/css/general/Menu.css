@@ -1,13 +1,13 @@
 header#siteHeader ul.nav
 {
-	height: 105px;
+	height: 100px;
 	padding: 0;
 }
 	header#siteHeader ul.nav > li.menu
 	{
 		width: 12.5%;
 		height: 20px;
-		margin: 41.25px 0;
+		margin: 40px 0;
 		text-align: center;
 	}
 		header#siteHeader ul.nav > li.menu > a

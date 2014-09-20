@@ -10,36 +10,14 @@ body
 		header#siteHeader > div.container
 		{
 			width: 90%;
+			height: 100px;
 			padding: 0;
 		}
-			header#siteHeader > div.container > div#logoWrapper
+			header#siteHeader > div.container > img#logo
 			{
+				margin: 16px 0;
 				padding: 0;
 			}
-				header#siteHeader > div.container > div#logoWrapper > a
-				{
-					display: block;
-					width: 240px;
-					height: 70px;
-					margin: 5px auto;
-					padding: 0px;
-				}
-					header#siteHeader > div.container > div#logoWrapper > a > img#logo
-					{
-						width: 240px;
-						height: 70px;
-						margin: 0;
-						padding: 0;
-					}
-				header#siteHeader > div.container > div#logoWrapper > p#fonts
-				{
-					color: gold; 
-					text-align: center;
-					margin: 0; 
-					font-size: 16px;
-					font-style: italic;
-					font-family: "Arial Black";
-				}
 	div#content
 	{
 		margin: 50px auto 0 auto;
