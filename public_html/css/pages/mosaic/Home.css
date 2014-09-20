@@ -16,4 +16,10 @@ div#hometext {
 b#hometext {
 	font-size: 26px;
 }
-
+ul#infocontact {
+	list-style-type: none;
+	float:right;
+	margin-top: 25px;
+	margin-right: 200px;
+	font-size: 18px;
+}
