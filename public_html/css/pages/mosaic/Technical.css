@@ -1,7 +1,7 @@
 div.winckelmans, div.briare {
-	text-align: center;
+	padding-left: 85px;
 	padding-top: 20px;
-	word-spacing: 20px;
+	word-spacing: 15px;
 }
 p.winckelmans, p.briare {
 	font-size:large;

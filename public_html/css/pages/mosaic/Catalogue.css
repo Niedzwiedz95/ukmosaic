@@ -43,3 +43,8 @@ nav#catalogueMenu li:hover
 {
 	cursor: pointer;
 }
+
+p#textpad {
+	margin-left: 80px;
+	margin-right: 80px;
+}
