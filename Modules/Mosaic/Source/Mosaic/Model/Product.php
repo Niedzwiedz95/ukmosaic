@@ -31,34 +31,41 @@
 		/** Builds up the product details that are displayed on the product page. */
 		public function getProductDetails()
 		{
+			// Variable that holds the product's description.
 			$Details = '<h1>' . $this->getProductName() . '</h1>';
 			$Details .= '<h2>' . $this->getDescription() . '</h2>';
 			
-			// Build up the array.
+			// Variables that 
+			$Standard = '';
+			$Square = '';
+			$Linear = '';
+			$MosaicDesigns = '';
+			
+			// Build up the product's description.
 			if($this->getPrice() != null)
 			{
 				$Standard = '<h3>Standard</h3>';
 				$Standard .= "<p>Standard - £<span class='pricePrice'>" . $this->getPrice() . '</span></p>';
 				$Details .= "<div class='col-lg-12'>$Standard</div>";
 			}
-			if($this->getPriceSquareLoose() != null)
+			if($this->getPriceSquareLoose() != null || $this->getPriceSquareAssembled() != null)
 			{
 				$Square = '<h3>Field per square metre</h3>';
-				$Square .= "<p>Loose Tiles - £<span class='pricePriceSquareLoose'>" . $this->getPriceSquareLoose() . '</span></p>';
+				$Square .= $this->getPriceSquareLoose() != null ? "<p>Loose Tiles - £<span class='pricePriceSquareLoose'>" . $this->getPriceSquareLoose() . '</span></p>' : '';
 				$Square .= $this->getPriceSquareAssembled() != null ? "<p>Assembled Tiles - £<span class='pricePriceSquareAssembled'>" . $this->getPriceSquareAssembled() . '</span></p>' : '';
 				$Details .= "<div class='col-lg-12'>$Square</div>";
 			}
-			if($this->getPriceLinearLoose() != null)
+			if($this->getPriceLinearLoose() != null || $this->getPriceLinearAssembled() != null)
 			{
 				$Linear = '<h3>Border per linear metre</h3>';
-				$Linear .= "<p>Loose Tiles - £<span class='pricePriceLinearLoose'>" . $this->getPriceLinearLoose() . '</span></p>';
+				$Linear .= $this->getPriceLinearLoose() != null ? "<p>Loose Tiles - £<span class='pricePriceLinearLoose'>" . $this->getPriceLinearLoose() . '</span></p>' : '';
 				$Linear .= $this->getPriceLinearAssembled() != null ? "<p>Assembled Borders - £<span class='pricePriceLinearAssembled'>" . $this->getPriceLinearAssembled() . '</span></p>' : '';
 				$Details .= "<div class='col-lg-12'>$Linear</div>";
 			}
-			if($this->getPrice1x1() != null)
+			if($this->getPrice1x1() != null || $this->getPrice2x2() != null || $this->getPrice25x25() != null)
 			{
 				$MosaicDesigns = '<h3>Mosaic Designs</h3>';
-				$MosaicDesigns .= "<p>Size 1x1 - £<span class='pricePrice1x1'>" . $this->getPrice1x1() . '</span></p>';
+				$MosaicDesigns .= $this->getPrice1x1() != null ? "<p>Size 1x1 - £<span class='pricePrice1x1'>" . $this->getPrice1x1() . '</span></p>' : '';
 				$MosaicDesigns .= $this->getPrice2x2() != null ? "<p>Size 2x2 - £<span class='pricePrice2x2'>" . $this->getPrice2x2() . '</span></p>' : '';
 				$MosaicDesigns .= $this->getPrice25x25() != null ? "<p>Size 2.5x2.5 - £<span class='pricePrice25x25'>" . $this->getPrice25x25() . '</span></p>' : '';
 				$Details .= "<div class='col-lg-12'>$MosaicDesigns</div>";
