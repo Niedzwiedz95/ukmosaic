@@ -2,6 +2,9 @@
 <html lang="en">
     <head>
         <!--Encoding and content type===========================================-->
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
         <!--Title, description, SEO meta tags===================================-->
         <title><?php echo $this->Title; ?></title>
@@ -12,16 +15,26 @@
         <!--Icon and other dependencies==========================================-->
         <?php //TODO ?>
         <!-- CSS libs===========================================================-->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    	<![endif]-->
         <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="/js/lib/fancybox/source/jquery.fancybox.css" type="text/css" media="screen"/>
         <!--Own CSS=============================================================-->
-        <link rel="stylesheet" type="text/css" href="/css/general/Mosaic.css"/>
+        <!--<link rel="stylesheet" type="text/css" href="/css/general/Mosaic.css"/>-->
+        <link rel="stylesheet" type="text/css" href="/css/general/Layout.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/general/Menu.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/general/Form.css"/>
         <!--JS libs=========================================================-->
         <script type="text/javascript" src="/js/lib/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/js/lib/fancybox/source/jquery.fancybox.pack.js"></script>
         <script type="text/javascript" src="/js/lib/jqFancyTransitions.1.8.min.js"></script>
 		<script type="text/javascript" src="/js/lib/jquery.validate.min.js"></script>
+		<!--[if (gte IE 6)&(lte IE 8)]>
+			<script type="text/javascript" src="/js/lib/selectivizr/selectivizr-min.js"></script>
+		<![endif]-->
         <!--3rd party JS=========================================================-->
         <?php //TODO ?>
         <!--Own JS===========================================================-->

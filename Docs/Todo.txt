@@ -8,3 +8,7 @@ Zeimer:
 16. Naprawić linki przy logowaniu.
 17. Po rejestracji - strona główna 
 18. Adres - wyśrodkować w address book
+
+MN-26
+Field per square metre: Assembled Tiles 69.00 £
+Border per linear metre: Assembled Borders 9.00 £

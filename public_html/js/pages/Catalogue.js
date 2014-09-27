@@ -1,5 +1,7 @@
 $(document).ready(function()
-{	
+{
+    //displayTiles('all');
+    
 	// When a menu link is clicked, appropriate tiles are shown. 
 	$("nav#catalogueMenu a").click(function(event)
 	{
@@ -7,8 +9,8 @@ $(document).ready(function()
 		event.preventDefault();
 		
 		// Display the tiles. Category is the fetched from the href attribute of the link in the menu.
-		var splits = $(this).attr('href').split('/')
-		var category = splits[splits.length - 1]
+		var splits = $(this).attr('href').split('/');
+		var category = splits[splits.length - 1];
 		displayTiles(category);
 	});
 	
@@ -28,7 +30,7 @@ $(document).ready(function()
 function displayTiles(category)
 {
 	// If category was not given, stop the procedure.
-	if(category == null || category == "undefined" || category == 0 || category == "")
+	if(category == null || category == "undefined" || category == 0)// || category == "")
 	{
 		return;
 	}

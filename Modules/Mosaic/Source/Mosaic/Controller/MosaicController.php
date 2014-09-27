@@ -239,7 +239,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Creator | Martin's mosaics",
+                'Title' => "Product details | Martin's mosaics",
                 'Scripts' => ['/js/pages/Product.js'],
                 'Styles' => ['/css/pages/mosaic/Product.css']
             ]);
@@ -467,8 +467,12 @@
 		/** Renders the html code of the products that are to be displayed. */
 		public function renderProducts($Category)
 		{
-			// Fetch products of the desored category from the database.
-			$Products = $this->getProductTable()->select(['Category' => $Category])->buffer();
+			// Check whether $Category equals 'all'. If that's the case, the $Params array is empty so that all products are
+			// selected. Otherwise it specifies which category of products to select.
+			$Params = $Category == 'all' ? [] : ['Category' => $Category];
+			
+			// Fetch products of the desired category from the database.
+			$Products = $this->getProductTable()->select($Params)->buffer();
 			
 			// Variable to hold the markup.
 			$HTML = "";
