@@ -9,7 +9,7 @@ div.cartProduct
 	padding: 0;
 	text-align: left;
 	color: white;
-	background: #222;
+	background: black;
 	border-radius: 5px;
 }
 	div.cartProduct > div
