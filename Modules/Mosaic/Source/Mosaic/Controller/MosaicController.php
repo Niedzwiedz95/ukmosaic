@@ -67,7 +67,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Home | Martin's mosaics",
+                'Title' => "London Mosaic Victorian Tiles: Mosaic Designs",
                 'Styles' => ['/css/pages/mosaic/Home.css'],
                 'Scripts' => ['/js/pages/Home.js']
             ]);
