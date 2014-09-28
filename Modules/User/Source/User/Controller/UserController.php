@@ -475,7 +475,7 @@
 			$_SESSION['User']['IsAdmin'] = $User->getIsAdmin() == '1';
 			
 			// Redirect the user to the account management page.
-			return $this->redirect()->toRoute('user', ['action' => 'account']);
+			return $this->redirect()->toRoute('mosaic', ['action' => 'home']);
 		}
 		
 		/** A page which signs the user out. */

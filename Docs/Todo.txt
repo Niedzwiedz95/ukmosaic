@@ -2,9 +2,14 @@ Zeimer:
 10. Doprowadzić formularze do standardu: sprawdzić, czy wszędzie jest walidacja CSRF i przycisku submit (i czy jest sam przycisk).
 11. Sprawdzić, czy we wszystkich formularzach guzig submit ma poprawną nazwę.
 12. Spradzić, czy walidacja działa bez $Factory->createInput() - usunąć chwilowo walidację po stronie przeglądarki.
-13. Zrobić tak, żeby w katalogu na początku wyświetlały się wszystkie płytki na raz.
 14. Wyłączyć dostęp do cpanelu z poziomu martinmosaic.com.
 15. Zrobić cron job do robienia backupa bazy.
-16. Naprawić linki przy logowaniu.
-17. Po rejestracji - strona główna 
-18. Adres - wyśrodkować w address book
+16. Naprawić linki przy logowaniu. U MNIE DZIAŁA
+17. Po rejestracji - strona główna. ZROBIONE
+18. Adres - wyśrodkować w address book.
+19. Dodać special offers do katalogu.
+20. Skończyć admin tools!
+21. Naprawić Cart [0] tak, żeby po wywleniu czegoś z koszyka wyświetlała się poprawna liczba. ZROBIONE
+22. Ogarnąć, żeby transakcja była dodawana dopiero po zapłaceniu paypalem.
+23. Zrobić listę wszystkich transakcji dla admina.
+24. Zrobić tak, żeby po złożeniu zamówienia wysyłało się powiadomienie na email.

@@ -303,6 +303,13 @@
 			{
 				// Unset the requested item.
 				unset($_SESSION['Cart'][$ID][$Type]);
+				
+				// If all types of some product we're removed from the cart, remove the index $ID so that the products in the
+				// cart are counted correctly.
+				if($_SESSION['Cart'][$ID] == [])
+				{
+					unset($_SESSION['Cart'][$ID]);
+				}
 			}
 			
 			return $this->redirect()->toRoute('mosaic', ['action' => 'cart']);
@@ -416,7 +423,7 @@
                 'Styles' => []
             ]);
 
-            return (new ViewModel(['OrderID' => $_SESSION['OrderID'], 'GrandTotal' => $_SESSION['GrandTotal']]))->setTemplate('Mosaic/Payment.phtml');
+            return (new ViewModel(['OrderID' => $_SESSION['OrderID'], 'GrandTotal' => $this->computeGrandTotal($_SESSION['Cart'])]))->setTemplate('Mosaic/Payment.phtml');
 		}
 		
 		/** Page that shows details of an order. */

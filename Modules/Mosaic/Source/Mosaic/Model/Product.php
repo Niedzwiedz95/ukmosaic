@@ -179,7 +179,7 @@
                         	             '(unglazed_tiles2x2-3.8mm)|(unglazed_tiles10x10-9mm)|(unglazed_victorian-9mm)' .
                         	             '|(unglazed_basket)|(unglazed_tiles7x7-9mm)|(unglazed_tiles3.5x3.5-9mm)|' .
                         	             '(unglazed_octagon15x15-9mm)|(satin&matt_tiles2.5x2.5-cmm)|(glazed_tiles2.5x2.5-cmm)|' .
-                        	             '(mosaicdesigns_mosaicdesigns)|(unglazed_tiles5x5-5mm)$/',
+                        	             '(mosaicdesigns_mosaicdesigns)|(unglazed_tiles5x5-5mm)|(specialoffers_specialoffers)$/',
                             'messages' =>
                             [
                                 \Zend\Validator\Regex::INVALID => 'Ivalid categroy chosen.'
