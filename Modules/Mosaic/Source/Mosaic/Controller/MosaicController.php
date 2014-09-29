@@ -402,7 +402,10 @@
 				}
 				
 				// Clear the cart.
-				//unset($_SESSION['Cart']);
+				unset($_SESSION['Cart']);
+				
+				// Send an email to notify the shop owner that a purchase was made.
+				$this->orderNotify();
 				
 				// Redirect the user to the payment page.
 				return $this->redirect()->toRoute('mosaic', ['action' => 'payment']);
@@ -605,6 +608,12 @@
 			
 			// Return the markup.
 			return $Markup;
+		}
+		
+		/** Notifies info@martinmosaic.com that a purchase was made. */
+		public function orderNotify()
+		{
+			
 		}
     }
 ?>

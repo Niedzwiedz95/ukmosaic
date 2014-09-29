@@ -1,4 +1,4 @@
-<div class='col-lg-5'></div><form id="paypalCheckout" class='col-lg-1' action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<div class='col-lg-5'></div><form id="paypalCheckout" class='col-lg-1' action="https://www.paypal.com/cgi-bin/webscr" method="post">
 	<div class='form-group'>
         <input type="hidden" name="cmd" value="_cart"/>
         <input type="hidden" name="upload" value="1"/>			
@@ -12,7 +12,7 @@
        <input type="hidden" name="handling_cart" value="0"/>
        <input type="hidden" name="currency_code" value="GBP"/>
        <input type="hidden" name="lc" value="GB"/>
-       <input type="hidden" name="return" value="<?php echo $this->url('user', ['action' => 'orders']); ?>"/>			
+       <input type="hidden" name="return" value="<?php echo $this->url('mosaic', ['action' => 'home']); ?>"/>			
        <input type="hidden" name="cbt" value="Return to martinmosaic.com"/>
        <input type="hidden" name="cancel_return" value="<?php echo $this->url('mosaic', ['action' => 'payment']); ?>"/>			
        <!--<input type="hidden" name="custom" value="'.$this->custom.'"/>-->

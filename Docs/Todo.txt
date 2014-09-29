@@ -1,4 +1,3 @@
-Zeimer:
 10. Doprowadzić formularze do standardu: sprawdzić, czy wszędzie jest walidacja CSRF i przycisku submit (i czy jest sam przycisk).
 11. Sprawdzić, czy we wszystkich formularzach guzig submit ma poprawną nazwę.
 12. Spradzić, czy walidacja działa bez $Factory->createInput() - usunąć chwilowo walidację po stronie przeglądarki.
@@ -7,7 +6,7 @@ Zeimer:
 16. Naprawić linki przy logowaniu. U MNIE DZIAŁA
 17. Po rejestracji - strona główna. ZROBIONE
 18. Adres - wyśrodkować w address book.
-19. Dodać special offers do katalogu.
+19. Dodać special offers do katalogu. ZROBIONE
 20. Skończyć admin tools!
 21. Naprawić Cart [0] tak, żeby po wywleniu czegoś z koszyka wyświetlała się poprawna liczba. ZROBIONE
 22. Ogarnąć, żeby transakcja była dodawana dopiero po zapłaceniu paypalem.
