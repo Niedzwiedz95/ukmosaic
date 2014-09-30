@@ -126,6 +126,26 @@
             return (new ViewModel(['EditProductForm' => $EditProductForm]))->setTemplate('Admin/EditProduct.phtml');
 		}
 		
+		public function ordersAction()
+		{
+			// Assert that the user viewing this is an admin.
+			$this->assertIsAdmin();
+			
+            // Add metadata to the layout.
+            $this->layout()->setVariables(
+            [
+                'Title' => "All orders | Martin's mosaics",
+                'Scripts' => [],
+                'Styles' => ['/css/pages/user/Orders.css']
+            ]);
+			
+			// Renders all orders made by users.
+			$Orders = $this->renderAllOrders();
+			
+            return (new ViewModel(['Orders' => $Orders]))->setTemplate('Admin/Orders.phtml');
+			
+		}
+		
 		/** Asserts that the user currently signed in is an admin. */
 		public function assertIsAdmin()
 		{
@@ -142,6 +162,44 @@
 				}
 			};
 			$assertIsAdmin($this);
+		}
+
+		/** Renders the markup of all the orders every made by the user. */
+		public function renderAllOrders()
+		{
+			// Fetch the orders from the database.
+			$Orders = $this->getOrderTable()->select()->buffer();
+			
+			// Variables to hold the headers and markup.
+			$Headers = "<div class='orderHeader'>
+					       <div class='col-lg-2'>OrderID</div>
+					       <div class='col-lg-2'>Value</div>
+					       <div class='col-lg-2'>Status</div>
+					       <div class='col-lg-3'>Placement date</div>
+					       <div class='col-lg-2'>Details</div>
+					   </div>";
+			$Markup = '';
+			
+			// Iterate over all orders and render them.
+			foreach($Orders as $Order)
+			{
+				$OrderID = $Order->getOrderID();
+				$Value = $Order->getValue();
+				$Status = $Order->getStatus();
+				$PlacementDate = $Order->getPlacementDate();
+				$Details = "<a class='btn btn-primary' href='/order/$OrderID'>Details</a>";
+				
+				// Markup is prepended to the previous markup so that newer orders are displayed first.
+				$Markup = "<div class='order'>
+					            <div class='col-lg-2'>$OrderID</div>
+					            <div class='col-lg-2'>£$Value</div>
+					            <div class='col-lg-2'>$Status</div>
+					            <div class='col-lg-3'>$PlacementDate</div>
+					            <div class='col-lg-2'>$Details</div>
+							</div>" . $Markup;
+			}
+			
+			return "<div class='orderWrapper col-lg-7'>" . $Headers . $Markup . "</div>";
 		}
     }
 ?>

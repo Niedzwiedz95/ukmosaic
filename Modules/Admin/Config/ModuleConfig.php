@@ -20,7 +20,7 @@
 	            		'route'    => '/admin/[:action]',
 	                    'constraints' =>
 	                    [
-	                        'action' => '(addproduct)|(editproduct)|(editorder)',
+	                        'action' => '(addproduct)|(editproduct)|(editorder)|(orders)',
 	                    ],
 	                    'defaults' =>
 	                    [

@@ -301,7 +301,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "Manage orders | Martin's mosaics",
+                'Title' => "My orders | Martin's mosaics",
                 'Scripts' => [],
                 'Styles' => ['/css/pages/user/Orders.css']
             ]);
@@ -582,7 +582,7 @@
             }
         }
 
-		/** Renders the markup of all the orders every made by the user. */
+		/** Renders the markup of all the orders ever made by the user. */
 		public function renderOrders($UserID)
 		{
 			// Fetch the orders from the database.

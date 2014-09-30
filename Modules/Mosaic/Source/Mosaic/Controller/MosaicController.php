@@ -67,7 +67,7 @@
             // Add metadata to the layout.
             $this->layout()->setVariables(
             [
-                'Title' => "London Mosaic Victorian Tiles: Mosaic Designs",
+                'Title' => "Martin Mosaic Victorian Tiles: Mosaic Designs",
                 'Styles' => ['/css/pages/mosaic/Home.css'],
                 'Scripts' => ['/js/pages/Home.js']
             ]);
@@ -613,7 +613,14 @@
 		/** Notifies info@martinmosaic.com that a purchase was made. */
 		public function orderNotify()
 		{
-			
+			// Create an email that will be sent to the shop operator.
+			$Recipient = 'info@martinmosaic.com';
+            $Title = 'A purchase was made!';
+            $Message = 'A new purchase was made. Check martinmosaic.com/admin/orders';
+            $Headers = 'FROM: info@martinmosaic.com';
+            
+            // Send the mail and save the operation status in a variable. */
+            mail($Recipient, $Title, $Message, $Headers);
 		}
     }
 ?>
