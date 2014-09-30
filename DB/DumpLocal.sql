@@ -45,7 +45,7 @@ CREATE TABLE `Addresses` (
 
 LOCK TABLES `Addresses` WRITE;
 /*!40000 ALTER TABLE `Addresses` DISABLE KEYS */;
-INSERT INTO `Addresses` VALUES (1,0,'Pan Test','ul. Testowa 42','na jachcie','na morzu','tajne kody',NULL),(2,0,'asd','dsa','Lokal','majka`','123',NULL),(3,1,'Ful','name ulica','lokal','miasto','kot',NULL),(4,2,'k','k','k','k','k',NULL);
+INSERT INTO `Addresses` VALUES (1,1,'Pan Test','ul. Testowa 42','na jachcie','na morzu','tajne kody',NULL),(2,1,'asd','dsa','Lokal','majka`','123',NULL),(3,1,'Ful','name ulica','lokal','miasto','kot',NULL);
 /*!40000 ALTER TABLE `Addresses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,7 +79,6 @@ CREATE TABLE `OrderProducts` (
 
 LOCK TABLES `OrderProducts` WRITE;
 /*!40000 ALTER TABLE `OrderProducts` DISABLE KEYS */;
-INSERT INTO `OrderProducts` VALUES (3,85,'Sydney Design','Border per linear metre: Loose Tiles',4,36.25,'/img/catalogue/unglazed/victorian-9mm/pl-x21.jpg','PriceLinearLoose',NULL),(4,134,'Bahamas 348x348','Standard',1,79.40,'/img/catalogue/glazed/tiles2.5x2.5-cmm/Bahamas 348x348.jpg','Price',NULL),(5,84,'Coral Design','Field per square meter: Loose Tiles',4,311.25,'/img/catalogue/unglazed/victorian-9mm/pl-x15.jpg','PriceSquareLoose',NULL),(6,85,'Sydney Design','Field per square meter: Loose Tiles',3,339.25,'/img/catalogue/unglazed/victorian-9mm/pl-x21.jpg','PriceSquareLoose',NULL),(7,85,'Sydney Design','Field per square meter: Loose Tiles',3,339.25,'/img/catalogue/unglazed/victorian-9mm/pl-x21.jpg','PriceSquareLoose',NULL),(8,85,'Sydney Design','Field per square meter: Loose Tiles',3,339.25,'/img/catalogue/unglazed/victorian-9mm/pl-x21.jpg','PriceSquareLoose',NULL),(9,85,'Sydney Design','Field per square meter: Loose Tiles',3,339.25,'/img/catalogue/unglazed/victorian-9mm/pl-x21.jpg','PriceSquareLoose',NULL),(10,85,'Sydney Design','Field per square meter: Loose Tiles',3,339.25,'/img/catalogue/unglazed/victorian-9mm/pl-x21.jpg','PriceSquareLoose',NULL),(11,134,'Bahamas 348x348','Standard',2,79.40,'/img/catalogue/glazed/tiles2.5x2.5-cmm/Bahamas 348x348.jpg','Price',NULL),(12,134,'Bahamas 348x348','Standard',1,79.40,'/img/catalogue/glazed/tiles2.5x2.5-cmm/Bahamas 348x348.jpg','Price',NULL),(13,104,'Amethyste 348x348','Standard',1,119.45,'/img/catalogue/satin&matt/tiles2.5x2.5-cmm/Amethyste 348x348.jpg','Price',NULL),(14,104,'Amethyste 348x348','Standard',1,119.45,'/img/catalogue/satin&matt/tiles2.5x2.5-cmm/Amethyste 348x348.jpg','Price',NULL);
 /*!40000 ALTER TABLE `OrderProducts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,7 +102,7 @@ CREATE TABLE `Orders` (
   KEY `fk_AddressID_idx` (`AddressID`),
   CONSTRAINT `AddressID` FOREIGN KEY (`AddressID`) REFERENCES `Addresses` (`AddressID`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `UserID` FOREIGN KEY (`UserID`) REFERENCES `Users` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,7 +111,6 @@ CREATE TABLE `Orders` (
 
 LOCK TABLES `Orders` WRITE;
 /*!40000 ALTER TABLE `Orders` DISABLE KEYS */;
-INSERT INTO `Orders` VALUES (3,1,1,145.00,'Placed','2014-08-31 12:53:54'),(4,1,2,79.40,'Placed','2014-09-09 15:18:06'),(5,1,2,1245.00,'Placed','2014-09-13 11:37:44'),(6,1,2,1017.75,'Placed','2014-09-14 15:03:29'),(7,1,2,1017.75,'Placed','2014-09-14 15:17:27'),(8,1,2,1017.75,'Placed','2014-09-17 11:42:58'),(9,1,2,1017.75,'Placed','2014-09-17 11:44:09'),(10,1,2,1017.75,'Placed','2014-09-17 11:47:49'),(11,1,2,158.80,'Placed','2014-09-17 12:28:11'),(12,1,3,79.40,'Placed','2014-09-18 15:02:42'),(13,1,3,119.45,'Placed','2014-09-28 17:38:25'),(14,1,3,119.45,'Placed','2014-09-28 17:48:14');
 /*!40000 ALTER TABLE `Orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -141,7 +139,7 @@ CREATE TABLE `Products` (
   UNIQUE KEY `ProductID_UNIQUE` (`ProductID`),
   UNIQUE KEY `ProductName_UNIQUE` (`ProductName`),
   UNIQUE KEY `Path_UNIQUE` (`Path`)
-) ENGINE=InnoDB AUTO_INCREMENT=1845 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1688 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -205,7 +203,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'test@test.com',1,'7721506723ce05ace069262acc6dba77dabcb23cc3e52ce271350f2eb107c74742ff6982359ff47338e83fa02ef60805e2ccf0f3bc2351da36927c64859f6129','v+x1$EQ!lx@eG_+rX6,~*vE*PSm&t!mOWJez$U>;*~/mU$DfJu%qQi:{0j!()[wEvA3<)1[0A%#)Sf\\,z3g%@d9AmIi}uEzP5,NOSyd*b^1V_OLjgS]*VWh8{p2nT,3n'),(2,'asd@dsa.pl',0,'d401587dc019afffe2b9ec39f797e86655f33be4ba45e15abd05a74712c71549793d5fa656b84f0c30371be244c6bd26668efd040f337d4b5a8c140e094769d0','<({Z@o5{}$,4?k,CWj@}aSXFb:#tMqwJ>q<~E24yFV.F6(8q.Il/;8x,4?kfpHOnXL]\'bRoIaf#6\\J[^*:865{Xy/7Dib*wZsiPv03309FvW%hAVd<q8,#|_Jy.Leo?x');
+INSERT INTO `Users` VALUES (1,'info@martinmosaic.com',1,'005bb5af41fbd638bd8778ee28f2d75b9feecf0ef13e3d9413022a359a93da9272fa6b0b21da648199af635d5d4b27a74bb7e467222813a0e7a589afa92d9bbe','D9dphfI>[1z\'CcSll0M6P}*q}yL;r2>Vzc~HghF/94(?5Al&;XLESrUMQ}B8Xzr[B,sI<YB7qi6+J&1yCc2_tkv~eWG2+XNlN5TLr)gI.#tBS)Z_+p4dz\\#EKh}u5IGh');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -218,4 +216,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-09-29 19:30:04
+-- Dump completed on 2014-09-30 11:31:40
