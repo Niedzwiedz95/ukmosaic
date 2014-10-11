@@ -40,33 +40,23 @@
                 	'label' => 'Category',
                 	'value_options' =>
                 	[
-                		0 => 'unglazed_tiles15x15-9mm',
-                		1 => 'unglazed_octagon10x10-9mm',
-                		2 => 'unglazed_tiles5x5-9mm',
-                		3 => 'unglazed_tiles2x2-3.8mm',
-                		4 => 'unglazed_tiles10x10-9mm',
-                		5 => 'unglazed_victorian-9mm',
-                		6 => 'unglazed_basket',
-                		7 => 'unglazed_tiles7x7-9mm',
-                		8 => 'unglazed_tiles3.5x3.5-9mm',
-                		9 => 'unglazed_octagon15x15-9mm',
-                		10 => 'satin&matt_tiles2.5x2.5-cmm',
-                		11 => 'glazed_tiles2.5x2.5-cmm',
-                		12 => 'mosaicdesigns_mosaicdesigns',
-                		13 => 'unglazed_tiles5x5-5mm',
+                		'unglazed_tiles15x15-9mm' => 'unglazed_tiles15x15-9mm',
+                		'unglazed_octagon10x10-9mm' => 'unglazed_octagon10x10-9mm',
+                		'unglazed_tiles5x5-9mm' => 'unglazed_tiles5x5-9mm',
+                		'unglazed_tiles2x2-3.8mm' => 'unglazed_tiles2x2-3.8mm',
+                		'unglazed_tiles10x10-9mm' => 'unglazed_tiles10x10-9mm',
+                		'unglazed_victorian-9mm' => 'unglazed_victorian-9mm',
+                		'unglazed_basket' => 'unglazed_basket',
+                		'unglazed_tiles7x7-9mm' => 'unglazed_tiles7x7-9mm',
+                		'unglazed_tiles3.5x3.5-9mm' => 'unglazed_tiles3.5x3.5-9mm',
+                		'unglazed_octagon15x15-9mm' => 'unglazed_octagon15x15-9mm',
+                		'unglazed_tiles5x5-5mm' => 'unglazed_tiles5x5-5mm',
+                		'satin&matt_tiles2.5x2.5-cmm' => 'satin&matt_tiles2.5x2.5-cmm',
+                		'glazed_tiles2.5x2.5-cmm' => 'glazed_tiles2.5x2.5-cmm',
+                		'mosaicdesigns_mosaicdesigns' => 'mosaicdesigns_mosaicdesigns',
+                		'specialoffers_specialoffers' => 'specialoffers_specialoffers'
                 	]
             	]
-	        ]);
-			$this->add(
-			[
-	            'name' => 'path',
-	            'attributes' =>
-	            [
-	                'type'  => 'text',
-	                'id' => 'path',
-                    'required' => 'required'
-	        	],
-	            'options' => ['label' => 'Path']
 	        ]);
 			$this->add(
 			[
@@ -87,7 +77,7 @@
 	                'type'  => 'number',
 	                'id' => 'price',
 	        	],
-	            'options' => ['label' => 'Standard: Price']
+	            'options' => ['label' => 'Standard, Price']
 	        ]);
 			$this->add(
 			[

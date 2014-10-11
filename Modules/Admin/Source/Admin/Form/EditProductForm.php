@@ -9,11 +9,11 @@
 	class EditProductForm extends ProductForm
 	{		
 		/**	Constructor, sets attributes and adds the submit element. */
-	    public function __construct()
+	    public function __construct($ProductID)
 	    {
 	        // Set all attributes of the form.
 	        parent::__construct('EditProductForm');
-            $this->setAttribute('action', '/admin/editproduct');
+            $this->setAttribute('action', "/admin/editproduct/$ProductID");
             $this->setAttribute('id', 'editProductForm');
 			$this->setAttribute('header', 'Edit a product');
 			

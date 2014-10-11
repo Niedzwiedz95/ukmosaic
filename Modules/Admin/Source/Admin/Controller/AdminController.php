@@ -68,18 +68,26 @@
 			// Assert that the user requesting the page is an admin.
 			$this->assertIsAdmin();
 			
-			// Create an AddProductForm instance.
+			// Save the request in a variable and create an AddProductForm instance.
+            $Request = $this->getRequest();
 			$AddProductForm = new \Admin\Form\AddProductForm();
-			
+
 			// Check if it's a POST request with the form submitted.
-			if($this->getRequest()->isPost())
+			if($Request->isPost())
 			{
-				// Feed the data into the form.
-				$AddProductForm->setData($this->getRequest()->getPost()->toArray());
+                // Merges the $_POST and $_FILES data into one array.
+                $Data = array_merge_recursive($Request->getPost()->toArray(), $Request->getFiles()->toArray());
 				
-				if($AddProductForm->isValid())
+				// Feed the data into the form.
+				$AddProductForm->setInputFilter($AddProductForm->getInputFilter());
+				$AddProductForm->setData($Data);
+				
+				// Save the results of validating the form in a variable and check whether it's valid.
+				$FileTransfer = $AddProductForm->isReallyValid($Data['picture']);
+
+				if($FileTransfer == true)
 				{
-					
+					$this->getProductTable()->insertProduct($FileTransfer, $Data);
 				}
 			}
 			
@@ -100,20 +108,56 @@
 			// Assert that the user requesting the page is an admin.
 			$this->assertIsAdmin();
 			
-			// Create an AddProductForm instance.
-			$EditProductForm = new \Admin\Form\EditProductForm();
+			// Fetch the product id from the route parameter and then the product from database.
+			$ProductID = $this->params()->fromRoute('productid');
+			$Product = $this->getProductTable()->select(['ProductID' => $ProductID])->buffer()->current();
+			
+			// Create an EditProductForm instance.
+			$EditProductForm = new \Admin\Form\EditProductForm($ProductID);
 			
 			// Check if it's a POST request with the form submitted.
 			if($this->getRequest()->isPost())
 			{
-				// Feed the data into the form.
-				$EditProductForm->setData($this->getRequest()->getPost()->toArray());
-				
+				// Feed the data into the form and validate it.
+				$Data = $this->getRequest()->getPost()->toArray();
+				$EditProductForm->setData($Data);
 				if($EditProductForm->isValid())
 				{
+					// Assemble the edited product's instance and update the database.
+					$Product = new \Mosaic\Model\Product(
+					[
+						'ProductName' => $Data['productName'],
+						'Category' => $Data['category'],
+						'Description' => $Data['description'],
+						'Price' => $Data['price'],
+						'PriceSquareLoose' => $Data['priceSquareLoose'],
+		  				'PriceSquareAssembled' => $Data['priceSquareAssembled'],
+		  				'PriceLinearLoose' => $Data['priceLinearLoose'],
+		 				'PriceLinearAssembled' => $Data['priceLinearAssembled'],
+						'Price1x1' => $Data['price1x1'],
+						'Price2x2' => $Data['price2x2'],
+						'Price25x25' => $Data['price25x25'],
 					
+					]);
+					$this->getProductTable()->update($Product, new \Mosaic\Model\Product(['ProductID' => $ProductID]));
 				}
 			}
+			
+			// Set form data (this line is here so that both edited and unedited product will display fine).
+			$EditProductForm->setData(
+			[
+				'productName' => $Product->getProductName(),
+				'category' => $Product->getCategory(),
+				'description' => $Product->getDescription(),
+				'price' => $Product->getPrice(),
+				'priceSquareLoose' => $Product->getPriceSquareLoose(),
+  				'priceSquareAssembled' => $Product->getPriceSquareAssembled(),
+  				'priceLinearLoose' => $Product->getPriceLinearLoose(),
+ 				'priceLinearAssembled' => $Product->getPriceLinearAssembled(),
+				'price1x1' => $Product->getPrice1x1(),
+				'price2x2' => $Product->getPrice2x2(),
+				'price25x25' => $Product->getPrice25x25(),
+			]);
 			
             // Add metadata to the layout.
             $this->layout()->setVariables(

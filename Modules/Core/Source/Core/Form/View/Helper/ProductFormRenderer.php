@@ -97,13 +97,14 @@
 				$Input = "<select id='$ID' class='form-control' name='$Name'>";
                 foreach($Element->getOptions()['value_options'] as $Type => $Name)
                 {
-                   $Input .= "<option value='$Type'>$Name</option>";
+					$Selected = $Type == $Value ? "selected='selected'" : '';
+                   	$Input .= "<option value='$Type' $Selected>$Name</option>";
                 }
 				$Input .= '</select>';
             }
 			else if($Type == "textarea")
 			{
-				$Input = "<textarea id='$ID' class='$Class' name='$Name' type='$Type' placeholder='$Placeholder' $Required></textarea>";
+				$Input = "<textarea id='$ID' class='$Class' name='$Name' type='$Type' placeholder='$Placeholder' $Required>$Value</textarea>";
 			}
 			else if($Type == 'checkbox')
 			{

@@ -20,11 +20,28 @@
 	            		'route'    => '/admin/[:action]',
 	                    'constraints' =>
 	                    [
-	                        'action' => '(addproduct)|(editproduct)|(editorder)|(orders)',
+	                        'action' => '(addproduct)|(editorder)|(orders)',
 	                    ],
 	                    'defaults' =>
 	                    [
 	                        'controller' => 'AdminController',
+	                    ],
+					],
+				],
+	            'editproduct' =>	
+	            [
+	            	'type' => 'segment',
+	            	'options' =>
+	            	[
+	            		'route'    => '/admin/editproduct/[:productid]',
+	                    'constraints' =>
+	                    [
+	                        'productid' => '[1-9]{1}[0-9]*',
+	                    ],
+	                    'defaults' =>
+	                    [
+	                        'controller' => 'AdminController',
+	                        'action' => 'editproduct'
 	                    ],
 					],
 				],
