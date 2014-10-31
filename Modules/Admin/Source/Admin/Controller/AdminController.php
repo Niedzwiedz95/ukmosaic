@@ -169,6 +169,30 @@
 			
             return (new ViewModel(['EditProductForm' => $EditProductForm]))->setTemplate('Admin/EditProduct.phtml');
 		}
+
+		/** Deletes the requested product. */
+		public function deleteProductAction()
+		{
+			// Assert that the user requesting the page is an admin.
+			$this->assertIsAdmin();
+			
+			$Form = new \Admin\Form\DeleteProductForm();
+			
+			// Fetch the product id from the route parameter and then the product from database.
+			//$ProductID = $this->params()->fromRoute('productid');
+			
+			// Delete the product from the database.
+			//$this->getProductTable()->delete(new \Mosaic\Model\Product(['ProductID' => $ProductID]));
+			
+            // Add metadata to the layout.
+            $this->layout()->setVariables(
+            [
+                'Title' => "Edit product | Martin's mosaics",
+                'Scripts' => [],
+                'Styles' => []
+            ]);
+			
+		}
 		
 		public function ordersAction()
 		{

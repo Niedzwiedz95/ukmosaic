@@ -12,7 +12,7 @@
 	    [
 	        'routes' =>
 	        [
-	            'admin' =>	
+	            'admin' =>
 	            [
 	            	'type' => 'segment',
 	            	'options' =>
@@ -20,7 +20,7 @@
 	            		'route'    => '/admin/[:action]',
 	                    'constraints' =>
 	                    [
-	                        'action' => '(addproduct)|(editorder)|(orders)',
+	                        'action' => '(addproduct)|(orders)|(deleteproduct)|(editorder)',
 	                    ],
 	                    'defaults' =>
 	                    [
@@ -28,7 +28,7 @@
 	                    ],
 					],
 				],
-	            'editproduct' =>	
+	            'editproduct' =>
 	            [
 	            	'type' => 'segment',
 	            	'options' =>
@@ -42,6 +42,23 @@
 	                    [
 	                        'controller' => 'AdminController',
 	                        'action' => 'editproduct'
+	                    ],
+					],
+				],
+	            'editproduct' =>
+	            [
+	            	'type' => 'segment',
+	            	'options' =>
+	            	[
+	            		'route'    => '/admin/deleteproduct/[:productid]',
+	                    'constraints' =>
+	                    [
+	                        'productid' => '[1-9]{1}[0-9]*',
+	                    ],
+	                    'defaults' =>
+	                    [
+	                        'controller' => 'AdminController',
+	                        'action' => 'deleteproduct'
 	                    ],
 					],
 				],

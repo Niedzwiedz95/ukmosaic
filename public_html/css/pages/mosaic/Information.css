@@ -9,3 +9,54 @@ div#infotxt {
 	font-family:"Copperplate Gothic Bold";
 	padding-left: 20px;
 }
+
+/* Accessories CSS. */
+div.decorative1, div.decorative2
+{
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 40px;
+}
+p.decorative1, p.decorative2
+{
+	font-size: large;
+	text-align: center;
+	padding-top: 20px;
+}
+p.contact
+{
+	width: 250px;
+	margin: 10px auto auto;
+	font-size: 20px;
+	background-color: black;
+	color: white;
+}
+
+p.contact > a:visited
+{
+    text-decoration: none;
+    color: gold;
+}
+
+p.contact > a:hover
+{
+    text-decoration: none;
+    border-bottom: 2px solid white;
+}
+
+p.contact > a:active
+{
+    text-decoration: none;
+}
+
+/* Technical CSS. */
+div.winckelmans, div.briare {
+	padding-left: 85px;
+	padding-top: 20px;
+	word-spacing: 15px;
+}
+p.winckelmans, p.briare {
+	font-size:large;
+	padding-left: 200px;
+	padding-top: 20px;
+}

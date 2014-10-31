@@ -10,6 +10,23 @@ header#siteHeader ul.nav
 		margin: 40px 0;
 		text-align: center;
 	}
+	header#siteHeader ul.nav > li.contact
+	{
+		width: 25%;
+		height: 60px;
+		margin: 20px 0;
+		color: white;
+		text-align: center;
+	}
+		header#siteHeader ul.nav > li.contact ul
+		{
+			color: white;
+			list-style-type: none;
+		}
+			header#siteHeader ul.nav > li.contact ul a
+			{
+				color: white;
+			}
 		header#siteHeader ul.nav > li.menu > a
 		{
 			display: inline;
