@@ -72,7 +72,16 @@
 						</ul>
 					</li>-->
                     <!--<li class="menu specialoffers"><a href="<?php echo $this->url('mosaic', ['action' => 'specialoffers']); ?>">Special offers</a></li>-->
-                    <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'information']); ?>">Information</a></li>
+                    <li class="menu btn-group">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Information</a>
+						<ul class="dropdown-menu">
+				  			<li><a href="<?php echo $this->url('mosaic', ['action' => 'information']); ?>">General information</a></li>
+				  			<li><a href="/technical/winckelmans">Winckelmans technical</a></li>
+				  			<li><a href="/technical/briare">Briare technical</a></li>
+				  			<li><a href="/accessories/decorative1">Decorative Tiles 5x5cm</a></li>
+				  			<li><a href="/accessories/decorative2">Decorative Tiles 10x10cm</a></li>
+						</ul>
+					</li>
                     <!--<li class="menu btn-group accessories">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Accessories</a>
 						<ul class="dropdown-menu">
@@ -80,6 +89,7 @@
 				  			<li><a href="/accessories/decorative2">Decorative Tiles 10x10cm</a></li>
 						</ul>
 					</li>-->
+                    <!--<li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'gallery']); ?>">Gallery</a></li>-->
                     <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'contact']); ?>">Contact</a></li>
                     <li class="menu"><a href="<?php echo $this->url('mosaic', ['action' => 'cart']); ?>">Cart
                     	<?php
@@ -112,8 +122,9 @@
 					?>
 					<li class="contact">
 						<ul id="contact">
-							<li><img src="/img/home/c1.png" title="00 44 78 238 821 379"> 00 44 7823 821 379</li>
-							<li><img src="/img/home/c2.png"><a href="mailto:info@martinmosaic.com"> info@martinmosaic.com</a></li>
+							<li>00 44 7823 821 379</li>
+							<li>0800 211 8776</li>
+							<li><a href="mailto:info@martinmosaic.com">info@martinmosaic.com</a></li>
 						</ul>
 					</li>
                 </ul>
