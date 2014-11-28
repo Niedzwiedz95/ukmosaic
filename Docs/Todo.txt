@@ -1,6 +1,6 @@
 10. Doprowadzić formularze do standardu: sprawdzić, czy wszędzie jest walidacja CSRF i przycisku submit (i czy jest sam przycisk).
 11. Sprawdzić, czy we wszystkich formularzach guzig submit ma poprawną nazwę.
-12. Spradzić, czy walidacja działa bez $Factory->createInput() - usunąć chwilowo walidację po stronie przeglądarki.
+12. Sprawdzić, czy walidacja działa bez $Factory->createInput() - usunąć chwilowo walidację po stronie przeglądarki.
 14. Wyłączyć dostęp do cpanelu z poziomu martinmosaic.com.
 15. Zrobić cron job do robienia backupa bazy.
 16. Naprawić linki przy logowaniu. U MNIE DZIAŁA
@@ -12,3 +12,5 @@
 22. Ogarnąć, żeby transakcja była dodawana dopiero po zapłaceniu paypalem.
 23. Zrobić listę wszystkich transakcji dla admina.
 24. Zrobić tak, żeby po złożeniu zamówienia wysyłało się powiadomienie na email.
+25. stopka -- miejsce dla ebaya, ikona paypala i kart platniczych
+26. pod proceed do paypal — dodać napis "standard transfer" i dane do przelewu

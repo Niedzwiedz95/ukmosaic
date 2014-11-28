@@ -1,0 +1,15 @@
+div.formWrapper
+{
+    float: left;
+    margin: 0;
+}
+div#mapCanvas
+{
+    float: none;
+    height: 600px;
+    margin: 15px auto;
+}
+div#contactWrapper
+{
+    margin-top: 60px;
+}

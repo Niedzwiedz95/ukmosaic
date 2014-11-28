@@ -1,5 +1,9 @@
 $(document).ready(function()
 {
+	// Initialize the map.
+	initializeMap();
+	
+	// Rules whose the form must satisfy to be valid.
     $("form#contactForm, form#contactForm textarea").validate({
         rules:
         {
@@ -41,3 +45,22 @@ $(document).ready(function()
         }
     });
 });
+
+// Initializes the map provided by Google Maps. Code pasted from the Internet.
+function initializeMap()
+{
+        var mapCanvas = document.getElementById('mapCanvas');
+        var mapOptions =
+        {
+          center: new google.maps.LatLng(51.4273718, -0.1984969),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+        var marker = new google.maps.Marker(
+        {
+			position: new google.maps.LatLng(51.4273718, -0.1984969),
+		  	map: map,
+		  	//title: 'Hello World!'
+	  	});
+}

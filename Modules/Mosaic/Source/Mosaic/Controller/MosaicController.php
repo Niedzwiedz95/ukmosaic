@@ -184,8 +184,8 @@
             $this->layout()->setVariables(
             [
                 'Title' => "Contact | Martin's mosaics",
-                'Styles' => [],
-                'Scripts' => ['/js/pages/Contact.js']
+                'Styles' => ['/css/pages/mosaic/Contact.css'],
+                'Scripts' => ['/js/pages/Contact.js', 'https://maps.googleapis.com/maps/api/js']
             ]);
             
             return (new ViewModel(['ContactForm' => $ContactForm]))->setTemplate('Mosaic/Contact.phtml');
@@ -493,11 +493,11 @@
 				// Save the product's attributes to make life easier.
 				$Name = $Product->getProductName();
 				$Path = $Product->getPath();
-				$Price = $Product->getPrice();
+				//$Price = $Product->getPrice();
 				
 				$HTML .= "<div class='col-lg-3'>
 							<span class='productName'>" . $Name . "</span>
-							<a class='thumbnail' href='" . '/product/' . $Product->getProductID() . "' title='" . $Name . " " . $Price . "£'>
+							<a class='thumbnail' href='" . '/product/' . $Product->getProductID() . "' title='$Name'>
 								<img class='' src='" . $Product->getPath() . "' alt='" . $Product->getProductName() . "'>
 							</a>
 						  </div>";
