@@ -13,3 +13,7 @@ div#contactWrapper
 {
     margin-top: 60px;
 }
+    div#contactWrapper a
+    {
+        color: black;
+    }
